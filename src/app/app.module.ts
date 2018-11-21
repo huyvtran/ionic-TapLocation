@@ -1,3 +1,4 @@
+import { MapPage } from './../pages/map/map';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -10,8 +11,10 @@ import { HomePage } from '../pages/home/home';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    MapPage,
   ],
+
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp)
@@ -19,7 +22,8 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    MapPage
   ],
   providers: [
     StatusBar,
