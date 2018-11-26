@@ -1,3 +1,5 @@
+import { TruckPage } from './../pages/truck/truck';
+import { TapPage } from './../pages/tap/tap';
 import { MapPage } from './../pages/map/map';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -16,6 +18,8 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
     MyApp,
     HomePage,
     MapPage,
+    TapPage,
+    TruckPage,
   ],
 
   imports: [
@@ -27,7 +31,9 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
   entryComponents: [
     MyApp,
     HomePage,
-    MapPage
+    MapPage,
+    TapPage,
+    TruckPage
   ],
   providers: [
     StatusBar,

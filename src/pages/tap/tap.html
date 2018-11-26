@@ -1,0 +1,91 @@
+<!--
+  Generated template for the TapPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>tap</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div padding>
+    <ion-segment [(ngModel)]="tap">
+
+  <ion-segment-button value="1">1</ion-segment-button>
+          
+  <ion-segment-button value="2">2</ion-segment-button>
+
+  <ion-segment-button value="3">3</ion-segment-button>
+
+  <ion-segment-button value="4">4</ion-segment-button>
+
+  <ion-segment-button value="5">5</ion-segment-button>
+
+  </ion-segment>
+  </div>
+    
+  <div [ngSwitch]="tap">
+
+    <ion-list *ngSwitchCase="'1'" >
+    <ion-item no-lines>
+    <span> Where is the tap located?</span>
+    </ion-item>
+
+    <ion-input type="text" placeholder="Street Name, Location"></ion-input>
+    </ion-list>
+    
+    <ion-list *ngSwitchCase="'2'">
+    <ion-item no-lines>
+    <span>What time is the tap accessible?</span>
+    </ion-item>
+    <ion-input type="text" placeholder="E.g 09:00-16:00"></ion-input>
+
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'3'">
+    <ion-item no-lines>
+    <span>How many people use the tap?</span>
+    </ion-item>
+    <ion-input type="text" placeholder="E.g +-3000 People"></ion-input>
+
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'4'">
+    <ion-item no-lines>
+    <span>Is the tap reliable?</span>
+    </ion-item>
+
+    <br>  
+    
+    <input type="radio" name="gender" value="Yes" checked> Yes<br>
+    <input type="radio" name="gender" value="No"> No<br>
+
+   </ion-list>
+
+   <ion-list *ngSwitchCase="'5'">
+   <ion-item no-lines>
+   <span text-wrap>Is The Tap Water Clean And Safe For Drinking?</span>
+   </ion-item>
+   
+   <br>  
+    <input type="radio" name="gender" value="Yes" checked> Yes<br>
+    <input type="radio" name="gender" value="No"> No<br>
+
+
+   </ion-list>
+
+    </div>
+
+
+</ion-content>
+
+<ion-footer>
+<button ion-button icon-only color="dark" block  (click)="submit()" outline>submit</button>
+</ion-footer>
