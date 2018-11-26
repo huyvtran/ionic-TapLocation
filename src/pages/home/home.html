@@ -1,16 +1,15 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>
-   
+      Ionic Blank
     </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addMarker()">
+        <ion-icon name="md-locate"></ion-icon>
+      </button>
+    </ion-buttons> 
   </ion-navbar>
 </ion-header>
-
-<ion-content padding>
- 
-  <button ion-button block color="danger" (click)="tap()">WATER TAPS</button>
-  <br>
-  <button ion-button block color="danger" (click)="truck()">WATER TRUCKS</button>
-  <br>
-  
+<ion-content>
+  <div id="map" style="width:100%; height:100%;"></div>
 </ion-content>

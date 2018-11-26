@@ -1,23 +1,72 @@
-import { MapPage } from './../map/map';
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import { NavController, AlertController } from 'ionic-angular';
+import leaflet from 'leaflet';
+import { NativeGeocoder, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
+ 
+ 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  constructor(public navCtrl: NavController) {
-
+  @ViewChild('map') mapContainer: ElementRef;
+  map: any;
+  constructor(public navCtrl: NavController,private alertCtrl: AlertController,private nativeGeocoder: NativeGeocoder) {
+ 
   }
-
-  tap(){
-this.navCtrl.push(MapPage)
+ 
+  ionViewDidEnter() {
+    this.loadmap();
   }
-
-  truck(){
-    this.navCtrl.push(MapPage)
+ 
+  loadmap() {
+    this.map = leaflet.map("map").fitWorld();
+    leaflet.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attributions: 'www.tphangout.com',
+      maxZoom: 100
+    }).addTo(this.map);
   }
-
+ 
+  addMarker() {
+    let prompt = this.alertCtrl.create({
+      title: 'Add Marker',
+      message: "Enter location",
+      inputs: [
+        {
+          name: 'city',
+          placeholder: 'Pin a location'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            
+            this.geoCodeandAdd(data.city);
+          }
+        }
+      ]
+    });
+    prompt.present();
+  }
+ 
+  geoCodeandAdd(city) {
+    this.nativeGeocoder.forwardGeocode(city)
+      .then((coordinates: NativeGeocoderForwardResult[]) => {
+        let markerGroup = leaflet.featureGroup();
+      let marker: any = leaflet.marker([coordinates[0].latitude, coordinates[0].longitude]).on('click', () => {
+        alert('Marker clicked');
+      })
+      markerGroup.addLayer(marker);
+      this.map.addLayer(markerGroup);
+      })
+  .catch((error: any) => console.log(error));
+  }
+ 
 }
