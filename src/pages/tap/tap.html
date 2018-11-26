@@ -1,0 +1,73 @@
+<!--
+  Generated template for the TapPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>tap</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div padding>
+    <ion-segment [(ngModel)]="tap">
+
+  <ion-segment-button value="1">1</ion-segment-button>
+          
+  <ion-segment-button value="2">2</ion-segment-button>
+
+  <ion-segment-button value="3">3</ion-segment-button>
+
+  <ion-segment-button value="4">4</ion-segment-button>
+
+  <ion-segment-button value="5">5</ion-segment-button>
+
+  </ion-segment>
+  </div>
+    
+  <div [ngSwitch]="tap">
+
+    <ion-list *ngSwitchCase="'1'">
+    <ion-item>
+    <ion-label stacked>Where Is The Tap Located?</ion-label>
+    </ion-item>
+      
+    </ion-list>
+    
+    <ion-list *ngSwitchCase="'2'">
+    <ion-item>
+    <ion-label stacked>What Time Is The Yap Accessible?</ion-label>
+    </ion-item>
+      
+    </ion-list>
+    <ion-list *ngSwitchCase="'3'">
+    <ion-item>
+    <ion-label stacked>How Many People Use The Tap?</ion-label>
+    </ion-item>
+        
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'4'">
+    <ion-item>
+    <ion-label stacked>Is The Tap Reliable?</ion-label>
+    </ion-item>
+          
+   </ion-list>
+
+   <ion-list *ngSwitchCase="'5'">
+   <ion-item>
+   <ion-label stacked>Is The Tap Water Clean And Safe For Drinking?</ion-label>
+   </ion-item>
+            
+   </ion-list>
+
+    </div>
+
+
+</ion-content>

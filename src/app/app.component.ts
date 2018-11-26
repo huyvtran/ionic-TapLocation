@@ -1,3 +1,5 @@
+import { TruckPage } from './../pages/truck/truck';
+import { TapPage } from './../pages/tap/tap';
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';

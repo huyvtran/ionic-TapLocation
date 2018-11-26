@@ -1,3 +1,5 @@
+import { TruckPage } from './../truck/truck';
+import { TapPage } from './../tap/tap';
 import { MapPage } from './../map/map';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
@@ -13,11 +15,11 @@ export class HomePage {
   }
 
   tap(){
-this.navCtrl.push(MapPage)
+this.navCtrl.push(TapPage);
   }
 
   truck(){
-    this.navCtrl.push(MapPage)
+    this.navCtrl.push(TruckPage);
   }
 
 }
