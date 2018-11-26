@@ -72,42 +72,65 @@
         </div>
         
         <div [ngSwitch]="truck">
-          <ion-list *ngSwitchCase="'1'">
-            <ion-item>
-          <ion-label stacked>Where Is The Truck Located?</ion-label>
-            </ion-item>
-          
-          </ion-list>
+        <ion-list *ngSwitchCase="'1'">
+        <ion-item no-lines>
+        <span>Where Is The Truck Located?</span>
+        </ion-item>
+
+        <ion-input type="text" placeholder="Street Name, Location"></ion-input>
         
-          <ion-list *ngSwitchCase="'2'">
-            <ion-item>
-          <ion-label stacked>How Many People Can Get Water From The Water Truck?</ion-label>
+      </ion-list>
+        
+      <ion-list no-lines *ngSwitchCase="'2'">
+          <ion-item>
+          <span>What is the time operation of the truck?</span>
           </ion-item>
-          
+
+          <ion-input type="text" placeholder="E.g 09:00-16:00"></ion-input>
+
           </ion-list>
-          <ion-list *ngSwitchCase="'3'">
-              <ion-item>
-               <h2>Ruby</h2>
-              </ion-item>
-            
-            </ion-list>
 
-            <ion-list *ngSwitchCase="'4'">
-                <ion-item>
-                 <h2>Ruby</h2>
-                </ion-item>
-              
-              </ion-list>
 
-              <ion-list *ngSwitchCase="'5'">
-                  <ion-item>
-                   <h2>Ruby</h2>
-                  </ion-item>
-                
-                </ion-list>
+      <ion-list *ngSwitchCase="'3'">
+      <ion-item no-lines>
+      <span text-wrap>how many liters does the truck offer per water station.</span>
+      </ion-item>
+
+      <ion-input type="text" placeholder="E.g 375 liters of water each week "></ion-input>
+    </ion-list>
+
+      <ion-list *ngSwitchCase="'4'">
+      <ion-item no-lines>
+      <span>How realiable is the truck service? </span>
+      </ion-item>
+
+      <br>  
+      <input type="radio" name="gender" value="Yes" checked> Yes<br>
+      <input type="radio" name="gender" value="No"> No<br>  
+
+     </ion-list>
+
+      <ion-list *ngSwitchCase="'5'">
+      <ion-item no-lines>
+      <span text-wrap>How many days is the truck available in a week?</span>
+      </ion-item>
+
+      <ion-input type="text" placeholder="E.g 3 days in a  week "></ion-input>
+   
+      </ion-list>
 
               
                   
     
         </div>
+
+
+
 </ion-content>
+<ion-footer>
+  
+<button ion-button icon-only block color="dark" (click)="cameraPhoto()" outline>submit
+  </button>
+      
+     
+   </ion-footer>
