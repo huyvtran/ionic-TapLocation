@@ -14,7 +14,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'truck.html',
 })
 export class TruckPage {
-
+  truck='1';
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

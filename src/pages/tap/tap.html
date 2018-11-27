@@ -33,41 +33,59 @@
     
   <div [ngSwitch]="tap">
 
-    <ion-list *ngSwitchCase="'1'">
-    <ion-item>
-    <ion-label stacked>Where Is The Tap Located?</ion-label>
+    <ion-list *ngSwitchCase="'1'" >
+    <ion-item no-lines>
+    <span> Where is the tap located?</span>
     </ion-item>
-      
+
+    <ion-input type="text" placeholder="Street Name, Location"></ion-input>
     </ion-list>
     
     <ion-list *ngSwitchCase="'2'">
-    <ion-item>
-    <ion-label stacked>What Time Is The Yap Accessible?</ion-label>
+    <ion-item no-lines>
+    <span>What time is the tap accessible?</span>
     </ion-item>
-      
+    <ion-input type="text" placeholder="E.g 09:00-16:00"></ion-input>
+
     </ion-list>
+
     <ion-list *ngSwitchCase="'3'">
-    <ion-item>
-    <ion-label stacked>How Many People Use The Tap?</ion-label>
+    <ion-item no-lines>
+    <span>How many people use the tap?</span>
     </ion-item>
-        
+    <ion-input type="text" placeholder="E.g +-3000 People"></ion-input>
+
     </ion-list>
 
     <ion-list *ngSwitchCase="'4'">
-    <ion-item>
-    <ion-label stacked>Is The Tap Reliable?</ion-label>
+    <ion-item no-lines>
+    <span>Is the tap reliable?</span>
     </ion-item>
-          
+
+    <br>  
+    
+    <input type="radio" name="gender" value="Yes" checked> Yes<br>
+    <input type="radio" name="gender" value="No"> No<br>
+
    </ion-list>
 
    <ion-list *ngSwitchCase="'5'">
-   <ion-item>
-   <ion-label stacked>Is The Tap Water Clean And Safe For Drinking?</ion-label>
+   <ion-item no-lines>
+   <span text-wrap>Is The Tap Water Clean And Safe For Drinking?</span>
    </ion-item>
-            
+   
+   <br>  
+    <input type="radio" name="gender" value="Yes" checked> Yes<br>
+    <input type="radio" name="gender" value="No"> No<br>
+
+
    </ion-list>
 
     </div>
 
 
 </ion-content>
+
+<ion-footer>
+<button ion-button icon-only color="dark" block  (click)="submit()" outline>submit</button>
+</ion-footer>
