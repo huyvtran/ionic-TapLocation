@@ -1,3 +1,4 @@
+import { UserprofilePage } from './../userprofile/userprofile';
 import { TruckPage } from './../truck/truck';
 import { TapPage } from './../tap/tap';
 import { MapPage } from './../map/map';
@@ -20,6 +21,11 @@ this.navCtrl.push(TapPage);
 
   truck(){
     this.navCtrl.push(TruckPage);
+  }
+
+  goProfile(){
+
+    this.navCtrl.push(UserprofilePage);
   }
 
 }
