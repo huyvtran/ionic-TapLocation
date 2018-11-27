@@ -1,3 +1,4 @@
+import { SigninPage } from './../signin/signin';
 import { AuthProvider } from './../../providers/auth/auth';
 import { Component } from '@angular/core';
 import { Alert, AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -64,14 +65,11 @@ resetPassword(){
     }
   )
   }
-
-
-
- 
 }
 
 
-
-
+gotosignin(){
+  this.navCtrl.push(SigninPage);
+}
 
 }
