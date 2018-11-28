@@ -1,6 +1,6 @@
 
 <ion-header>
-  <ion-navbar style="background-color: transparent;">
+  <ion-navbar>
     <ion-title>
         <ion-buttons end>
             <button  ion-button icon-only  (click)="logout()">
@@ -12,13 +12,11 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="content">
-    <div class="container">
-  <br><br><br><br><br>
- 
-  <button ion-button block full class="outline" type="submit" color="light" (click)="tap()">WATER TAPS</button>
+<ion-content padding>
+ <div class="container">
+  <button ion-button block full class="outline" type="submit" (click)="tap()">WATER TAPS</button>
   <br>
-  <button ion-button block full class="outline" type="submit" color="light" (click)="truck()">WATER TRUCKS</button>
+  <button ion-button block full class="outline" type="submit" (click)="truck()">WATER TRUCKS</button>
   <br>
-    </div>
+</div>
 </ion-content>
