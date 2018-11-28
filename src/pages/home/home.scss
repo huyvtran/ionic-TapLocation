@@ -1,6 +1,69 @@
 page-home {
+<<<<<<< HEAD
 //    #map{
 //        width: 100%;
 //        height: 300px;
 //    }
+=======
+
+    .content{
+    
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-image: url("../assets/imgs/bg.jpg");
+    }
+    .scroll-content {
+        overflow: hidden !important;
+    }
+    .container{
+
+        background-color: rgba(0.0,0.0,0.0,0.7);
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        flex-direction: column;
+        right: 0;
+        position: absolute;
+        padding: 10px 15px;
+    }
+    button {
+        color: whitesmoke;
+        color: white;
+        cursor: pointer;
+        outline: none;
+       
+        &.outline {
+            position: relative;
+            z-index: 3;
+            background: transparent;
+            color:whitesmoke;
+            font-size: 14px;
+            border-color: whitesmoke;
+            border-style: solid;
+            border-width: 2px;
+            border-radius:0px;
+            padding: 10px 15px;
+            text-transform: uppercase;
+            transition: all 0.2s linear;
+            a {
+                text-decoration: none;
+            }
+        }
+        &.outline:hover {
+            color: white;
+            background:#144c52;
+            border-color: white;
+            transition: all 0.2s linear;
+        }
+        &.outline:active {
+            border-radius: 22px;
+        }
+    }
+>>>>>>> 87e9360c8dd6f0b14f9982bbc04081bbbbfc8ebd
 }
+   
+

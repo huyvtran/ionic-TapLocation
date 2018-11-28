@@ -20,6 +20,8 @@ page-signin {
         flex-direction: column;
         right: 0;
         position: absolute;
+        padding: 10px 15px;
+       
 
         .name-holder {
             width: 100%;
@@ -28,7 +30,7 @@ page-signin {
             align-content: center;
             align-items: center;
             flex-direction: column;
-            padding: 20px;
+            padding: 10px 15px;
 
             .logo {
                 width: 100px;
@@ -66,13 +68,14 @@ page-signin {
         justify-content: center;
         padding: 10px;
         color: whitesmoke;
-        font-weight: bolder
+        font-weight: bolder;
+        margin-right:2px;
     }
     }
 
         .form-holder {
             width: 100%;
-            padding: 20px;
+            padding:20px;
         }
     .items {
         background-color: transparent;
@@ -81,9 +84,8 @@ page-signin {
         .input {
      
             color:whitesmoke;
+            padding:15;
 
-            //background: rgba(255, 255, 255, 0.3);
-           // border-radius: 10px;
         }
         .label{
             color:whitesmoke;
@@ -94,23 +96,53 @@ page-signin {
         }
       }
 
-    #button {
+    button {
         color: whitesmoke;
         color: white;
-        border-radius:50px;
+        cursor: pointer;
+        outline: none;
+       
+        &.outline {
+            position: relative;
+            z-index: 3;
+            background: transparent;
+            color:whitesmoke;
+            font-size: 14px;
+            border-color: whitesmoke;
+            border-style: solid;
+            border-width: 2px;
+            border-radius:0px;
+            padding: 10px 15px;
+            text-transform: uppercase;
+            transition: all 0.2s linear;
+            a {
+                text-decoration: none;
+            }
+        }
+        &.outline:hover {
+            color: white;
+            background:#144c52;
+            border-color: white;
+            transition: all 0.2s linear;
+        }
+        &.outline:active {
+            border-radius: 22px;
+        }
     }
     #button1 {
 
-        border-radius:50px;
+        border-radius:0px;
     }
 }
  .con{
 
-    background-color: rgba(0.0,0.0,0.0,0.4);
+    background-color: rgba(0.0,0.0,0.0,0.20);
     justify-content: center;
     align-content: center;
     align-items: center;
-    flex-direction: column
+    flex-direction: column;
+    padding: 5px 15px;
+    border-radius:5%;
 
 
 
