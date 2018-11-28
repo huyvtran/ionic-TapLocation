@@ -1,0 +1,51 @@
+<ion-content no-padding class="content">
+  <div class="container">
+    <div class="name-holder">
+      <div class="logo">
+        
+      </div>
+      <div class="app-name">
+          <!-- <h2>Vinyl DJ</h2> -->
+      </div>
+    </div>
+  
+    <form [formGroup]="userForm" class="form-holder" (ngSubmit)="signIn()" novalidate>
+        <div>
+            
+  
+        <ion-item class="items" [ngClass]="{'error-border':!userForm.get('email').valid && userForm.get('email').touched}">
+
+         
+            <ion-label floating> Email</ion-label>
+            <ion-input class="input" type="email" formControlName="email">
+            </ion-input>
+        </ion-item>
+        <!-- <div padding *ngIf="userForm.get('email').hasError('required') && userForm.get('email').touched" class="invalid">
+            <p ion-text color="danger">Email field is required!</p>
+        </div>
+        <div padding *ngIf="userForm.get('email').hasError('minlength') && userForm.get('email').touched" class="invalid">
+            <p ion-text color="danger">Enter valid email!</p>
+        </div>
+  
+        <br/> -->
+        <ion-item  class="items" [ngClass]="{'error-border':!userForm.get('password').valid && userForm.get('password').touched}">
+            <ion-label floating> Password</ion-label>
+            <ion-input class="input" type="password" formControlName="password">
+            </ion-input>
+        </ion-item>
+        <div padding>
+            <button ion-button block full id="button" class="primary-button" color="primary">Login</button>
+        </div>
+     
+        <div  style="text-align:center" padding>
+          <p style="color:#f5f5f5">Forgot Password?<a style="color:#71f177" (click)="forgotPassword()">Reset</a></p>
+          <p style="color:#f5f5f5" class="p">have an account?<a style="color:#71f177"(click)="gotosignup()">Register</a></p>
+          <br>
+        <!-- <button ion-button clear id="button" class="primary-button" style="color:#3fbac2" (click)="guestLogin()">Explore as guest</button> -->
+    </div>
+  </div>
+      
+    </form>
+  </div>
+
+  </ion-content>

@@ -38,47 +38,61 @@
     <span> Where is the tap located?</span>
     </ion-item>
 
-    <ion-input type="text" placeholder="Street Name, Location"></ion-input>
-    </ion-list>
+    <ion-input type="text" [(ngModel)]="location" placeholder="Street Name, Location"></ion-input>
+    <button ion-button small outline (click)="next1()">next</button>  
+  </ion-list>
     
     <ion-list *ngSwitchCase="'2'">
     <ion-item no-lines>
     <span>What time is the tap accessible?</span>
     </ion-item>
-    <ion-input type="text" placeholder="E.g 09:00-16:00"></ion-input>
-
+    <ion-input type="text" [(ngModel)]="time" placeholder="E.g 09:00-16:00"></ion-input>
+    <button ion-button small outline (click)="next2()">next</button>  
     </ion-list>
 
     <ion-list *ngSwitchCase="'3'">
     <ion-item no-lines>
     <span>How many people use the tap?</span>
     </ion-item>
-    <ion-input type="text" placeholder="E.g +-3000 People"></ion-input>
-
+    <ion-input type="text" [(ngModel)]="people" placeholder="E.g +-3000 People"></ion-input>
+    <button ion-button small outline (click)="next3()">next</button>  
     </ion-list>
 
-    <ion-list *ngSwitchCase="'4'">
+    <ion-list *ngSwitchCase="'4'" radio-group [(ngModel)]="reliable">
     <ion-item no-lines>
     <span>Is the tap reliable?</span>
     </ion-item>
 
     <br>  
-    
-    <input type="radio" name="gender" value="Yes" checked> Yes<br>
-    <input type="radio" name="gender" value="No"> No<br>
+    <ion-item>
+      <ion-label>Yes</ion-label>
+      <ion-radio value="Yes"></ion-radio>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>No</ion-label>
+      <ion-radio value="No"></ion-radio>
+    </ion-item>
 
+    <button ion-button small (click)="next4()" outline>next</button>  
    </ion-list>
 
-   <ion-list *ngSwitchCase="'5'">
+   <ion-list *ngSwitchCase="'5'" radio-group [(ngModel)]="safety">
    <ion-item no-lines>
-   <span text-wrap>Is The Tap Water Clean And Safe For Drinking?</span>
+   <span text-wrap>Is the tap water clean and safe for drinking?</span>
    </ion-item>
    
    <br>  
-    <input type="radio" name="gender" value="Yes" checked> Yes<br>
-    <input type="radio" name="gender" value="No"> No<br>
+   <ion-item>
+    <ion-label>Yes</ion-label>
+    <ion-radio value="Yes"></ion-radio>
+  </ion-item>
 
-
+  <ion-item>
+    <ion-label>No</ion-label>
+    <ion-radio value="No"></ion-radio>
+  </ion-item>
+    <button ion-button small (click)="next5()" outline>done</button>  
    </ion-list>
 
     </div>
@@ -87,5 +101,5 @@
 </ion-content>
 
 <ion-footer>
-<button ion-button icon-only color="dark" block  (click)="submit()" outline>submit</button>
+<button ion-button icon-only color="dark" block  (click)="tapdata()" outline>submit</button>
 </ion-footer>

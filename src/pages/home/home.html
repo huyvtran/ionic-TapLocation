@@ -2,6 +2,11 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
+        <ion-buttons end>
+            <button  ion-button icon-only  (click)="logout()">
+              <ion-icon name="log-out"></ion-icon>
+            </button>
+          </ion-buttons>
    
     </ion-title>
   </ion-navbar>
@@ -13,5 +18,4 @@
   <br>
   <button ion-button block color="danger" (click)="truck()">WATER TRUCKS</button>
   <br>
-  <button ion-button block color="danger" (click)="map()">WATER TRUCKS</button>
 </ion-content>
