@@ -14,6 +14,7 @@
 
 
 <ion-content padding>
+<div *ngIf="!isCaptured">
   <div padding>
     <ion-segment [(ngModel)]="truck">
       <ion-segment-button value="1">
@@ -39,10 +40,10 @@
       </ion-segment>
     </div>
     
-    <div [ngSwitch]="truck">
+    <div class="question" [ngSwitch]="truck">
     <ion-list *ngSwitchCase="'1'">
     <ion-item no-lines>
-      <span>Where Is The Truck Located?</span>
+      <span>Where is the truck located?</span>
     </ion-item>
 
     <ion-input type="text" [(ngModel)]="location" placeholder="Street Name, Location"></ion-input>
@@ -55,6 +56,7 @@
     </ion-item>
 
     <ion-input type="text"  [(ngModel)]="time" placeholder="E.g 09:00-16:00"></ion-input>
+    <button ion-button small (click)="back2()" outline>back</button> 
     <button ion-button small  (click)="next2()" outline>next</button>
   </ion-list>
 
@@ -64,6 +66,7 @@
   </ion-item>
 
   <ion-input type="text" [(ngModel)]="liters" placeholder="E.g 375 liters of water each week "></ion-input>
+  <button ion-button small (click)="back3()" outline>back</button> 
   <button ion-button small (click)="next3()" outline>next</button>
 </ion-list>
 
@@ -72,14 +75,14 @@
   <span>How realiable is the truck service? </span>
   </ion-item>
   <ion-item>
-    <ion-label>Yes</ion-label>
-    <ion-radio value="Yes"></ion-radio>
+    <ion-label>Good</ion-label>
+    <ion-radio value="good"></ion-radio>
   </ion-item>
-
   <ion-item>
-    <ion-label>No</ion-label>
-    <ion-radio value="No"></ion-radio>
+    <ion-label>Poor</ion-label>
+    <ion-radio value="poor"></ion-radio>
   </ion-item>
+  <button ion-button small (click)="back4()" outline>back</button> 
   <button ion-button small (click)="next4()" outline>next</button>
   </ion-list>
 
@@ -89,14 +92,28 @@
   </ion-item>
 
   <ion-input type="text"  [(ngModel)]="days" placeholder="E.g 3 days in a  week "></ion-input>
-  <button ion-button small (click)="next5()" outline>done</button>
+  <div *ngIf="!isBack">
+    <button ion-button small (click)="back5()" outline>back</button>
+  </div>
+  <div *ngIf="isBack">
+    <button ion-button small (click)="backChange()" outline>undo</button> 
+  </div>
+  <div>
+    <button ion-button small (click)="next5()" [disabled]="isSubmit" outline>done</button>  
+  </div>
   </ion-list>
-
-          
-              
-
+  </div>
 </div>
+<div class="question" *ngIf="isCaptured">
+    <span>The water truck is recorded, thank you for capturing data for us!</span>
+    <br>
+    <br>
+    <span>Do you want to record another truck?</span>
+    <br>
+    <button ion-button (click)="yes()" outline>Yes,please.</button>  
+    <button ion-button (click)="no()" outline>No,thanks!</button>  
+  </div>
 </ion-content>
 <ion-footer>
-  <button ion-button icon-only block color="dark" (click)="tapdata(data1)" outline>submit</button>
+  <button ion-button icon-only block color="dark"  [disabled]="!isSubmit" (click)="tapdata(data1)" outline>submit</button>
 </ion-footer>

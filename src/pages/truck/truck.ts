@@ -4,7 +4,7 @@ import firebase, { User } from 'firebase/app';
 import 'firebase/database';
 import 'firebase/auth';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Content, AlertController } from 'ionic-angular';
 /**
  * Generated class for the TapPage page.
  *
@@ -16,17 +16,20 @@ import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
   templateUrl: 'truck.html',
 })
 export class TruckPage {
-
+  isBack=false;
+  isCaptured=false;
+  isDone=false;
+  isSubmit=false;
   truck='1';
-  location:string;
-  time:string;
-  liters:string;
-  reliable:string;
-  days:string;
+  location:string='';
+  time:string='';
+  liters:string='';
+  reliable:string='';
+  days:string='';
   tapwater=[];
+  times=['6:00','7:00','8:00','6:00','7:00','8:00','9:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00','23:00','00:00']
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,private alertCtrl: AlertController, public navParams: NavParams) {
 
   }
 
@@ -47,39 +50,114 @@ export class TruckPage {
       days:this.days
     });
     this.tapwater=[];
-    this.navCtrl.push(HomePage);
+    this.isCaptured=true;
+  }
+  back2(){
+    this.truck='1';
+    this.tapwater.splice(0,1);
+  }
+  back3(){
+    this.truck='2';
+    this.tapwater.splice(1,1);
+  }
+  back4(){
+    this.truck='3';
+    this.tapwater.splice(2,1);
+  }
+  back5(){
+    this.truck='4';
+    this.tapwater.splice(3,1);
+    this.isDone=false;
+    this.isSubmit=false;
+  }
+  backChange(){
+    this.tapwater.splice(4,1);
+    this.isDone=false;
+    this.isSubmit=false;
+    this.isBack=false;
   }
   next1(){
+    if(this.location===''){
+      let alert = this.alertCtrl.create({
+        subTitle: 'please enter the location.',
+        buttons: ['ok']
+      });
+      alert.present();
+    }
+    else{
     this.tapwater.push(this.location);
     this.truck='2';
-    this.location='';
+    this.location='';}
     console.log('data',this.tapwater)
   }
   next2(){
+    if(this.time===''){
+      let alert = this.alertCtrl.create({
+        subTitle: 'please enter the operational time.',
+        buttons: ['ok']
+      });
+      alert.present();
+    }
+    else{
     this.tapwater.push(this.time);
     this.truck='3';
-    this.time='';
+    this.time='';}
     console.log('data',this.tapwater)
   }
 
   next3(){
+    if(this.liters===''){
+      let alert = this.alertCtrl.create({
+        subTitle: 'please enter the liters offered.',
+        buttons: ['ok']
+      });
+      alert.present();
+    }
+    else{
     this.tapwater.push(this.liters);
     this.truck='4';
-    this.liters='';
+    this.liters='';}
     console.log('data',this.tapwater)
   }
 
   next4(){
+    if(this.reliable===''){
+      let alert = this.alertCtrl.create({
+        subTitle: 'please select your answer.',
+        buttons: ['ok']
+      });
+      alert.present();
+    }
+    else{
     this.tapwater.push(this.reliable);
     this.truck='5';
-    this.reliable=''
+    this.reliable=''}
     console.log('data',this.tapwater)
   }
 
   next5(){
+    if(this.days===''){
+      let alert = this.alertCtrl.create({
+        subTitle: 'please enter the number of days.',
+        buttons: ['ok']
+      });
+      alert.present();
+    }
+    else{
     this.tapwater.push(this.days);
     this.days='';
+    this.isBack=true;
+
+    this.isSubmit=true;
+  }
     console.log('data',this.tapwater)
     
   }
+
+  yes(){
+    this.navCtrl.push(TruckPage);
+  }
+  no(){
+   this.navCtrl.push(HomePage);
+ }
 }
