@@ -6,14 +6,14 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>tap</ion-title>
+  <ion-navbar color="primary"  text-center>
+    <ion-title>Tap Questions</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="content">
 <div *ngIf="!isCaptured">
   <ion-segment [(ngModel)]="tap">
 
@@ -29,92 +29,102 @@
 
   </ion-segment>
     
-  <div class="question" [ngSwitch]="tap">
+  <div class="container" [ngSwitch]="tap">
 
     <ion-list *ngSwitchCase="'1'" >
-    <ion-item no-lines>
+    <ion-item no-lines text-center class="item1">
     <span> Where is the tap located?</span>
     </ion-item>
 
-    <ion-input type="text" [(ngModel)]="location" placeholder="Street Name, Location"></ion-input>
-    <button ion-button small outline (click)="next1()">next</button>  
+    <ion-input type="text" [(ngModel)]="location" placeholder="Location" class="outline"></ion-input>
+    <div padding style="text-align:center">
+      <button ion-button small class="outline"  color="light" (click)="next1()">next</button>  
+    </div>  
     </ion-list>
     
     <ion-list *ngSwitchCase="'2'">
-    <ion-item no-lines>
+    <ion-item no-lines text-center class="item1">
     <span>What time is the tap accessible?</span>
     </ion-item>
-    <ion-input type="text" [(ngModel)]="time" placeholder="E.g 09:00-16:00"></ion-input>
-    <button ion-button small (click)="back2()" outline>back</button>  
-    <button ion-button small outline (click)="next2()">next</button>  
+    <ion-input type="text" [(ngModel)]="time" placeholder="E.g 09:00 AM-16:00 PM" class="outline"></ion-input>
+    <div padding style="text-align:center">
+    <button ion-button small class="outline"  color="light" (click)="back2()">back</button>  
+    <button ion-button small class="outline"  color="light" (click)="next2()">next</button>  
+    </div>
     </ion-list>
 
     <ion-list *ngSwitchCase="'3'">
-    <ion-item no-lines>
+    <ion-item no-lines text-center  class="item1">
     <span>How many people use the tap?</span>
     </ion-item>
-    <ion-input type="text" [(ngModel)]="people" placeholder="E.g +-3000 People"></ion-input>
-    <button ion-button small (click)="back3()" outline>back</button>  
-    <button ion-button small outline (click)="next3()">next</button>  
+    <ion-input type="text" [(ngModel)]="people" placeholder="E.g +-3000 People" class="outline"></ion-input>
+    <div padding style="text-align:center">
+    <button ion-button small class="outline"  color="light" (click)="back3()">back</button>  
+    <button ion-button small class="outline"  color="light" (click)="next3()">next</button>  
+    </div>
     </ion-list>
 
-    <ion-list *ngSwitchCase="'4'" radio-group [(ngModel)]="reliable">
-    <ion-item no-lines>
+    <ion-list *ngSwitchCase="'4'" radio-group [(ngModel)]="reliable" class="outline">
+    <ion-item no-lines text-center  class="item1">
     <span>Is the tap reliable?</span>
     </ion-item>
 
     <br>  
-    <ion-item>
+    <ion-item class="item1">
       <ion-label>Yes</ion-label>
       <ion-radio value="Yes"></ion-radio>
     </ion-item>
   
-    <ion-item>
+    <ion-item class="item1">
       <ion-label>No</ion-label>
       <ion-radio value="No"></ion-radio>
     </ion-item>
-    <button ion-button small (click)="back4()" outline>back</button>  
-    <button ion-button small (click)="next4()" outline>next</button>  
-   </ion-list>
+    <div padding style="text-align:center">
+    <button ion-button  small class="outline"  color="light"  (click)="back4()" >back</button>  
+    <button ion-button small class="outline"  color="light"  (click)="next4()" >next</button>  
+    </div>
+    </ion-list>
    
-   <ion-list *ngSwitchCase="'5'" radio-group [(ngModel)]="safety">
-     <ion-item no-lines>
-      <span text-wrap>Is the tap water clean and safe for drinking?</span>
+   <ion-list *ngSwitchCase="'5'" radio-group [(ngModel)]="safety" class="outline">
+     <ion-item no-lines text-center  class="item1">
+      <span text-wrap>Is the tap water clean ?</span>
       </ion-item>
       
       <br>  
-      <ion-item>
+      <ion-item  class="item1">
         <ion-label>Yes</ion-label>
         <ion-radio value="Yes"></ion-radio>
       </ion-item>
 
-      <ion-item>
+      <ion-item  class="item1">
         <ion-label>No</ion-label>
         <ion-radio value="No"></ion-radio>
       </ion-item>
-      <div *ngIf="!isBack">
-        <button ion-button small (click)="back5()" outline>back</button>
+      <div padding style="text-align:center" *ngIf="!isBack">
+        <button ion-button small  class="outline"  color="light"  (click)="back5()">back</button>
       </div>
-      <div *ngIf="isBack">
-        <button ion-button small (click)="backChange()" outline>undo</button> 
+      <div padding style="text-align:center" *ngIf="isBack">
+        <button ion-button small class="outline"  color="light" (click)="backChange()" >undo</button> 
       </div>
-      <div>
-        <button ion-button small (click)="next5()" [disabled]="isSubmit" outline>done</button>  
+      <div padding style="text-align:center">
+        <button ion-button small class="outline"  color="light" (click)="next5()" [disabled]="isSubmit" >done</button>  
       </div>
   </ion-list>
 </div>
 </div>
-<div  class="question" *ngIf="isCaptured">
-  <span>The tap is recorded, thank you for capturing data for us!</span>
+<div  class="container" *ngIf="isCaptured">
+  <h4>The tap is recorded, thank you for capturing data for us!</h4>
   <br>
   <br>
-  <span>Do you want to record another tap?</span>
-  <br>
-  <button ion-button (click)="yes()" outline>Yes,please.</button>  
-  <button ion-button (click)="no()" outline>No,thanks!</button>  
+  <h4>Take another tap survey?</h4>
+  <br><br><br><br>
+  <button ion-button  class="outline"  color="light" (click)="yes()" outline>Yes,please.</button>  
+  <button ion-button  class="outline"  color="light" (click)="no()" outline>No,thanks!</button>  
 </div>
 </ion-content>
 
 <ion-footer>
-<button ion-button icon-only color="dark" block [disabled]="!isSubmit" (click)="tapdata()" outline>submit</button>
+  <div *ngIf="hide">
+    <button ion-button block full class="outline" type="submit" [disabled]="!isSubmit" (click)="tapdata()" outline>submit</button>
+  </div>
 </ion-footer>

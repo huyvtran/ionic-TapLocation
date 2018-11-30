@@ -1,56 +1,68 @@
 <ion-content no-padding class="content">
-  <div class="container">
-    <div class="name-holder">
-      <div class="logo">
+    <div class="container">
+      <div class="name-holder">
+        <div class="logo">
+          
+        </div>
+        <div class="app-name">
+            <h2>WaterService</h2>
+        </div>
+      </div>
+    
+      <form [formGroup]="userForm" class="form-holder" (ngSubmit)="signIn()" novalidate>
+          <div>
+              
+       <div>
+          <ion-item no-lines class="items" [ngClass]="{'error-border':!userForm.get('email').valid && userForm.get('email').touched}">
+              <!-- <ion-label class="outline"><ion-icon name="mail"></ion-icon></ion-label> -->
+              <!-- <ion-icon name="mail" item-start></ion-icon> -->
+             
+              <ion-input  type="email" placeholder="Email"  formControlName="email">       
+              </ion-input>
+              
+              <button ion-button large  item-start icon-only id="button1"><ion-icon small name="mail" item-start class="icon"></ion-icon></button>
+              
+    
+          </ion-item>
+      </div>
+          <!-- <div padding *ngIf="userForm.get('email').hasError('required') && userForm.get('email').touched" class="invalid">
+              <p ion-text color="danger">Email field is required!</p>
+          </div>
+          <div padding *ngIf="userForm.get('email').hasError('minlength') && userForm.get('email').touched" class="invalid">
+              <p ion-text color="danger">Enter valid email!</p>
+          </div>
+    
+          <br/> -->
+          <br/>
+          <div>
+          <ion-item no-lines class="items" [ngClass]="{'error-border':!userForm.get('password').valid && userForm.get('password').touched}">
+              <!-- <ion-label  class="outline"><ion-icon name="lock"></ion-icon></ion-label> -->
+            
+              <!-- <ion-icon name="password" item-start></ion-icon> -->
+              <ion-input  type="password" placeholder="Password" formControlName="password">        
+              </ion-input>
+              <button ion-button large  item-start icon-only id="button1"><ion-icon small name="lock" item-start class="icon"></ion-icon></button>
+          
+          </ion-item>
+
+          <button ion-button block full class="outline" type="submit" color="light">Login</button>
+      </div>
+  
+          <div style="text-align:center" padding>
+              
+              <p style="color:#005792"><a style="color:#005792" (click)="forgotPassword()">Forgot Password?</a></p>
+          </div>
+  
+          <div  style="text-align:center" padding>
+                  <p style="color:#005792" class="p"><a style="color:#53cde2"(click)="gotosignup()">Register</a> an account</p>  
+              </div>
+       
         
-      </div>
-      <div class="app-name">
-          <!-- <h2>Vinyl DJ</h2> -->
-      </div>
     </div>
   
-    <form [formGroup]="userForm" class="form-holder" (ngSubmit)="signIn()" novalidate>
-        <div >
-            
+   
+        
+      </form>
+    </div>
   
-        <ion-item class="items" [ngClass]="{'error-border':!userForm.get('email').valid && userForm.get('email').touched}">
-
-         
-            <ion-label floating> Email</ion-label>
-            <ion-input class="input" type="email" formControlName="email">
-            </ion-input>
-        </ion-item>
-        <!-- <div padding *ngIf="userForm.get('email').hasError('required') && userForm.get('email').touched" class="invalid">
-            <p ion-text color="danger">Email field is required!</p>
-        </div>
-        <div padding *ngIf="userForm.get('email').hasError('minlength') && userForm.get('email').touched" class="invalid">
-            <p ion-text color="danger">Enter valid email!</p>
-        </div>
-  
-        <br/> -->
-        <ion-item  class="items" [ngClass]="{'error-border':!userForm.get('password').valid && userForm.get('password').touched}">
-            <ion-label floating> Password</ion-label>
-            <ion-input class="input" type="password" formControlName="password">
-            </ion-input>
-        </ion-item>
-
-        <div style="text-align:right">
-            <p style="color:#f5f5f5"><a style="color:#f5f5f5" (click)="forgotPassword()">Forgot Password?</a></p>
-        </div>
-        <div style="text-align:center" padding>
-            <button ion-button block full class="outline" type="submit" color="light">Login</button>
-        </div>
-
-        <div  style="text-align:center" padding>
-                <p style="color:#f5f5f5" class="p">have an account?<a style="color:#f5f5f5"(click)="gotosignup()">Register</a></p>  
-            </div>
-     
-      
-  </div>
-
- 
-      
-    </form>
-  </div>
-
-  </ion-content>
+    </ion-content>

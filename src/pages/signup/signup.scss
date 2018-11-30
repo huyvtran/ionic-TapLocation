@@ -1,19 +1,15 @@
 page-signup {
     h2{
-        color:whitesmoke;  
+        color:#005792;  
     }
     .content{
     
-         background-size: 100% 100%;
-         background-repeat: no-repeat;
-         background-image: url("../assets/imgs/bg.jpg");
+     background-color:#edf9fc;
     }
     .scroll-content {
         overflow: hidden !important;
     }
     .container{
-
-        background-color: rgba(0.0,0.0,0.0,0.7);
         display: flex;
         justify-content:center;
         align-content:left;
@@ -43,29 +39,29 @@ page-signup {
         }
     .items {
         background-color: transparent;
-        color:whitesmoke;
+        color:#005792;
         .input {
      
-            color:whitesmoke;
+            color:#005792;
            
         }
         .label{
-            color:whitesmoke;
+            color:#005792;
         }
      
       }
       button {
-        color: whitesmoke;
-        color: white;
+        color: #005792;
+        color: #005792;
         cursor: pointer;
         outline: none;
         &.outline {
             position: relative;
             z-index: 3;
             background: transparent;
-            color:whitesmoke;
+            color:#005792;
             font-size: 14px;
-            border-color: whitesmoke;
+            border-color: #005792;
             border-style: solid;
             border-width: 2px;
             border-radius:0px;
@@ -77,9 +73,9 @@ page-signup {
             }
         }
         &.outline:hover {
-            color: white;
-            background:#144c52;
-            border-color: white;
+            color: #edf9fc;
+            background:#005792;
+            border-color: #005792;
             transition: all 0.2s linear;
         }
         &.outline:active {
@@ -91,17 +87,5 @@ page-signup {
     }
 }
 
-.con{
 
-    background-color: rgba(0.0,0.0,0.0,0.20);
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 5px 15px;
-    border-radius:5%;
-
-
-
- }
 }

@@ -19,6 +19,7 @@ import { TapProvider } from '../../providers/tap/tap';
 export class TapPage {
 
   tap='1';
+  hide=false;
   isBack=false;
   isCaptured=false;
   isDone=false;
@@ -57,6 +58,7 @@ export class TapPage {
     });
     this.tapwater=[];
     this.isCaptured=true;
+    this.hide=false;
   }
   back2(){
     this.tap='1';
@@ -155,6 +157,7 @@ export class TapPage {
     this.safety='';
     this.isBack=true;
     this.isSubmit=true;
+    this.hide=true;
     }
     console.log('data',this.tapwater)
     

@@ -20,6 +20,7 @@ export class TruckPage {
   isCaptured=false;
   isDone=false;
   isSubmit=false;
+  hide=false;
   truck='1';
   location:string='';
   time:string='';
@@ -51,6 +52,7 @@ export class TruckPage {
     });
     this.tapwater=[];
     this.isCaptured=true;
+    this.hide=false;
   }
   back2(){
     this.truck='1';
@@ -147,8 +149,8 @@ export class TruckPage {
     this.tapwater.push(this.days);
     this.days='';
     this.isBack=true;
-
     this.isSubmit=true;
+    this.hide=true;
   }
     console.log('data',this.tapwater)
     
