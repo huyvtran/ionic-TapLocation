@@ -1,14 +1,13 @@
-
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary" text-center>
     <ion-title>
-        <ion-buttons end>
-            <button  ion-button icon-only  (click)="logout()">
-              <ion-icon name="log-out"></ion-icon>
-            </button>
-          </ion-buttons>
-   
+      WaterService
     </ion-title>
+    <ion-buttons end>
+        <button  ion-button icon-only  (click)="logout()">
+          <ion-icon name="log-out"></ion-icon>
+        </button>
+      </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -17,6 +16,12 @@
   <button ion-button block full class="outline" type="submit" (click)="tap()">WATER TAPS</button>
   <br>
   <button ion-button block full class="outline" type="submit" (click)="truck()">WATER TRUCKS</button>
+  <br>
+  <br>
+  <button ion-button block full class="outline" (click)="active()">Active</button>
+  <br>
+  <br>
+  <button ion-button block full class="outline" (click)="map()">map</button>
   <br>
 </div>
 </ion-content>

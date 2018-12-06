@@ -1,15 +1,14 @@
 page-signin {
     .content{
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-        background-image: url("../assets/imgs/bg.jpg");
+      
+        background-color:#edf9fc;
     }
     .scroll-content {
         overflow: hidden !important;
     }
     .container{
 
-        background-color: rgba(0.0,0.0,0.0,0.7);
+    
         display: flex;
         justify-content: center;
         align-content: center;
@@ -20,7 +19,7 @@ page-signin {
         flex-direction: column;
         right: 0;
         position: absolute;
-        padding: 10px 15px;
+        padding:0px 5px;
        
 
         .name-holder {
@@ -36,7 +35,7 @@ page-signin {
                 width: 100px;
                 height: 100px;
                 border-radius: 100%;
-                background: linear-gradient(270deg, whitesmoke, #4d606e);
+                background: linear-gradient(270deg,#005792, #4d606e);
                 background-size: 100% 100%;
                 background-repeat: no-repeat;
                 background-image: url("../assets/imgs/appLogo1.png");
@@ -67,7 +66,7 @@ page-signin {
         align-items: center;
         justify-content: center;
         padding: 10px;
-        color: whitesmoke;
+        color: #005792;
         font-weight: bolder;
         margin-right:2px;
     }
@@ -75,43 +74,87 @@ page-signin {
 
         .form-holder {
             width: 100%;
-            padding:20px;
+            padding:20px
         }
     .items {
-        background-color: transparent;
 
-        color:whitesmoke;
-        .input {
+        height:4px;
+        position: relative;
+        z-index: 3;
+        background:transparent;
+        color:#005792;
+        font-size: 14px;
+        border-color: #005792;
+        border-style: solid;
+        border-width: 2px;
+        border-radius:5px;
+        padding: 0px 0px;
+        text-transform: uppercase;
+        transition: all 0.1s linear;
+        a {
+            text-decoration: none;
+        }
+        ion-input {
      
-            color:whitesmoke;
-            padding:15;
+            color:#005792;
+           
+            &.outline {
+                position: relative;
+                z-index: 3;
+                background: transparent;
+                color:#005792;
+                font-size: 14px;
+                border-color: #005792;
+                border-style: solid;
+                border-width: 2px;
+                border-radius:5px;
+                padding: 0px 5px;
+                text-transform: uppercase;
+                transition: all 0.1s linear;
+                a {
+                    text-decoration: none;
+                }
+            }
+            &.outline:hover {
+                color:#005792;
+                background:#edf9fc;
+                border-color:#005792;
+                transition: all 0.1s linear;
+            }
+            // &.outline:active {
+            //     border-radius: 22px;
+            // }
 
         }
-        .label{
-            color:whitesmoke;
+        ion-label{
+            color:#005792;
+
+
         }
         .icon{
-            color:#488aff;
-
+            color:#edf9fc;
+           
         }
       }
 
     button {
-        color: whitesmoke;
-        color: white;
+        color: #005792;
+        color: #005792;
         cursor: pointer;
         outline: none;
+        
        
         &.outline {
             position: relative;
             z-index: 3;
+            width:325px;
             background: transparent;
-            color:whitesmoke;
+            color:#005792;
             font-size: 14px;
-            border-color: whitesmoke;
+            border-color: #005792;
             border-style: solid;
-            border-width: 2px;
-            border-radius:0px;
+            border-width:2px;
+            border-radius:5px;
             padding: 10px 15px;
             text-transform: uppercase;
             transition: all 0.2s linear;
@@ -120,31 +163,27 @@ page-signin {
             }
         }
         &.outline:hover {
-            color: white;
-            background:#144c52;
-            border-color: white;
+            color:#edf9fc;
+            background:#005792;
+            border-color:#005792;
             transition: all 0.2s linear;
         }
         &.outline:active {
             border-radius: 22px;
         }
     }
-    #button1 {
-
-        border-radius:0px;
-    }
 }
- .con{
+#button1{
 
-    background-color: rgba(0.0,0.0,0.0,0.20);
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 5px 15px;
-    border-radius:5%;
+    
+      
+    background:#005792;
+    width:50px;
+       
+       
+   
+        }
+       
 
 
-
- }
 }

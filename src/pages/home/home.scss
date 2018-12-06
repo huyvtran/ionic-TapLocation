@@ -2,16 +2,15 @@ page-home {
 
     .content{
     
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-        background-image: url("../assets/imgs/bg.jpg");
+
+        background-color: #edf9fc;
     }
     .scroll-content {
         overflow: hidden !important;
     }
     .container{
 
-        background-color: rgba(0.0,0.0,0.0,0.7);
+        
         display: flex;
         justify-content: center;
         align-content: center;
@@ -25,8 +24,8 @@ page-home {
         padding: 10px 15px;
     }
     button {
-        color: whitesmoke;
-        color: white;
+        color: #005792;
+        color: #005792;
         cursor: pointer;
         outline: none;
        
@@ -34,9 +33,9 @@ page-home {
             position: relative;
             z-index: 3;
             background: transparent;
-            color:whitesmoke;
+            color:#005792;
             font-size: 14px;
-            border-color: whitesmoke;
+            border-color: #005792;
             border-style: solid;
             border-width: 2px;
             border-radius:0px;
@@ -48,9 +47,9 @@ page-home {
             }
         }
         &.outline:hover {
-            color: white;
-            background:#144c52;
-            border-color: white;
+            color: #edf9fc;
+            background:#005792;
+            border-color: #005792;
             transition: all 0.2s linear;
         }
         &.outline:active {

@@ -20,6 +20,7 @@ export class TruckPage {
   isCaptured=false;
   isDone=false;
   isSubmit=false;
+  hide=false;
   truck='1';
   location:string='';
   time:string='';
@@ -27,8 +28,10 @@ export class TruckPage {
   reliable:string='';
   days:string='';
   tapwater=[];
-  times=['6:00','7:00','8:00','6:00','7:00','8:00','9:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00','23:00','00:00']
-
+  starttime="";
+  endtime="";
+  startTime=["01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00"];
+  endTime=["13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00","00:00"];
   constructor(public navCtrl: NavController,private alertCtrl: AlertController, public navParams: NavParams) {
 
   }
@@ -49,8 +52,15 @@ export class TruckPage {
       reliable:this.reliable,
       days:this.days
     });
+    this.updatedhours();
     this.tapwater=[];
     this.isCaptured=true;
+    this.hide=false;
+  }
+  updatedhours(){
+    firebase.database().ref(`/truckhours`).push().set({
+      otime:this.starttime,
+      ctime:this.endtime,})
   }
   back2(){
     this.truck='1';
@@ -91,7 +101,7 @@ export class TruckPage {
     console.log('data',this.tapwater)
   }
   next2(){
-    if(this.time===''){
+    if(this.starttime==='' && this.endtime===''){
       let alert = this.alertCtrl.create({
         subTitle: 'please enter the operational time.',
         buttons: ['ok']
@@ -99,6 +109,7 @@ export class TruckPage {
       alert.present();
     }
     else{
+      this.time=this.starttime+" - "+this.endtime;
     this.tapwater.push(this.time);
     this.truck='3';
     this.time='';}
@@ -147,8 +158,8 @@ export class TruckPage {
     this.tapwater.push(this.days);
     this.days='';
     this.isBack=true;
-
     this.isSubmit=true;
+    this.hide=true;
   }
     console.log('data',this.tapwater)
     
@@ -158,6 +169,6 @@ export class TruckPage {
     this.navCtrl.push(TruckPage);
   }
   no(){
-   this.navCtrl.push(HomePage);
+   this.navCtrl.setRoot(HomePage);
  }
 }

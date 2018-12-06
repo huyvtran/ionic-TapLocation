@@ -21,6 +21,7 @@ import { ProfileProvider } from '../providers/profile/profile';
 import { WaterServiceProvider } from '../providers/water-service/water-service';
 import { TapProvider } from '../providers/tap/tap';
 import { TruckProvider } from '../providers/truck/truck';
+import { ListPage } from '../pages/list/list';
 
 
 
@@ -38,6 +39,7 @@ firebase.initializeApp(config);
   declarations: [
     MyApp,
     HomePage,
+    ListPage,
     MapPage,
     TapPage,
     TruckPage,
@@ -58,6 +60,7 @@ firebase.initializeApp(config);
     HomePage,
     MapPage,
     TapPage,
+    ListPage,
     TruckPage,
     SigninPage,
     SignupPage,

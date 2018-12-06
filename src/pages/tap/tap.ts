@@ -19,6 +19,7 @@ import { TapProvider } from '../../providers/tap/tap';
 export class TapPage {
 
   tap='1';
+  hide=false;
   isBack=false;
   isCaptured=false;
   isDone=false;
@@ -30,10 +31,14 @@ export class TapPage {
   reliable:string='';
   safety:string='';
   tapwater=[];
-
-
+  starttime="";
+  endtime="";
+  today:number;
+  hourstocompare=["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"]
+  startTime=["00:00","01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"];
+  endTime=["00:00","01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"];
   constructor(public navCtrl: NavController,private alertCtrl: AlertController, public navParams: NavParams, private taps:TapProvider) {
-
+   
   }
 
   ionViewDidLoad() {
@@ -55,8 +60,15 @@ export class TapPage {
       reliable:this.reliable,
       safety:this.safety
     });
+    this.updatedhours();
     this.tapwater=[];
     this.isCaptured=true;
+    this.hide=false;
+  }
+  updatedhours(){
+    firebase.database().ref(`/taphours`).push().set({
+      otime:this.starttime,
+      ctime:this.endtime,})
   }
   back2(){
     this.tap='1';
@@ -98,7 +110,7 @@ export class TapPage {
     console.log('data',this.tapwater)
   }
   next2(){
-    if(this.time===''){
+    if(this.starttime==='' && this.endtime===''){
       let alert = this.alertCtrl.create({
         subTitle: 'please enter the accessibe time.',
         buttons: ['ok']
@@ -106,6 +118,7 @@ export class TapPage {
       alert.present();
     }
     else{
+    this.time=this.starttime+" - "+this.endtime;
     this.tapwater.push(this.time);
     this.tap='3';
     this.time='';}
@@ -155,6 +168,7 @@ export class TapPage {
     this.safety='';
     this.isBack=true;
     this.isSubmit=true;
+    this.hide=true;
     }
     console.log('data',this.tapwater)
     
@@ -163,7 +177,7 @@ export class TapPage {
    this.navCtrl.push(TapPage);
  }
  no(){
-  this.navCtrl.push(HomePage);
+  this.navCtrl.setRoot(HomePage);
 }
 
 }

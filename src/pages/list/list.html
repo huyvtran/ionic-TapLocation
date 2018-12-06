@@ -1,0 +1,54 @@
+<!--
+  Generated template for the ListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>list</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <div padding>
+        <ion-segment [(ngModel)]="water">
+          <ion-segment-button value="taps">
+            Taps
+          </ion-segment-button>
+          <ion-segment-button value="trucks">
+            Trucks
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+      
+      <div [ngSwitch]="water">
+        <ion-list *ngSwitchCase="'taps'" text-center>
+            <ion-item *ngFor="let tap of taps; let i=index">
+              <span>{{tap.location}}</span>
+              <p>{{tap.time}}</p>
+              <div *ngIf="taps[i].time===activeTaps[i];else not">
+                <button ion-button large color="danger" class="green"></button>
+              </div>
+              <ng-template #not >
+                <button ion-button large color="danger" class="red"></button>
+              </ng-template>
+            </ion-item> 
+        </ion-list>
+      
+        <ion-list *ngSwitchCase="'trucks'" text-center >
+          <ion-item *ngFor="let truck of trucks">
+            <span>{{truck.location}}</span>
+            <p>{{truck.time}}</p>
+            <div *ngIf="truck[i]===activeTaps[i];else not">
+              <button ion-button large color="danger" class="green"></button>
+            </div>
+            <ng-template #not >
+              <button ion-button large color="danger" class="red"></button>
+            </ng-template>
+          </ion-item>
+        </ion-list>
+      </div>
+</ion-content>
