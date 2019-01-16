@@ -35,8 +35,8 @@ export class TapPage {
   endtime="";
   today:number;
   hourstocompare=["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"]
-  startTime=["00:00","01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"];
-  endTime=["00:00","01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"];
+  startTime=["06:00","07:00","08:00","09:00","10:00","11:00","12:00"];
+  endTime=["13:00","14:00","15:00","16:00","17:00","18:00","19:00"];
   constructor(public navCtrl: NavController,private alertCtrl: AlertController, public navParams: NavParams, private taps:TapProvider) {
    
   }
@@ -53,7 +53,7 @@ export class TapPage {
     this.people=this.tapwater[2];
     this.reliable=this.tapwater[3];
     this.safety=this.tapwater[4];
-    firebase.database().ref(`/taps`).push().set({
+    firebase.database().ref(`waterService/taps/answers`).push().set({
       location:this.location,
       time:this.time,
       pepole:this.people,
@@ -66,7 +66,7 @@ export class TapPage {
     this.hide=false;
   }
   updatedhours(){
-    firebase.database().ref(`/taphours`).push().set({
+    firebase.database().ref(`waterService/taps/answers`).push().set({
       otime:this.starttime,
       ctime:this.endtime,})
   }

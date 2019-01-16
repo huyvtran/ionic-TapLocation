@@ -45,7 +45,7 @@ export class TruckPage {
     this.liters=this.tapwater[2];
     this.reliable=this.tapwater[3];
     this.days=this.tapwater[4];
-    firebase.database().ref(`/trucks`).push().set({
+    firebase.database().ref(`waterService/trucks/answers`).push().set({
       location:this.location,
       time:this.time,
       liters:this.liters,
@@ -58,7 +58,7 @@ export class TruckPage {
     this.hide=false;
   }
   updatedhours(){
-    firebase.database().ref(`/truckhours`).push().set({
+    firebase.database().ref(`waterService/trucks/answers`).push().set({
       otime:this.starttime,
       ctime:this.endtime,})
   }

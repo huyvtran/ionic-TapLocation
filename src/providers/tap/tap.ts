@@ -15,7 +15,7 @@ export class TapProvider {
   people:string;
   reliable:string;
   safety:string;
-  firedata=firebase.database().ref('/taps');
+  firedata=firebase.database().ref('waterService/taps');
   constructor() {
   }
   getalltaps() {
@@ -34,7 +34,7 @@ export class TapProvider {
     return promise;
    }
    getallhours() {
-    this.firedata=firebase.database().ref('/taphours');
+    this.firedata=firebase.database().ref('waterService/taps/taphours');
     var promise = new Promise((resolve, reject) => {
       this.firedata.orderByChild('uid').once('value', (snapshot) => {
         let userdata = snapshot.val();

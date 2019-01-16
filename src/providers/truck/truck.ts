@@ -19,7 +19,7 @@ export class TruckProvider {
   liters:string;
   reliable:string;
   days:string;
-  firedata=firebase.database().ref('/trucks');
+  firedata=firebase.database().ref('waterService/trucks');
   constructor() {
   }
   getalltrucks() {
@@ -38,7 +38,7 @@ export class TruckProvider {
     return promise;
   }
   getallhours() {
-    this.firedata=firebase.database().ref('/truckhours');
+    this.firedata=firebase.database().ref('waterService/trucks/truckhours');
     var promise = new Promise((resolve, reject) => {
       this.firedata.orderByChild('uid').once('value', (snapshot) => {
         let userdata = snapshot.val();
