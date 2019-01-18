@@ -23,6 +23,7 @@ export class CoodsPage {
   estado: any;
   isSaved=false;
   next='';
+  tap='1'
   slatitude:string="";
   slongitude:string="";
   constructor(public navCtrl: NavController, private geolocation:Geolocation, public navParams: NavParams) {

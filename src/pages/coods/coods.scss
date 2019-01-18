@@ -1,26 +1,26 @@
 page-coods {
-    .scroll-content {
-        overflow: hidden !important;
-        margin-top:20%; 
-        align-content: center;
-    }
-    .p{
-        color:#005792;
-     }
+    // .scroll-content {
+    //     overflow: hidden !important;
+    //     margin-top:20%; 
+    //     align-content: center;
+    // }
+    // .p{
+    //     color:#005792;
+    //  }
     .content{
     
 
         background-color: #edf9fc;
     }
-    [noScroll] {
-        overflow: hidden;
-      }
+    // [noScroll] {
+    //     overflow: hidden;
+    //   }
     
       #map {
-        height: 60%;
+        height: 70%;
         width: 100%;
       }
-      button {
+      .button {
         
         cursor: pointer;
         outline: none;
@@ -53,7 +53,7 @@ page-coods {
         }
       }
           
-    span{
+    .span{
        
         color:#005792;
         font-size: larger;

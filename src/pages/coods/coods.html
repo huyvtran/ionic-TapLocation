@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar color="primary">
+  <ion-navbar color="primary"> 
     <ion-title>Tap location</ion-title>
   </ion-navbar>
 
@@ -14,15 +14,28 @@
 
 
 <ion-content padding [attr.noScroll]="shouldScroll" text-center>
-    <span text-center>Is this the tap location?</span>
+    <div *ngIf="!isCaptured">
+        <ion-segment [(ngModel)]="tap">
+      
+          <ion-segment-button value="1"></ion-segment-button>
+                  
+          <ion-segment-button value="2"></ion-segment-button>
+      
+          <ion-segment-button value="3"></ion-segment-button>
+      
+          <ion-segment-button value="4"></ion-segment-button>
+        </ion-segment>
+    </div>
+    <div class="container" [ngSwitch]="tap">
+
+    </div>
+    <span class="span" text-center>Is this the tap location?</span>
     <div id="map" class="map"></div>
-    <p class="p" text-wrap>Latitude: {{slatitude}}</p>
-    <p class="p" text-wrap>Longitude: {{slongitude}}</p>
-    <!-- <ion-fab bottom right>
-        <button ion-fab (click)="nextQ()">locate</button>
-    </ion-fab> -->
+    <ion-fab middle right>
+        <button ion-fab small (click)="locate()"><ion-icon name="md-locate"></ion-icon></button>
+    </ion-fab>
     <div text-center>
         <button ion-button small class="outline" (click)="nextQ()">Save</button>
     </div>
-    
+    {{data}}
 </ion-content>
