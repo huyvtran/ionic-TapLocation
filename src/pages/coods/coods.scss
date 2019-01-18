@@ -1,10 +1,62 @@
 page-coods {
+    .scroll-content {
+        overflow: hidden !important;
+        margin-top:20%; 
+        align-content: center;
+    }
+    .p{
+        color:#005792;
+     }
+    .content{
+    
+
+        background-color: #edf9fc;
+    }
     [noScroll] {
         overflow: hidden;
       }
     
       #map {
-        height: 80%;
+        height: 60%;
         width: 100%;
       }
+      button {
+        
+        cursor: pointer;
+        outline: none;
+       
+        &.outline {
+            position: relative;
+            z-index: 3;
+            background: transparent;
+            color:#005792;
+            font-size: 14px;
+            border-color: #005792;
+            border-style: solid;
+            border-width:2px;
+            border-radius:5px;
+            padding: 10px 15px;
+            text-transform: uppercase;
+            transition: all 0.2s linear;
+            a {
+                text-decoration: none;
+            }
+        }
+        &.outline:hover {
+            color:#edf9fc;
+            background:#005792;
+            border-color:#005792;
+            transition: all 0.2s linear;
+        }
+        &.outline:active {
+            border-radius: 22px;
+        }
+      }
+          
+    span{
+       
+        color:#005792;
+        font-size: larger;
+  
+  }
 }

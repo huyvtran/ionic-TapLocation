@@ -17,16 +17,13 @@
 <div *ngIf="!isCaptured">
   <ion-segment [(ngModel)]="tap">
 
-  <ion-segment-button value="1"></ion-segment-button>
-          
-  <ion-segment-button value="2"></ion-segment-button>
+    <ion-segment-button value="1"></ion-segment-button>
+            
+    <ion-segment-button value="2"></ion-segment-button>
 
-  <ion-segment-button value="3"></ion-segment-button>
+    <ion-segment-button value="3"></ion-segment-button>
 
-  <ion-segment-button value="4"></ion-segment-button>
-
-  <ion-segment-button value="5"></ion-segment-button>
-
+    <ion-segment-button value="4"></ion-segment-button>
   </ion-segment>
     
   <div class="container" [ngSwitch]="tap">
@@ -34,16 +31,16 @@
     <ion-item no-lines text-center class="item1">
     <span>What time is the tap accessible?</span>
     </ion-item>
-    <ion-item>
+    <ion-item class="op">
       <ion-label>Opening time</ion-label>
       <ion-select [(ngModel)]="starttime">
         <ion-option *ngFor="let start of startTime">{{start}}</ion-option>
       </ion-select>
     </ion-item>
-    <ion-item>
+    <ion-item class="op">
       <ion-label>Closing time</ion-label>
       <ion-select [(ngModel)]="endtime">
-        <ion-option *ngFor="let start of endTime">{{start}}</ion-option>
+        <ion-option class="op" *ngFor="let start of endTime">{{start}}</ion-option>
       </ion-select>
     </ion-item>
     <div padding style="text-align:center">
@@ -51,19 +48,7 @@
     <button ion-button small class="outline"  color="light" (click)="next2()">next</button>  
     </div>
     </ion-list>
-
-    <ion-list *ngSwitchCase="'3'">
-    <ion-item no-lines text-center  class="item1">
-    <span>How many people use the tap?</span>
-    </ion-item>
-    <ion-input type="text" [(ngModel)]="people" placeholder="E.g +-3000 People" class="outline"></ion-input>
-    <div padding style="text-align:center">
-    <button ion-button small class="outline"  color="light" (click)="back3()">back</button>  
-    <button ion-button small class               ="outline"  color="light" (click)="next3()">next</button>  
-    </div>
-    </ion-list>
-
-    <ion-list *ngSwitchCase="'4'" radio-group [(ngModel)]="reliable" class="outline">
+    <ion-list *ngSwitchCase="'3'" radio-group [(ngModel)]="reliable" class="outline">
     <ion-item no-lines text-center  class="item1">
     <span>Is the tap reliable?</span>
     </ion-item>
@@ -84,9 +69,9 @@
     </div>
     </ion-list>
    
-   <ion-list *ngSwitchCase="'5'" radio-group [(ngModel)]="safety" class="outline">
+   <ion-list *ngSwitchCase="'4'" radio-group [(ngModel)]="safety" class="outline">
      <ion-item no-lines text-center  class="item1">
-      <span text-wrap>Is the tap water clean ?</span>
+      <span text-wrap>Is the tap water clean?</span>
       </ion-item>
       
       <br>  

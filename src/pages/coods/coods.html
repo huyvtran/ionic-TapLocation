@@ -13,12 +13,16 @@
 </ion-header>
 
 
-<ion-content padding [attr.noScroll]="shouldScroll">
-  
-    <span text-center>This is the suggested tap location</span>
+<ion-content padding [attr.noScroll]="shouldScroll" text-center>
+    <span text-center>Is this the tap location?</span>
     <div id="map" class="map"></div>
-    <span text-wrap>{{data}}</span>
-    <ion-fab bottom right>
-        <button ion-fab (click)="nextQ()">save</button>
-    </ion-fab>
+    <p class="p" text-wrap>Latitude: {{slatitude}}</p>
+    <p class="p" text-wrap>Longitude: {{slongitude}}</p>
+    <!-- <ion-fab bottom right>
+        <button ion-fab (click)="nextQ()">locate</button>
+    </ion-fab> -->
+    <div text-center>
+        <button ion-button small class="outline" (click)="nextQ()">Save</button>
+    </div>
+    
 </ion-content>

@@ -23,6 +23,8 @@ export class CoodsPage {
   estado: any;
   isSaved=false;
   next='';
+  slatitude:string="";
+  slongitude:string="";
   constructor(public navCtrl: NavController, private geolocation:Geolocation, public navParams: NavParams) {
   }
   ngOnInit():void{
@@ -36,7 +38,9 @@ export class CoodsPage {
     this.geolocation.getCurrentPosition().then((resp) => {
       // resp.coords.latitude
       // resp.coords.longitude
-      this.data = " latitude:"+ resp.coords.latitude + '  ' + "longidute: " + resp.coords.longitude
+      this.data = " latitude:"+ resp.coords.latitude + " \n " + "longidute: " + resp.coords.longitude
+      this.slatitude=resp.coords.latitude+"";     
+      this.slongitude=resp.coords.longitude+"";
       this.isSaved=true; 
     }).catch((error) => {
        console.log('Error getting location', error);
@@ -44,7 +48,7 @@ export class CoodsPage {
   }
   nextQ(){
     this.next='2'
-    this.navCtrl.push(TapPage,{data:this.next});
+    this.navCtrl.push(TapPage,{data:this.next,slatitude:this.slatitude,slongitude:this.slongitude});
   }
   drawMap(): void {
     this.map = Leaflet.map('map').setView([-0.1836298, -78.4821206], 13);

@@ -1,15 +1,12 @@
 page-home {
-
     .content{
     
-
         background-color: #edf9fc;
     }
     .scroll-content {
         overflow: hidden !important;
     }
     .container{
-
         
         display: flex;
         justify-content: center;
@@ -22,6 +19,15 @@ page-home {
         right: 0;
         position: absolute;
         padding: 10px 15px;
+    }
+    .app-name {
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        color: #005792;
+        font-weight: bolder;
+        margin-right:2px;
     }
     button {
         color: #005792;
@@ -56,6 +62,53 @@ page-home {
             border-radius: 22px;
         }
     }
+    .card{
+       
+        background-color: #edf9fc;
+        border-radius:50%;
+        height:155px;
+        width:140px;
+        position: relative;
+            z-index: 3;
+            color:#005792;
+            font-size: 14px;
+            border-color: #005792;
+            border-style: solid;
+            border-width: 2px;
+            padding: 10px 15px;
+            text-transform: uppercase;
+            transition: all 0.2s linear;
+            a {
+                text-decoration: none;
+            }
+            &.outline:hover {
+                color: #edf9fc;
+                background:#005792;
+                border-color: #005792;
+                transition: all 0.2s linear;
+            }
+            &.outline:active {
+                border-radius: 22px;
+            }
+    }
+    .div_icon{
+        padding:5px;
+         
+    }
+    
+    .title {
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        color: #005792;
+        font-weight: bolder;
+        margin-right:1px;
+        font-size: 5px;
+    }
+    ion-grid{
+        background-color: rgba(0.0,0.0,0.0,0.1);
+        border-radius:5%;
+        height:500px;
+        width:400px;
+    }
 }
-   
-

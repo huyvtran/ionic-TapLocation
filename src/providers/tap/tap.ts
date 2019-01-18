@@ -15,7 +15,7 @@ export class TapProvider {
   people:string;
   reliable:string;
   safety:string;
-  firedata=firebase.database().ref('waterService/taps');
+  firedata=firebase.database().ref('waterService/taps/answers');
   constructor() {
   }
   getalltaps() {

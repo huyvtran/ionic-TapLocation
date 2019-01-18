@@ -1,27 +1,80 @@
 <ion-header>
-  <ion-navbar color="primary" text-center>
-    <ion-title>
-      WaterService
-    </ion-title>
-    <ion-buttons end>
-        <button  ion-button icon-only  (click)="logout()">
-          <ion-icon name="log-out"></ion-icon>
-        </button>
-      </ion-buttons>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
- <div class="container">
-  <button ion-button block full class="outline" type="submit" (click)="tap()">WATER TAPS</button>
-  <br>
-  <button ion-button block full class="outline" type="submit" (click)="truck()">WATER TRUCKS</button>
-  <br>
-  <br>
-  <button ion-button block full class="outline" (click)="active()">Active</button>
-  <br>
-  <br>
-  <button ion-button block full class="outline" (click)="map()">map</button>
-  <br>
-</div>
-</ion-content>
+    <ion-navbar color="primary" text-center>
+      <ion-title>
+        WaterService
+      </ion-title>
+      <ion-buttons end>
+          <button  ion-button icon-only  (click)="logout()">
+            <ion-icon name="log-out"></ion-icon>
+          </button>
+        </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  <ion-content padding>
+   <div class="container">
+    <!-- <button ion-button block full class="outline" type="submit" (click)="tap()">WATER TAPS</button>
+    <br>
+    <button ion-button block full class="outline" type="submit" (click)="truck()">WATER TRUCKS</button>
+    <br>
+    <br>
+    <button ion-button block full class="outline" (click)="active()">Active</button>
+    <br>
+    <br>
+    <button ion-button block full class="outline" (click)="map()">map</button>
+    <br> -->
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <ion-card (click)="tap()" class="card" >
+              <div class="div_icon"> 
+          <img src="../assets/imgs/t1.png">
+          </div>
+        </ion-card>
+        <div class="title" text-center>
+            <h6>Tap</h6>
+        </div>
+        </ion-col>
+        
+        <ion-col col-6>
+        <ion-card (click)="truck()"  class="card" > 
+            <div class="div_icon"> 
+          <img src="../assets/imgs/t6.png">
+        </div>
+        </ion-card>
+        <div class="title" text-center>
+            <h6>Truck</h6>
+        </div>
+      
+      
+      </ion-col>
+        
+      
+      </ion-row>
+      <ion-row>
+        <ion-col col-6> <ion-card (click)="active()"  class="card" >
+          <div class="div_icon"> 
+            <img src="../assets/imgs/s1.png">
+          </div> 
+         
+        </ion-card>
+        <div class="title" text-center>
+            <h6>Status</h6>
+        </div>
+        </ion-col>
+        <ion-col col-6>
+        <ion-card (click)="map()">
+            <div class="div_icon"> 
+            <img  src="../assets/imgs/m2.png">
+          </div>
+          </ion-card>
+          <div class="title" text-center>
+              <h6>Map</h6>
+          </div>
+      
+      </ion-col>
+       
+         
+      </ion-row>
+    </ion-grid>
+  </div>
+  </ion-content>

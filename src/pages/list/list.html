@@ -27,8 +27,8 @@
       <div [ngSwitch]="water">
         <ion-list *ngSwitchCase="'taps'" text-center>
             <ion-item *ngFor="let tap of taps; let i=index">
-              <span>{{tap.location}}</span>
               <p>{{tap.time}}</p>
+              
               <div *ngIf="taps[i].time===activeTaps[i];else not">
                 <button ion-button large color="danger" class="green"></button>
               </div>
