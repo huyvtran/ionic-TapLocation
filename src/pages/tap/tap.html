@@ -30,18 +30,6 @@
   </ion-segment>
     
   <div class="container" [ngSwitch]="tap">
-
-    <ion-list *ngSwitchCase="'1'" >
-    <ion-item no-lines text-center class="item1">
-    <span> Where is the tap located?</span>
-    </ion-item>
-
-    <ion-input type="text" [(ngModel)]="location" placeholder="Location" class="outline"></ion-input>
-    <div padding style="text-align:center">
-      <button ion-button small class="outline"  color="light" (click)="next1()">next</button>  
-    </div>  
-    </ion-list>
-    
     <ion-list *ngSwitchCase="'2'">
     <ion-item no-lines text-center class="item1">
     <span>What time is the tap accessible?</span>

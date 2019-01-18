@@ -7,6 +7,7 @@ import { NavController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { SigninPage } from '../signin/signin';
 import { ListPage } from '../list/list';
+import { CoodsPage } from '../coods/coods';
 
 @Component({
   selector: 'page-home',
@@ -19,7 +20,7 @@ export class HomePage {
   }
 
   tap(){
-this.navCtrl.push(TapPage);
+    this.navCtrl.push(CoodsPage);
   }
 
   truck(){

@@ -38,7 +38,7 @@ export class TapPage {
   startTime=["06:00","07:00","08:00","09:00","10:00","11:00","12:00"];
   endTime=["13:00","14:00","15:00","16:00","17:00","18:00","19:00"];
   constructor(public navCtrl: NavController,private alertCtrl: AlertController, public navParams: NavParams, private taps:TapProvider) {
-   
+   this.tap=this.navParams.get('data');
   }
 
   ionViewDidLoad() {
@@ -60,16 +60,16 @@ export class TapPage {
       reliable:this.reliable,
       safety:this.safety
     });
-    this.updatedhours();
+    // this.updatedhours();
     this.tapwater=[];
     this.isCaptured=true;
     this.hide=false;
   }
-  updatedhours(){
-    firebase.database().ref(`waterService/taps/answers`).push().set({
-      otime:this.starttime,
-      ctime:this.endtime,})
-  }
+  // updatedhours(){
+  //   firebase.database().ref(`waterService/taps/answers`).push().set({
+  //     otime:this.starttime,
+  //     ctime:this.endtime,})
+  // }
   back2(){
     this.tap='1';
     this.tapwater.splice(0,1);

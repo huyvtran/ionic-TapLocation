@@ -22,8 +22,8 @@ import { WaterServiceProvider } from '../providers/water-service/water-service';
 import { TapProvider } from '../providers/tap/tap';
 import { TruckProvider } from '../providers/truck/truck';
 import { ListPage } from '../pages/list/list';
-
-
+import { LeafletmapPage } from '../pages/leafletmap/leafletmap';
+import { CoodsPage } from '../pages/coods/coods';
 
 var config = {
     apiKey: "AIzaSyCDA2SmyMOpqB49eOYtL566O6_QZOQL9zQ",
@@ -40,9 +40,11 @@ firebase.initializeApp(config);
     MyApp,
     HomePage,
     ListPage,
+    CoodsPage,
     MapPage,
     TapPage,
     TruckPage,
+    LeafletmapPage,
     SigninPage,
     SignupPage,
     ResetpasswordPage,
@@ -59,6 +61,8 @@ firebase.initializeApp(config);
     MyApp,
     HomePage,
     MapPage,
+    CoodsPage,
+    LeafletmapPage,
     TapPage,
     ListPage,
     TruckPage,
