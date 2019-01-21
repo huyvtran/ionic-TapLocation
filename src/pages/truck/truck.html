@@ -61,10 +61,11 @@
     </ion-list>
 
 
-    <form [formGroup]="user" class="form-holder" (ngSubmit)="next3()"  novalidate>
 
 
   <ion-list *ngSwitchCase="'2'">
+ <form [formGroup]="user" class="form-holder" (ngSubmit)="next3()"  novalidate>
+
   <ion-item no-lines text-center class="item1" [ngClass]="{'error-border':!user.get('liters').valid && user.get('liters').touched}">
   <span text-wrap>How many liters does the truck offer per water station.</span>
   </ion-item>
@@ -88,9 +89,10 @@
   <button ion-button small class="outline"  color="light" (click)="back3()" >back</button> 
   <button ion-button small class="outline"  color="light" >next</button>
   </div>
+</form>
 </ion-list>
 
-</form>
+
 
   <ion-list *ngSwitchCase="'3'" radio-group [(ngModel)]="reliable" class="outline">
   <ion-item no-lines text-center class="item1">
