@@ -8,6 +8,7 @@ import { AuthProvider } from '../../providers/auth/auth';
 import { SigninPage } from '../signin/signin';
 import { ListPage } from '../list/list';
 import { CoodsPage } from '../coods/coods';
+import { CoordstPage } from '../coordst/coordst';
 
 @Component({
   selector: 'page-home',
@@ -24,7 +25,7 @@ export class HomePage {
   }
 
   truck(){
-    this.navCtrl.push(TruckPage);
+    this.navCtrl.push(CoordstPage);
   }
   map(){
     this.navCtrl.push(MapPage);

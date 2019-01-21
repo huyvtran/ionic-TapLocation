@@ -5,6 +5,7 @@ import 'firebase/database';
 import 'firebase/auth';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content, AlertController } from 'ionic-angular';
+import { CoordstPage } from '../coordst/coordst';
 /**
  * Generated class for the TapPage page.
  *
@@ -30,10 +31,16 @@ export class TruckPage {
   tapwater=[];
   starttime="";
   endtime="";
+  slatitude:string="";
+  slongitude:string="";
   startTime=["01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00"];
   endTime=["13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00","00:00"];
   constructor(public navCtrl: NavController,private alertCtrl: AlertController, public navParams: NavParams) {
 
+    this.slatitude=this.navParams.get('slatitude');
+    this.slongitude=this.navParams.get('slongitude');
+    this.location=this.slatitude+" - "+this.slongitude;
+    this.tapwater.push(this.location);
   }
 
   ionViewDidLoad() {
@@ -52,30 +59,30 @@ export class TruckPage {
       reliable:this.reliable,
       days:this.days
     });
-    this.updatedhours();
+    // this.updatedhours();
     this.tapwater=[];
     this.isCaptured=true;
     this.hide=false;
   }
-  updatedhours(){
-    firebase.database().ref(`waterService/trucks/answers`).push().set({
-      otime:this.starttime,
-      ctime:this.endtime,})
-  }
+  // updatedhours(){
+  //   firebase.database().ref(`waterService/trucks/answers`).push().set({
+  //     otime:this.starttime,
+  //     ctime:this.endtime,})
+  // }
   back2(){
-    this.truck='1';
     this.tapwater.splice(0,1);
+    this.navCtrl.popTo(CoordstPage);
   }
   back3(){
-    this.truck='2';
+    this.truck='1';
     this.tapwater.splice(1,1);
   }
   back4(){
-    this.truck='3';
+    this.truck='2';
     this.tapwater.splice(2,1);
   }
   back5(){
-    this.truck='4';
+    this.truck='3';
     this.tapwater.splice(3,1);
     this.isDone=false;
     this.isSubmit=false;
@@ -85,20 +92,6 @@ export class TruckPage {
     this.isDone=false;
     this.isSubmit=false;
     this.isBack=false;
-  }
-  next1(){
-    if(this.location===''){
-      let alert = this.alertCtrl.create({
-        subTitle: 'please enter the location.',
-        buttons: ['ok']
-      });
-      alert.present();
-    }
-    else{
-    this.tapwater.push(this.location);
-    this.truck='2';
-    this.location='';}
-    console.log('data',this.tapwater)
   }
   next2(){
     if(this.starttime==='' && this.endtime===''){
@@ -111,7 +104,7 @@ export class TruckPage {
     else{
       this.time=this.starttime+" - "+this.endtime;
     this.tapwater.push(this.time);
-    this.truck='3';
+    this.truck='2';
     this.time='';}
     console.log('data',this.tapwater)
   }
@@ -126,7 +119,7 @@ export class TruckPage {
     }
     else{
     this.tapwater.push(this.liters);
-    this.truck='4';
+    this.truck='3';
     this.liters='';}
     console.log('data',this.tapwater)
   }
@@ -141,7 +134,7 @@ export class TruckPage {
     }
     else{
     this.tapwater.push(this.reliable);
-    this.truck='5';
+    this.truck='4';
     this.reliable=''}
     console.log('data',this.tapwater)
   }

@@ -33,26 +33,12 @@
          
           </ion-segment-button>
 
-          <ion-segment-button value="5">
-           
-          </ion-segment-button>
-
       </ion-segment>
     </div>
     
     <div class="container" [ngSwitch]="truck">
-    <ion-list no-lines *ngSwitchCase="'1'">
-    <ion-item no-lines text-center class="item1">
-      <span>Where is the truck located?</span>
-    </ion-item>
-
-    <ion-input type="text" [(ngModel)]="location" placeholder="Street Name, Location" class="outline"></ion-input>
-    <div padding style="text-align:center">
-      <button ion-button small class="outline"  color="light" (click)="next1()">next</button>  
-    </div> 
-  </ion-list>
     
-  <ion-list no-lines *ngSwitchCase="'2'">
+  <ion-list no-lines *ngSwitchCase="'1'">
     <ion-item no-lines text-center class="item1">
     <span>What is the time operation of the truck?</span>
     </ion-item>
@@ -74,7 +60,7 @@
     </div>
     </ion-list>
 
-  <ion-list *ngSwitchCase="'3'">
+  <ion-list *ngSwitchCase="'2'">
   <ion-item no-lines text-center class="item1">
   <span text-wrap>how many liters does the truck offer per water station.</span>
   </ion-item>
@@ -86,7 +72,7 @@
   </div>
 </ion-list>
 
-  <ion-list *ngSwitchCase="'4'" radio-group [(ngModel)]="reliable" class="outline">
+  <ion-list *ngSwitchCase="'3'" radio-group [(ngModel)]="reliable" class="outline">
   <ion-item no-lines text-center class="item1">
   <span>How realiable is the truck service? </span>
   </ion-item>
@@ -104,7 +90,7 @@
 </div>
   </ion-list>
 
-  <ion-list *ngSwitchCase="'5'">
+  <ion-list *ngSwitchCase="'4'">
   <ion-item no-lines text-center class="item1">
   <span text-wrap>How many days is the truck available in a week?</span>
   </ion-item>

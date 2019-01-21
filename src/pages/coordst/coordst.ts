@@ -3,9 +3,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import * as Leaflet from 'leaflet';
 import 'leaflet-draw';
-import { TapPage } from '../tap/tap';
+import { TruckPage } from '../truck/truck';
 /**
- * Generated class for the CoodsPage page.
+ * Generated class for the CoordstPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -13,19 +13,20 @@ import { TapPage } from '../tap/tap';
 
 @IonicPage()
 @Component({
-  selector: 'page-coods',
-  templateUrl: 'coods.html',
+  selector: 'page-coordst',
+  templateUrl: 'coordst.html',
 })
-export class CoodsPage {
+export class CoordstPage {
 
   map: any;
   data: any;
   estado: any;
   isSaved=false;
+  next='';
+  tap='1'
   slatitude:string="";
   slongitude:string="";
   constructor(public navCtrl: NavController, private geolocation:Geolocation, public navParams: NavParams) {
-  
   }
   ngOnInit():void{
     this.drawMap();
@@ -47,7 +48,8 @@ export class CoodsPage {
      });
   }
   nextQ(){
-    this.navCtrl.push(TapPage,{slatitude:this.slatitude,slongitude:this.slongitude});
+    this.next='2'
+    this.navCtrl.push(TruckPage,{data:this.next,slatitude:this.slatitude,slongitude:this.slongitude});
   }
   drawMap(): void {
     this.map = Leaflet.map('map').setView([-0.1836298, -78.4821206], 13);
@@ -77,5 +79,4 @@ export class CoodsPage {
 
     this.map.on('locationerror', onLocationError);
   }
-
 }

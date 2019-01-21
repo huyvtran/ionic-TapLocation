@@ -24,6 +24,7 @@ import { TruckProvider } from '../providers/truck/truck';
 import { ListPage } from '../pages/list/list';
 import { LeafletmapPage } from '../pages/leafletmap/leafletmap';
 import { CoodsPage } from '../pages/coods/coods';
+import { CoordstPage } from '../pages/coordst/coordst';
 
 var config = {
     apiKey: "AIzaSyCDA2SmyMOpqB49eOYtL566O6_QZOQL9zQ",
@@ -42,6 +43,7 @@ firebase.initializeApp(config);
     ListPage,
     CoodsPage,
     MapPage,
+    CoordstPage,
     TapPage,
     TruckPage,
     LeafletmapPage,
@@ -62,6 +64,7 @@ firebase.initializeApp(config);
     HomePage,
     MapPage,
     CoodsPage,
+    CoordstPage,
     LeafletmapPage,
     TapPage,
     ListPage,

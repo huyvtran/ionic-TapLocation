@@ -79,8 +79,8 @@ export class TapPage {
   //     ctime:this.endtime,})
   // }
   back2(){
-    this.navCtrl.popTo(CoodsPage);
     this.tapwater.splice(0,1);
+    this.navCtrl.popTo(CoodsPage);
   }
   back4(){
     this.tap='2';
