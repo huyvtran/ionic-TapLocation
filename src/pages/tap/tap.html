@@ -48,7 +48,7 @@
     </ion-list>
     <ion-list *ngSwitchCase="'2'" radio-group [(ngModel)]="reliable" class="outline">
     <ion-item no-lines text-center  class="item1">
-    <span>Is the tap reliable?</span>
+    <span>Is the tap working?</span>
     </ion-item>
 
     <br>  
@@ -92,6 +92,7 @@
         <button ion-button small class="outline"  color="light" (click)="next5()" [disabled]="isSubmit" >done</button>  
       </div>
   </ion-list>
+  
 </div>
 </div>
 <div  class="container" *ngIf="isCaptured">

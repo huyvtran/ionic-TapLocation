@@ -40,16 +40,16 @@
     
   <ion-list no-lines *ngSwitchCase="'1'">
     <ion-item no-lines text-center class="item1">
-    <span>What is the time operation of the truck?</span>
+    <span text-wrap>What is the time operation of the truck?</span>
     </ion-item>
     <ion-item>
-        <ion-label>arrival time</ion-label>
+        <ion-label>Arrival time</ion-label>
         <ion-select [(ngModel)]="starttime">
           <ion-option *ngFor="let start of startTime">{{start}}</ion-option>
         </ion-select>
       </ion-item>
       <ion-item>
-        <ion-label>departure time</ion-label>
+        <ion-label>Departure time</ion-label>
         <ion-select [(ngModel)]="endtime">
           <ion-option *ngFor="let start of endTime">{{start}}</ion-option>
         </ion-select>
@@ -60,17 +60,37 @@
     </div>
     </ion-list>
 
+
+    <form [formGroup]="user" class="form-holder" (ngSubmit)="next3()"  novalidate>
+
+
   <ion-list *ngSwitchCase="'2'">
-  <ion-item no-lines text-center class="item1">
-  <span text-wrap>how many liters does the truck offer per water station.</span>
+  <ion-item no-lines text-center class="item1" [ngClass]="{'error-border':!user.get('liters').valid && user.get('liters').touched}">
+  <span text-wrap>How many liters does the truck offer per water station.</span>
   </ion-item>
 
-  <ion-input type="text" [(ngModel)]="liters" placeholder="E.g 375 liters of water each week " class="outline"></ion-input>
+ 
+  <ion-input type="text" formControlName="liters" placeholder="E.g 375 liters of water each week " class="outline"></ion-input>
+ 
+  <ion-item  no-lines *ngIf="user.get('liters').hasError('required') && user.get('liters').touched" class="invalid">
+  <p ion-text color="danger">This field is required!</p>
+  </ion-item>
+    
+  <ion-item no-lines *ngIf="user.get('liters').hasError('minLength') && user.get('liters').touched" class="invalid">
+  <p ion-text color="danger">This field require 2 or more characters!</p>
+  </ion-item>
+      
+  <ion-item no-lines *ngIf="user.get('liters').hasError('pattern') && user.get('liters').touched" class="invalid">
+  <p ion-text color="danger">This field can only take numbers!</p>
+  </ion-item>
+
   <div padding style="text-align:center">
   <button ion-button small class="outline"  color="light" (click)="back3()" >back</button> 
-  <button ion-button small class="outline"  color="light" (click)="next3()">next</button>
+  <button ion-button small class="outline"  color="light" >next</button>
   </div>
 </ion-list>
+
+</form>
 
   <ion-list *ngSwitchCase="'3'" radio-group [(ngModel)]="reliable" class="outline">
   <ion-item no-lines text-center class="item1">
@@ -95,7 +115,20 @@
   <span text-wrap>How many days is the truck available in a week?</span>
   </ion-item>
 
-  <ion-input type="text"  [(ngModel)]="days" placeholder="E.g 3 days in a  week " class="outline"></ion-input>
+  <ion-item>
+      <ion-label>Select here</ion-label>
+  <ion-select [(ngModel)]="days">
+    <ion-option value="1">1 day</ion-option>
+    <ion-option value="2">2 days</ion-option>
+    <ion-option value="3">3 days</ion-option>
+    <ion-option value="4">4 days</ion-option>
+    <ion-option value="5">5 days</ion-option>
+    <ion-option value="6">6 days</ion-option>
+    <ion-option value="6">7 days</ion-option>
+  </ion-select>
+
+</ion-item>
+ 
   <div style="text-align:center" *ngIf="!isBack">
     <button ion-button small class="outline"  color="light"  (click)="back5()" >back</button>
   </div>

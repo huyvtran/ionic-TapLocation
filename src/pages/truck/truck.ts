@@ -6,6 +6,8 @@ import 'firebase/auth';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content, AlertController } from 'ionic-angular';
 import { CoordstPage } from '../coordst/coordst';
+import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
+
 /**
  * Generated class for the TapPage page.
  *
@@ -17,6 +19,10 @@ import { CoordstPage } from '../coordst/coordst';
   templateUrl: 'truck.html',
 })
 export class TruckPage {
+
+  public user:FormGroup;
+
+  // liters:string;
   isBack=false;
   isCaptured=false;
   isDone=false;
@@ -25,7 +31,7 @@ export class TruckPage {
   truck='1';
   location:string='';
   time:string='';
-  liters:string='';
+  liters:string;
   reliable:string='';
   days:string='';
   tapwater=[];
@@ -35,7 +41,16 @@ export class TruckPage {
   slongitude:string="";
   startTime=["01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00"];
   endTime=["13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00","00:00"];
-  constructor(public navCtrl: NavController,private alertCtrl: AlertController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,private alertCtrl: AlertController,public FB:FormBuilder,
+     public navParams: NavParams) {
+
+    this.user= this.FB.group({
+  
+      liters:['',Validators.compose([Validators.required,
+      Validators.minLength(3),
+      Validators.pattern('[0-9]*')])],
+
+    })
 
     this.slatitude=this.navParams.get('slatitude');
     this.slongitude=this.navParams.get('slongitude');
@@ -120,7 +135,8 @@ export class TruckPage {
     else{
     this.tapwater.push(this.liters);
     this.truck='3';
-    this.liters='';}
+    // this.liters='';
+  }
     console.log('data',this.tapwater)
   }
 
@@ -142,7 +158,7 @@ export class TruckPage {
   next5(){
     if(this.days===''){
       let alert = this.alertCtrl.create({
-        subTitle: 'please enter the number of days.',
+        subTitle: 'please enter the number of day(s).',
         buttons: ['ok']
       });
       alert.present();
