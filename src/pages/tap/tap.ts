@@ -41,7 +41,6 @@ export class TapPage {
   startTime=["06:00","07:00","08:00","09:00","10:00","11:00","12:00"];
   endTime=["13:00","14:00","15:00","16:00","17:00","18:00","19:00"];
   constructor(public navCtrl: NavController,private alertCtrl: AlertController, public navParams: NavParams, private taps:TapProvider) {
-    this.tap=this.navParams.get('data');
     this.slatitude=this.navParams.get('slatitude');
     this.slongitude=this.navParams.get('slongitude');
     this.location=this.slatitude+" - "+this.slongitude;
@@ -83,11 +82,11 @@ export class TapPage {
     this.navCtrl.popTo(CoodsPage);
   }
   back4(){
-    this.tap='2';
+    this.tap='1';
     this.tapwater.splice(1,1);
   }
   back5(){
-    this.tap='3';
+    this.tap='2';
     this.tapwater.splice(2,1);
     this.isDone=false;
     this.isSubmit=false;
@@ -109,7 +108,7 @@ export class TapPage {
     else{
     this.time=this.starttime+" - "+this.endtime;
     this.tapwater.push(this.time);
-    this.tap='3';
+    this.tap='2';
     this.time='';}
     console.log('data',this.tapwater)
   }
@@ -124,7 +123,7 @@ export class TapPage {
     }
     else{
     this.tapwater.push(this.reliable);
-    this.tap='4';
+    this.tap='3';
     this.reliable='';}
     console.log('data',this.tapwater)
   }

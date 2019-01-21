@@ -22,12 +22,10 @@
     <ion-segment-button value="2"></ion-segment-button>
 
     <ion-segment-button value="3"></ion-segment-button>
-
-    <ion-segment-button value="4"></ion-segment-button>
   </ion-segment>
     
   <div class="container" [ngSwitch]="tap">
-    <ion-list *ngSwitchCase="'2'">
+    <ion-list *ngSwitchCase="'1'">
     <ion-item no-lines text-center class="item1">
     <span>What time is the tap accessible?</span>
     </ion-item>
@@ -48,7 +46,7 @@
     <button ion-button small class="outline"  color="light" (click)="next2()">next</button>  
     </div>
     </ion-list>
-    <ion-list *ngSwitchCase="'3'" radio-group [(ngModel)]="reliable" class="outline">
+    <ion-list *ngSwitchCase="'2'" radio-group [(ngModel)]="reliable" class="outline">
     <ion-item no-lines text-center  class="item1">
     <span>Is the tap reliable?</span>
     </ion-item>
@@ -69,7 +67,7 @@
     </div>
     </ion-list>
    
-   <ion-list *ngSwitchCase="'4'" radio-group [(ngModel)]="safety" class="outline">
+   <ion-list *ngSwitchCase="'3'" radio-group [(ngModel)]="safety" class="outline">
      <ion-item no-lines text-center  class="item1">
       <span text-wrap>Is the tap water clean?</span>
       </ion-item>

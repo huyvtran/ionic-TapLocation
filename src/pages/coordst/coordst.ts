@@ -23,7 +23,6 @@ export class CoordstPage {
   estado: any;
   isSaved=false;
   next='';
-  tap='1'
   slatitude:string="";
   slongitude:string="";
   constructor(public navCtrl: NavController, private geolocation:Geolocation, public navParams: NavParams) {
@@ -48,8 +47,8 @@ export class CoordstPage {
      });
   }
   nextQ(){
-    this.next='2'
-    this.navCtrl.push(TruckPage,{data:this.next,slatitude:this.slatitude,slongitude:this.slongitude});
+
+    this.navCtrl.push(TruckPage,{slatitude:this.slatitude,slongitude:this.slongitude});
   }
   drawMap(): void {
     this.map = Leaflet.map('map').setView([-0.1836298, -78.4821206], 13);
