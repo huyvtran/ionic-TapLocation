@@ -40,8 +40,8 @@ export class TruckPage {
   endtime="";
   slatitude:string="";
   slongitude:string="";
-  startTime=["01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00"];
-  endTime=["13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00","00:00"];
+  startTime=["06:00","07:00","08:00","09:00","10:00","11:00","12:00"];
+  endTime=["13:00","14:00","15:00","16:00","17:00","18:00","19:00"];
   constructor(public navCtrl: NavController,private alertCtrl: AlertController,public FB:FormBuilder,
      public navParams: NavParams) {
 
@@ -75,16 +75,12 @@ export class TruckPage {
       reliable:this.reliable,
       days:this.days
     });
-    // this.updatedhours();
+
     this.tapwater=[];
     this.isCaptured=true;
     this.hide=false;
   }
-  // updatedhours(){
-  //   firebase.database().ref(`waterService/trucks/answers`).push().set({
-  //     otime:this.starttime,
-  //     ctime:this.endtime,})
-  // }
+
   back2(){
     this.tapwater.splice(0,1);
     this.navCtrl.popTo(CoordstPage);
@@ -100,14 +96,6 @@ export class TruckPage {
   back5(){
     this.truck='3';
     this.tapwater.splice(3,1);
-    this.isDone=false;
-    this.isSubmit=false;
-  }
-  backChange(){
-    this.tapwater.splice(4,1);
-    this.isDone=false;
-    this.isSubmit=false;
-    this.isBack=false;
   }
   next2(){
     if(this.starttime==='' && this.endtime===''){
@@ -118,11 +106,27 @@ export class TruckPage {
       });
       alert.present();
     }
+    else if(this.starttime===''){
+      let alert = this.alertCtrl.create({
+        subTitle: 'Please enter the arrival time.',
+        buttons: ['ok'],
+        cssClass: 'alertcss'
+      });
+      alert.present();
+    }
+    else if(this.endtime===''){
+      let alert = this.alertCtrl.create({
+        subTitle: 'Please enter the departure time.',
+        buttons: ['ok'],
+        cssClass: 'alertcss'
+      });
+      alert.present();
+    }
     else{
       this.time=this.starttime+" - "+this.endtime;
-    this.tapwater.push(this.time);
-    this.truck='2';
-    this.time='';}
+      this.tapwater.push(this.time);
+      this.truck='2';
+      this.time='';}
     console.log('data',this.tapwater)
   }
 
@@ -171,9 +175,7 @@ export class TruckPage {
     else{
     this.tapwater.push(this.days);
     this.days='';
-    this.isBack=true;
-    this.isSubmit=true;
-    this.hide=true;
+    this.tapdata();
   }
     console.log('data',this.tapwater)
     

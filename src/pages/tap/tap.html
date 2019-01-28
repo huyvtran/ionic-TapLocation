@@ -46,7 +46,7 @@
     <br><br>
     <ion-footer class="footer">
     <div padding style="text-align:center">
-     <button ion-button clear  class="outline" (click)="back2()"><ion-icon name="undo"></ion-icon></button> 
+     <button ion-button clear  class="outline" (click)="back1()"><ion-icon name="undo"></ion-icon></button> 
         <button ion-button clear class="outline"  (click)="next2()" ><ion-icon name="checkmark"></ion-icon></button>        
 </div>
 </ion-footer>
@@ -70,7 +70,7 @@
    
     <ion-footer class="footer">
       <div padding style="text-align:center">
-       <button ion-button clear  class="outline" (click)="back4()"><ion-icon name="undo"></ion-icon></button> 
+       <button ion-button clear  class="outline" (click)="back2()"><ion-icon name="undo"></ion-icon></button> 
           <button ion-button clear class="outline"  (click)="next4()" ><ion-icon name="checkmark"></ion-icon></button>        
   </div>
   </ion-footer>
@@ -91,24 +91,11 @@
         <ion-label>No</ion-label>
         <ion-radio value="No"></ion-radio>
       </ion-item>
-      <!-- <div padding style="text-align:center" *ngIf="!isBack">
-        <button ion-button small  class="outline"  color="light"  (click)="back5()">back</button>
-      </div> -->
-      <!-- <br><br>
-      <div padding style="text-align:center" *ngIf="isBack">
-        <button ion-button block full class="outline"   color="light" (click)="backChange()" >undo</button> 
-      </div>
-      <div padding style="text-align:center">
-         <button ion-button small class="outline"  color="light" (click)="next5()" [disabled]="isSubmit" >done</button>   -->
-        <!-- <button ion-button block full class="outline"  (click)="next5()" [disabled]="isSubmit" >Done</button>
-      </div> --> 
-
-
       <ion-footer class="footer">
   
         <div padding style="text-align:center">
-         <button ion-button clear  class="outline" (click)="backChange()" ><ion-icon name="undo"></ion-icon></button> 
-            <button ion-button clear class="outline"  (click)="next5()" [disabled]="isSubmit" ><ion-icon name="done-all"></ion-icon></button>        
+         <button ion-button clear  class="outline" (click)="back3()" ><ion-icon name="undo"></ion-icon></button> 
+         <button ion-button clear class="outline"  (click)="next5()"><ion-icon name="done-all"></ion-icon></button>        
     </div>
     </ion-footer>
   </ion-list>
@@ -127,7 +114,5 @@
 </ion-content>
 
 <ion-footer>
-  <div *ngIf="hide">
-    <button ion-button block full class="outline" type="submit" [disabled]="!isSubmit" (click)="tapdata()" outline>submit</button>
-  </div>
+
 </ion-footer>
