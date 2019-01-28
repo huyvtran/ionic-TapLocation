@@ -5,30 +5,50 @@ page-tap {
 
     .content{
 
-        background-color:#edf9fc;
+        // background-color:#edf9fc;
+        background-color:whitesmoke;
     }
     .scroll-content {
         overflow: hidden !important;
     }
     .op{
+        
+        // background-color: rgba(0.0,0.0,0.0,0.1);
+        width:330px;
+        border-radius: 5px;
+        color: #005792;
+        cursor: pointer;
+        // position: relative;
+        // z-index: 3;
+        background:transparent;
+        // color:#005792;
+        border-color:#b1e6f0;
+        border-style: solid;
+        border-width:2px;
+      
+    }
+    .op1{
+
         background-color:#edf9fc;
     }
     button {
         
         cursor: pointer;
-        outline: none;
+      
        
         &.outline {
             position: relative;
             z-index: 3;
+            height:50px;
+            width:150px;
             background: transparent;
             color:#005792;
             font-size: 14px;
-            border-color: #005792;
+            border-color:t#005792;
             border-style: solid;
-            border-width:2px;
+            border-width:1px;
             border-radius:5px;
-            padding: 10px 15px;
+            padding:10px 15px;
             text-transform: uppercase;
             transition: all 0.2s linear;
             a {
@@ -36,9 +56,9 @@ page-tap {
             }
         }
         &.outline:hover {
-            color:#edf9fc;
-            background:#005792;
-            border-color:#005792;
+            color:lightgrey;
+            background:#d1f4fa;
+            border-color:#d1f4f4;
             transition: all 0.2s linear;
         }
         &.outline:active {
@@ -46,14 +66,21 @@ page-tap {
         }
     
 }
+   .icon{
+    font-size:4.5rem;
+   }
+
     
     span{
        
           color:#005792;
-          font-size: larger;
+          font-size:Larger;
+          font-weight: bold;
+        
     
     }
     .container{
+     
         display: flex;
         justify-content:center;
         align-content:left;
@@ -80,6 +107,10 @@ page-tap {
     .item1{
 
         background-color: transparent;
+        width:330px;
+        border-radius:5px;
+        color: #005792;
+        cursor: pointer
     }
 
     ion-input {
@@ -117,9 +148,7 @@ page-tap {
         //     border-radius: 22px;
         // }
     }
-    .icon{
-        color:#edf9fc;
-    }
+   
     .segment{
 
         display: -webkit-box;
@@ -138,12 +167,46 @@ page-tap {
         -ms-flex-pack: center;
         justify-content: center;
         width: 100%;
+        height: 100%;
         padding:0 5px 0 5px;
         .segment-button{
-            max-height: 4.4rem;
+            max-height:10.5rem;
         }
     }
 
+    .footer{
 
-   
+            cursor: pointer;
+            // position: relative;
+            // z-index: 3;
+            background:#d1f4fa;
+            // color:#005792;
+            border-color:transparent;
+            border-style: solid;
+            border-width:1px;
+          
+         
+          
+            // text-transform: uppercase;
+            // transition: all 0.2s linear;
+            // a {
+            //     text-decoration: none;
+            // }
+    
+    }
+    
+  
 }
+.alertcss{
+
+    button{
+        color:#005792;
+    }
+    .alert-wrapper{
+        background:#d1f4fa;
+       color:#005792;
+       
+       
+   }
+}
+

@@ -51,11 +51,14 @@ page-signup {
      
       }
       button {
-        color: #005792;
+        color:#005792;
         color: #005792;
         cursor: pointer;
         outline: none;
         &.outline {
+            height:45px;
+            width:310px;
+            left:-15px;
             position: relative;
             z-index: 3;
             background: transparent;
@@ -64,7 +67,7 @@ page-signup {
             border-color: #005792;
             border-style: solid;
             border-width: 2px;
-            border-radius:0px;
+            border-radius:5px;
             padding: 10px 15px;
             text-transform: uppercase;
             transition: all 0.2s linear;
@@ -74,7 +77,7 @@ page-signup {
         }
         &.outline:hover {
             color: #edf9fc;
-            background:#005792;
+            background:#005791;
             border-color: #005792;
             transition: all 0.2s linear;
         }
@@ -86,6 +89,17 @@ page-signup {
         border-radius:50px;
     }
 }
+.alertcss{
 
+    button{
+        color:#005792;
+    }
+    .alert-wrapper{
+        background:#d1f4fa;
+       color:#005792;
+       
+       
+   }
+}
 
 }

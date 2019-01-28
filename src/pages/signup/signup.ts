@@ -87,7 +87,8 @@ export class SignupPage {
           handler:data=>{
             this.navCtrl.setRoot(HomePage)
             }
-          }]
+          }],
+          cssClass: 'alertcss'
       })
        alert.present();
     
@@ -97,7 +98,8 @@ export class SignupPage {
           
         const alert = this.alertCTR.create({
         subTitle:'The email is alread in use by another account',
-        buttons:[{text:'ok',role:'cancel'}]
+        buttons:[{text:'ok',role:'cancel'}],
+        cssClass: 'alertcss'
           })
 
 

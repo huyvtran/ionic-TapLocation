@@ -50,7 +50,8 @@ resetPassword(){
           handler:()=>{
             this.navCtrl.setRoot(HomePage);
           }
-        }]
+        }],
+        cssClass: 'alertcss'
       })
       alert.present()
     },error=>{
@@ -59,8 +60,10 @@ resetPassword(){
         buttons:[{
           text:'ok',
           role:'cancel'
-        }]
+        }],
+        cssClass: 'alertcss'
       })
+      
       errorAlert.present();
     }
   )

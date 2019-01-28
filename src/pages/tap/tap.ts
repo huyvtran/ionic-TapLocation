@@ -32,8 +32,8 @@ export class TapPage {
   reliable:string='';
   safety:string='';
   tapwater=[];
-  starttime="";
-  endtime="";
+  starttime:string="";
+  endtime:string="";
   today:number;
   slatitude:string='';
   slongitude:string="";
@@ -92,17 +92,20 @@ export class TapPage {
     this.isSubmit=false;
   }
   backChange(){
+    this.tap='3';
     this.tapwater.splice(3,1);
     this.isDone=false;
     this.isSubmit=false;
-    this.isBack=false;
+    // this.isBack=false;
   }
   next2(){
     if(this.starttime==='' && this.endtime===''){
       let alert = this.alertCtrl.create({
-        subTitle: 'please enter the accessibe time.',
-        buttons: ['ok']
+        subTitle: 'Please enter the accessibe time.',
+        buttons: ['ok'],
+        cssClass: 'alertcss'
       });
+   
       alert.present();
     }
     else{
@@ -116,8 +119,9 @@ export class TapPage {
   next4(){
     if(this.reliable===''){
       let alert = this.alertCtrl.create({
-        subTitle: 'please select your answer.',
-        buttons: ['ok']
+        subTitle: 'Please select your answer.',
+        buttons: ['ok'],
+        cssClass: 'alertcss'
       });
       alert.present();
     }
@@ -132,7 +136,8 @@ export class TapPage {
     if(this.safety===''){
       let alert = this.alertCtrl.create({
         subTitle: 'please select your answer.',
-        buttons: ['ok']
+        buttons: ['ok'],
+        cssClass: 'alertcss'
       });
       alert.present();
     }

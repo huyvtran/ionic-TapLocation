@@ -78,7 +78,8 @@ signIn(){
             handler:data=>{
              
               }
-            }]
+            }],
+            cssClass: 'alertcss'
         });
         alert.present();
 

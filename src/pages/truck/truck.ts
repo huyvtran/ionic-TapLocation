@@ -112,8 +112,9 @@ export class TruckPage {
   next2(){
     if(this.starttime==='' && this.endtime===''){
       let alert = this.alertCtrl.create({
-        subTitle: 'please enter the operational time.',
-        buttons: ['ok']
+        subTitle: 'Please enter the operational time.',
+        buttons: ['ok'],
+        cssClass: 'alertcss'
       });
       alert.present();
     }
@@ -128,8 +129,9 @@ export class TruckPage {
   next3(){
     if(this.user.controls["liters"].value===''){
       let alert = this.alertCtrl.create({
-        subTitle: 'please enter the liters offered.',
-        buttons: ['ok']
+        subTitle: 'Please enter the liters offered.',
+        buttons: ['ok'],
+        cssClass: 'alertcss'
       });
       alert.present();
     }
@@ -144,8 +146,9 @@ export class TruckPage {
   next4(){
     if(this.reliable===''){
       let alert = this.alertCtrl.create({
-        subTitle: 'please select your answer.',
-        buttons: ['ok']
+        subTitle: 'Please select your answer.',
+        buttons: ['ok'],
+        cssClass: 'alertcss'
       });
       alert.present();
     }
@@ -159,8 +162,9 @@ export class TruckPage {
   next5(){
     if(this.days===''){
       let alert = this.alertCtrl.create({
-        subTitle: 'please enter the number of day(s).',
-        buttons: ['ok']
+        subTitle: 'Please enter the number of day(s).',
+        buttons: ['ok'],
+        cssClass: 'alertcss'
       });
       alert.present();
     }

@@ -15,7 +15,7 @@
 
 <ion-content padding>
 <div  *ngIf="!isCaptured">
-  <div padding>
+  
     <ion-segment [(ngModel)]="truck">
       <ion-segment-button value="1">
         
@@ -34,7 +34,7 @@
           </ion-segment-button>
 
       </ion-segment>
-    </div>
+  
     
     <div class="container" [ngSwitch]="truck">
     
@@ -42,22 +42,36 @@
     <ion-item no-lines text-center class="item1">
     <span text-wrap>What is the time operation of the truck?</span>
     </ion-item>
-    <ion-item>
-        <ion-label>Arrival time</ion-label>
+    <br><br>
+    <!-- <ion-item class="op">
+        <ion-label color="primary">Arrival time :</ion-label>
+        <ion-select [(ngModel)]="starttime">
+          <ion-option *ngFor="let start of startTime">{{start}}</ion-option>
+        </ion-select>
+      </ion-item> -->
+      <ion-item class="op1">
+        <ion-label color="primary">Arrival time</ion-label>
         <ion-select [(ngModel)]="starttime">
           <ion-option *ngFor="let start of startTime">{{start}}</ion-option>
         </ion-select>
       </ion-item>
-      <ion-item>
-        <ion-label>Departure time</ion-label>
+      <br>
+      <ion-item class="op1">
+        <ion-label color="primary">Departure time</ion-label>
         <ion-select [(ngModel)]="endtime">
           <ion-option *ngFor="let start of endTime">{{start}}</ion-option>
         </ion-select>
       </ion-item>
-    <div padding style="text-align:center">
+    <!-- <div padding style="text-align:center">
     <button ion-button small  class="outline"  color="light" (click)="back2()">back</button> 
     <button ion-button small class="outline"  color="light"  (click)="next2()" >next</button>
+    </div> -->
+    <ion-footer class="footer">
+        <div padding style="text-align:center">
+         <button ion-button clear  class="outline" (click)="back2()"><ion-icon name="undo"></ion-icon></button> 
+            <button ion-button clear class="outline"  (click)="next2()" ><ion-icon name="checkmark"></ion-icon></button>        
     </div>
+    </ion-footer>
     </ion-list>
 
 
@@ -66,29 +80,34 @@
   <ion-list *ngSwitchCase="'2'">
  <form [formGroup]="user" class="form-holder" (ngSubmit)="next3()"  novalidate>
 
-  <ion-item no-lines text-center class="item1" [ngClass]="{'error-border':!user.get('liters').valid && user.get('liters').touched}">
-  <span text-wrap>How many liters does the truck offer per water station.</span>
+  <ion-item no-lines text-center class="op" [ngClass]="{'error-border':!user.get('liters').valid && user.get('liters').touched}">
+  <span text-wrap>How many liters does the truck offer per water station?</span>
   </ion-item>
-
+  <br><br>
+  <ion-item class="op">
+    <ion-input class="input" type="text" formControlName="liters" placeholder="E.g 375 liters of water each week "></ion-input>
+  </ion-item>
+  
  
-  <ion-input type="text" formControlName="liters" placeholder="E.g 375 liters of water each week " class="outline"></ion-input>
- 
-  <ion-item  no-lines *ngIf="user.get('liters').hasError('required') && user.get('liters').touched" class="invalid">
+  <ion-item  no-lines class="invalid" *ngIf="user.get('liters').hasError('required') && user.get('liters').touched" >
   <p ion-text color="danger">This field is required!</p>
   </ion-item>
     
-  <ion-item no-lines *ngIf="user.get('liters').hasError('minLength') && user.get('liters').touched" class="invalid">
+  <ion-item no-lines class="invalid" *ngIf="user.get('liters').hasError('minLength') && user.get('liters').touched" >
   <p ion-text color="danger">This field require 2 or more characters!</p>
   </ion-item>
       
-  <ion-item no-lines *ngIf="user.get('liters').hasError('pattern') && user.get('liters').touched" class="invalid">
+  <ion-item no-lines class="invalid" *ngIf="user.get('liters').hasError('pattern') && user.get('liters').touched">
   <p ion-text color="danger">This field can only take numbers!</p>
   </ion-item>
 
-  <div padding style="text-align:center">
-  <button ion-button small class="outline"  color="light" (click)="back3()" >back</button> 
-  <button ion-button small class="outline"  color="light" >next</button>
+
+  <ion-footer class="footer">
+      <div padding style="text-align:center">
+       <button ion-button clear  class="outline" (click)="back3()"><ion-icon name="undo"></ion-icon></button> 
+          <button ion-button clear class="outline"  (click)="next3()" ><ion-icon name="checkmark"></ion-icon></button>        
   </div>
+  </ion-footer>
 </form>
 </ion-list>
 
@@ -98,27 +117,33 @@
   <ion-item no-lines text-center class="item1">
   <span>How realiable is the truck service? </span>
   </ion-item>
-  <ion-item class="item1">
+  <br><br>
+  <ion-item class="op">
     <ion-label>Good</ion-label>
     <ion-radio value="good"></ion-radio>
   </ion-item>
-  <ion-item class="item1">
+  <br>
+  <ion-item class="op">
     <ion-label>Poor</ion-label>
     <ion-radio value="poor"></ion-radio>
   </ion-item>
-  <div padding style="text-align:center">
-  <button ion-button small class="outline"  color="light"  (click)="back4()" >back</button> 
-  <button ion-button small class="outline"  color="light"  (click)="next4()" >next</button>
+
+<ion-footer class="footer">
+    <div padding style="text-align:center">
+     <button ion-button clear  class="outline" (click)="back4()"><ion-icon name="undo"></ion-icon></button> 
+        <button ion-button clear class="outline"  (click)="next4()" ><ion-icon name="checkmark"></ion-icon></button>        
 </div>
+</ion-footer>
   </ion-list>
 
   <ion-list *ngSwitchCase="'4'">
-  <ion-item no-lines text-center class="item1">
+  <ion-item no-lines text-center class="op">
   <span text-wrap>How many days is the truck available in a week?</span>
   </ion-item>
+  <br><br>
 
-  <ion-item>
-      <ion-label>Select here</ion-label>
+  <ion-item class="op">
+      <ion-label color="primary">Number of days</ion-label>
   <ion-select [(ngModel)]="days">
     <ion-option value="1">1 day</ion-option>
     <ion-option value="2">2 days</ion-option>
@@ -131,18 +156,19 @@
 
 </ion-item>
  
-  <div style="text-align:center" *ngIf="!isBack">
-    <button ion-button small class="outline"  color="light"  (click)="back5()" >back</button>
+
+
+  <ion-footer class="footer">
+  
+      <div padding style="text-align:center">
+       <button ion-button clear  class="outline" (click)="backChange()" ><ion-icon name="undo"></ion-icon></button> 
+          <button ion-button clear class="outline"  (click)="next5()" [disabled]="isSubmit" ><ion-icon name="done-all"></ion-icon></button>        
   </div>
-  <div style="text-align:center" *ngIf="isBack">
-    <button ion-button small class="outline"  color="light"  (click)="backChange()" >undo</button> 
-  </div>
-  <div style="text-align:center">
-    <button ion-button small class="outline"  color="light"  (click)="next5()" [disabled]="isSubmit">done</button>  
-  </div>
+  </ion-footer>
   </ion-list>
-  </div>
 </div>
+</div>
+
 <div class="container" *ngIf="isCaptured">
     <h4>The water truck is recorded, thank you for capturing data for us!</h4>
     <br>
