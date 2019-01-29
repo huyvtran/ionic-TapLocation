@@ -23,7 +23,7 @@ page-truck {
             background: transparent;
             color:#005792;
             font-size: 14px;
-            border-color:#b1e6f0;
+            border-color:transparent;
             border-style: solid;
             border-width:1px;
             border-radius:5px;
@@ -35,9 +35,9 @@ page-truck {
             }
         }
         &.outline:hover {
-            color:lightgrey;
-            background:#d1f4fa;
-            border-color:#d1f4f4;
+         
+            background: transparent;
+            border-color:transparent;
             transition: all 0.2s linear;
         }
         &.outline:active {
@@ -206,15 +206,84 @@ page-truck {
          border-width:2px;
        
     }
+    .but1{
 
-    input{
-        background-color: transparent;
-        border-color:#b1e6f0;
-         border-style:solid;
-         border-width:2px;
-        width: 330px;
+        height:45px;
+        width:315px;
+        position: relative;
+        z-index: 3;
+        background: transparent;
+        color:#005792;
+        font-size: 14px;
+        border-color: #005792;
+        border-style: solid;
+        border-width: 2px;
+        border-radius:0px;
+        padding: 0px 5px;
+        text-transform: uppercase;
+        transition: all 0.1s linear;
+        a {
+            text-decoration: none;
+        }
+
     }
+    .items{
 
+        height:45px;
+        position: relative;
+        z-index: 3;
+        width:315px;
+        background:transparent;
+        color:#005792;
+        font-size: 14px;
+        border-color: #005792;
+        border-style: solid;
+        border-width: 2px;
+        border-radius:5px;
+        padding: 0px 0px;
+        text-transform: uppercase;
+        transition: all 0.1s linear;
+        a {
+            text-decoration: none;
+        }
+        ion-input {
+     
+            color:#005792;
+           
+            &.outline {
+                position: relative;
+                z-index: 3;
+                background: transparent;
+                color:#005792;
+                font-size: 14px;
+                border-color: #005792;
+                border-style: solid;
+                border-width: 2px;
+                border-radius:5px;
+                padding: 0px 5px;
+                text-transform: uppercase;
+                transition: all 0.1s linear;
+                a {
+                    text-decoration: none;
+                }
+            }
+            &.outline:hover {
+                color:#005792;
+                background:#edf9fc;
+                border-color:#005792;
+                transition: all 0.1s linear;
+            }
+            // &.outline:active {
+            //     border-radius: 22px;
+            // }
+
+        }
+        ion-label{
+            color:#005792;
+
+
+        }
+    }
 }
 .alertcss{
 

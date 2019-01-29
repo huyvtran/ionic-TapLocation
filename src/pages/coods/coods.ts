@@ -47,7 +47,7 @@ export class CoodsPage {
      });
   }
   nextQ(){
-    this.navCtrl.push(TapPage,{slatitude:this.slatitude,slongitude:this.slongitude});
+    this.navCtrl.setRoot(TapPage,{slatitude:this.slatitude,slongitude:this.slongitude});
   }
   drawMap(): void {
     this.map = Leaflet.map('map').setView([-0.1836298, -78.4821206], 13);

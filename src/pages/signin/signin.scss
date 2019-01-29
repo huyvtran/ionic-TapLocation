@@ -78,10 +78,10 @@ page-signin {
         }
     .items {
 
-        height:4px;
+        height:45px;
         position: relative;
         z-index: 3;
-        width: 310px;
+        width:315px;
         background:transparent;
         color:#005792;
         font-size: 14px;
@@ -183,9 +183,9 @@ page-signin {
        
         &.outline {
             position: relative;
-            z-index: 3;
+            z-index:3;
             height:45px;
-            width:310px;
+            width:315px;
             background: transparent;
             color:#005792;
             font-size: 14px;

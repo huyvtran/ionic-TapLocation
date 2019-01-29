@@ -6,8 +6,8 @@
 -->
 <ion-header>
 
-  <ion-navbar color="primary"  text-center>
-    <ion-title>Truck Questions</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Truck questions</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -66,16 +66,17 @@
   <ion-list *ngSwitchCase="'2'">
  <form [formGroup]="user" class="form-holder" (ngSubmit)="next3()"  novalidate>
 
-  <ion-item no-lines text-center class="op" [ngClass]="{'error-border':!user.get('liters').valid && user.get('liters').touched}">
+  <ion-item no-lines text-center class="item1" >
   <span text-wrap>How many liters does the truck offer per water station?</span>
   </ion-item>
   <br><br>
-  <ion-item class="op">
-    <ion-input class="input" type="text" formControlName="liters" placeholder="E.g 375 liters of water each week "></ion-input>
-  </ion-item>
-  
+
  
-  <ion-item  no-lines class="invalid" *ngIf="user.get('liters').hasError('required') && user.get('liters').touched" >
+    <ion-item no-lines class="outline" [ngClass]="{'error-border':!user.get('liters').valid && user.get('liters').touched}">
+       <ion-input type="text" formControlName="liters" placeholder="E.g 375 liters of water each week "></ion-input>   
+  </ion-item>
+
+<ion-item  no-lines class="invalid" *ngIf="user.get('liters').hasError('required') && user.get('liters').touched" >
   <p ion-text color="danger">This field is required!</p>
   </ion-item>
     
@@ -85,7 +86,7 @@
       
   <ion-item no-lines class="invalid" *ngIf="user.get('liters').hasError('pattern') && user.get('liters').touched">
   <p ion-text color="danger">This field can only take numbers!</p>
-  </ion-item>
+  </ion-item> -->
 
 
   <ion-footer class="footer">
@@ -101,12 +102,12 @@
   <span>How realiable is the truck service? </span>
   </ion-item>
   <br><br>
-  <ion-item class="op">
+  <ion-item class="op1">
     <ion-label>Good</ion-label>
     <ion-radio value="good"></ion-radio>
   </ion-item>
   <br>
-  <ion-item class="op">
+  <ion-item class="op1">
     <ion-label>Poor</ion-label>
     <ion-radio value="poor"></ion-radio>
   </ion-item>
@@ -153,13 +154,12 @@
 </div>
 
 <div class="container" *ngIf="isCaptured">
-    <h4>The water truck is recorded, thank you for capturing data for us!</h4>
+    <h4 text-center>The water truck is recorded, thank you for capturing data for us!</h4>
     <br>
     <br>
-    <h4>Take another truck survey?</h4>
-    <br>
-    <button ion-button   class="outline"  color="light" (click)="yes()">Yes,please.</button>  
-    <button ion-button  class="outline"  color="light" (click)="no()">No,thanks!</button>  
+ 
+  
+    <button ion-button block  class="but1"  (click)="no()">OK</button>  
   </div>
 </ion-content>
 <ion-footer>

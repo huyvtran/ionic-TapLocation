@@ -5,31 +5,11 @@ page-tap {
 
     .content{
 
-        // background-color:#edf9fc;
-        background-color:whitesmoke;
+        background-color:#edf9fc;
     }
     .scroll-content {
         overflow: hidden !important;
-    }
-    .op{
-        
-        // background-color: rgba(0.0,0.0,0.0,0.1);
-        width:330px;
-        border-radius: 5px;
-        color: #005792;
-        cursor: pointer;
-        // position: relative;
-        // z-index: 3;
-        background:transparent;
-        // color:#005792;
-        border-color:#b1e6f0;
-        border-style: solid;
-        border-width:2px;
-      
-    }
-    .op1{
-
-        background-color:#edf9fc;
+        justify-content: center;
     }
     button {
         
@@ -44,7 +24,7 @@ page-tap {
             background: transparent;
             color:#005792;
             font-size: 14px;
-            border-color:t#005792;
+            border-color:transparent;
             border-style: solid;
             border-width:1px;
             border-radius:5px;
@@ -56,8 +36,8 @@ page-tap {
             }
         }
         &.outline:hover {
-            color:lightgrey;
-            background:#d1f4fa;
+         
+            background:transparent;
             border-color:#d1f4f4;
             transition: all 0.2s linear;
         }
@@ -194,8 +174,59 @@ page-tap {
             // }
     
     }
-    
-  
+
+    .op{
+        
+        // background-color: rgba(0.0,0.0,0.0,0.1);
+        width:330px;
+        border-radius:5px;
+        color: #005792;
+        cursor: pointer;
+        // position: relative;
+        // z-index: 3;
+        background:transparent;
+        // color:#005792;
+        border-color:#b1e6f0;
+        border-style: solid;
+        border-width:2px;
+      
+    }
+    .op1{
+
+        
+         width:330px;
+         border-radius:5px;
+         color: #005792;
+         cursor: pointer;
+         // position: relative;
+         // z-index: 3;
+         background-color:transparent;
+         // color:#005792;
+         border-color:#b1e6f0;
+         border-style:solid;
+         border-width:2px;
+       
+    }
+    .but1{
+        height:45px;
+        width:315px;
+        position: relative;
+        z-index: 3;
+        background: transparent;
+        color:#005792;
+        font-size: 14px;
+        border-color: #005792;
+        border-style: solid;
+        border-width: 2px;
+        border-radius:5px;
+        padding: 0px 5px;
+        text-transform: uppercase;
+        transition: all 0.1s linear;
+        a {
+            text-decoration: none;
+        }
+
+    }
 }
 .alertcss{
 
@@ -203,10 +234,9 @@ page-tap {
         color:#005792;
     }
     .alert-wrapper{
-        background:#d1f4fa;
+        background:#edf9fc;
        color:#005792;
        
        
    }
 }
-
