@@ -64,6 +64,7 @@ page-home {
         }
     }
     ion-card{
+        
        
     &.outline {
            background-color:transparent;
@@ -71,6 +72,7 @@ page-home {
            height:200px;
            width:200px;
            left:50px;
+           right:60px;;
            position: relative;
             z-index: 3;
             color:#53cde2;;
@@ -110,8 +112,9 @@ page-home {
         justify-content: center;
         padding:10px;
         color: #005792;
-        font-weight: bolder;
+        font-weight:bolder;
        left:25px;
+       font-size:100px;
     }
     ion-grid{
         background-color:transparent;
@@ -119,4 +122,16 @@ page-home {
         height:500px;
         width:400px;
     }
+}
+  .alertcss{
+
+    button{
+        color:#005792;
+    }
+    .alert-wrapper{
+       background:#edf9fc;
+       color:#005792;
+       
+       
+   }
 }

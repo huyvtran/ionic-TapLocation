@@ -48,7 +48,7 @@ export class CoordstPage {
   }
   nextQ(){
 
-    this.navCtrl.push(TruckPage,{slatitude:this.slatitude,slongitude:this.slongitude});
+    this.navCtrl.setRoot(TruckPage,{slatitude:this.slatitude,slongitude:this.slongitude});
   }
   drawMap(): void {
     this.map = Leaflet.map('map').setView([-0.1836298, -78.4821206], 13);

@@ -6,8 +6,8 @@
 -->
 <ion-header>
 
-  <ion-navbar color="primary"  text-center>
-    <ion-title>Tap Questions</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Tap questions</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -103,13 +103,12 @@
 </div>
 </div>
 <div  class="container" *ngIf="isCaptured">
-  <h4>The tap is recorded, thank you for capturing data for us!</h4>
+  <h4 text-center>The tap is recorded, thank you for capturing data for us!</h4>
   <br>
   <br>
-  <h4>Take another tap survey?</h4>
-  <br><br><br><br>
-  <button ion-button  class="outline"  color="light" (click)="yes()" outline>Yes,please.</button>  
-  <button ion-button  class="outline"  color="light" (click)="no()" outline>No,thanks!</button>  
+
+ 
+  <button ion-button block  class="but1"  (click)="no()" outline>OK</button>  
 </div>
 </ion-content>
 

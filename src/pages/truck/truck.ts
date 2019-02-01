@@ -73,7 +73,9 @@ export class TruckPage {
       time:this.time,
       liters:this.liters,
       reliable:this.reliable,
-      days:this.days
+      days:this.days,
+      latitude:this.slatitude,
+      longitude:this.slongitude
     });
 
     this.tapwater=[];
@@ -83,7 +85,7 @@ export class TruckPage {
 
   back2(){
     this.tapwater.splice(0,1);
-    this.navCtrl.popTo(CoordstPage);
+    this.navCtrl.push(CoordstPage);
   }
   back3(){
     this.truck='1';
@@ -131,7 +133,7 @@ export class TruckPage {
   }
 
   next3(){
-    if(this.user.controls["liters"].value===''){
+    if(this.liters===''){
       let alert = this.alertCtrl.create({
         subTitle: 'Please enter the liters offered.',
         buttons: ['ok'],
@@ -140,7 +142,7 @@ export class TruckPage {
       alert.present();
     }
     else{
-    this.tapwater.push(this.user.controls["liters"].value);
+    this.tapwater.push(this.liters);
     this.truck='3';
     // this.liters='';
   }
