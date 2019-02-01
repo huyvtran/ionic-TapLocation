@@ -65,7 +65,9 @@ export class TapPage {
       location:this.location,
       time:this.time,
       reliable:this.reliable,
-      safety:this.safety
+      safety:this.safety,
+      latitude:this.slatitude,
+      longitude:this.slongitude
     });
     this.tapwater=[];
     this.isCaptured=true;

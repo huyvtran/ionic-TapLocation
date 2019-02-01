@@ -34,11 +34,14 @@ export class CoodsPage {
     this.locate();
     console.log('ionViewDidLoad CoodsPage');
   }
+  locateme(){
+    this.geolocation.getCurrentPosition().then((resp) => {});
+    var map = this.map;
+    map.locate({ setView: true});
+
+  }
   locate(){
     this.geolocation.getCurrentPosition().then((resp) => {
-      // resp.coords.latitude
-      // resp.coords.longitude
-      this.data = " latitude:"+ resp.coords.latitude + " \n " + "longidute: " + resp.coords.longitude
       this.slatitude=resp.coords.latitude+"";     
       this.slongitude=resp.coords.longitude+"";
       this.isSaved=true; 
