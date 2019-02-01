@@ -74,6 +74,8 @@ export class TruckPage {
       liters:this.liters,
       reliable:this.reliable,
       days:this.days,
+      optime:this.starttime,
+      clotime:this.endtime,
       latitude:this.slatitude,
       longitude:this.slongitude
     });

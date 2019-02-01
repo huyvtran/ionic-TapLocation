@@ -67,6 +67,8 @@ export class TapPage {
       reliable:this.reliable,
       safety:this.safety,
       latitude:this.slatitude,
+      optime:this.starttime,
+      clotime:this.endtime,
       longitude:this.slongitude
     });
     this.tapwater=[];
