@@ -39,7 +39,12 @@ export class TapPage {
   hourstocompare=["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"]
   startTime=["06:00","07:00","08:00","09:00","10:00","11:00","12:00"];
   endTime=["13:00","14:00","15:00","16:00","17:00","18:00","19:00"];
-  
+  reftap = firebase.database().ref('waterService/taps/answers/');
+  updateFire:firebase.database.Reference;
+  id:string;
+  key:string;
+  listTaps = [];
+  index:number;
   constructor(public navCtrl: NavController,private alertCtrl: AlertController, public navParams: NavParams, private taps:TapProvider) {
     this.slatitude=this.navParams.get('slatitude');
     this.slongitude=this.navParams.get('slongitude');
@@ -51,7 +56,7 @@ export class TapPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TapPage');
-    
+ 
   }
   waterTap(){
 
@@ -74,6 +79,27 @@ export class TapPage {
     this.tapwater=[];
     this.isCaptured=true;
     this.hide=false;
+    this.uploadTaps();
+  }
+  uploadTaps(){
+    this.reftap.on('value', resp => {
+      this.listTaps = snapshotToArray(resp);
+      for(var i=0;i<this.listTaps.length;i++){
+         this.index=+i;
+      }
+      this.key=this.listTaps[this.index].key;
+      this.updateTap(this.key)
+      console.log('index',this.key);
+    });
+  }
+  updateTap(key){
+    this.updateFire=firebase.database().ref('waterService/taps/answers/'+this.key);
+    this.id=key.substr(key.length -5);
+    this.update(this.id);
+    
+  }
+  update(id:string):Promise<any>{
+    return this.updateFire.update({id})
   }
   back1(){
     this.tapwater.splice(0,1);
@@ -156,11 +182,22 @@ export class TapPage {
     console.log('data',this.tapwater)
     
   }
- yes(){
+  yes(){
    this.navCtrl.push(TapPage);
- }
- no(){
-  this.navCtrl.setRoot(HomePage);
-}
+  }
+  ok(){
+    this.navCtrl.setRoot(HomePage);
+  }
 
+}
+export const snapshotToArray = snapshot => {
+  let returnArr = [];
+
+  snapshot.forEach(childSnapshot => {
+      let item = childSnapshot.val();
+      item.key = childSnapshot.key;
+      returnArr.push(item);
+  });
+
+  return returnArr;
 }
