@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import * as Leaflet from 'leaflet';
 import 'leaflet-draw';
@@ -24,7 +24,7 @@ export class CoodsPage {
   isSaved=false;
   slatitude:string="";
   slongitude:string="";
-  constructor(public navCtrl: NavController, private geolocation:Geolocation, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, private loadingCtrl:LoadingController, private geolocation:Geolocation, public navParams: NavParams) {
   
   }
   ngOnInit():void{
@@ -41,7 +41,12 @@ export class CoodsPage {
 
   }
   locate(){
+    let loading = this.loadingCtrl.create({
+      content: 'Loading...'
+    });
+    loading.present();
     this.geolocation.getCurrentPosition().then((resp) => {
+      loading.dismiss();
       this.slatitude=resp.coords.latitude+"";     
       this.slongitude=resp.coords.longitude+"";
       this.isSaved=true; 
@@ -68,8 +73,7 @@ export class CoodsPage {
      //when we have a location draw a marker and accuracy circle
      function onLocationFound(e) {
        var radius = e.accuracy / 2;
-       Leaflet.marker(e.latlng).addTo(map)
-       Leaflet.circle(e.latlng, radius).addTo(map);
+       Leaflet.marker(e.latlng).addTo(map);
      }
      map.on('locationfound', onLocationFound);
 

@@ -4,6 +4,9 @@ page-coods {
 
         background-color: #edf9fc;
     }
+    .scroll-content {
+      overflow: hidden !important;
+  }
       #map {
         height: 100%;
         width: 100%;
