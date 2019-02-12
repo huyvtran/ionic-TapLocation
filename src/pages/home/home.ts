@@ -21,11 +21,11 @@ export class HomePage {
   }
 
   tap(){
-    this.navCtrl.push(CoodsPage);
+    this.navCtrl.setRoot(CoodsPage);
   }
 
   truck(){
-    this.navCtrl.push(CoordstPage);
+    this.navCtrl.setRoot(CoordstPage);
   }
   map(){
     this.navCtrl.push(MapPage);

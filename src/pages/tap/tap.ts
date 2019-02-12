@@ -103,7 +103,7 @@ export class TapPage {
   }
   back1(){
     this.tapwater.splice(0,1);
-    this.navCtrl.push(CoodsPage);
+    this.navCtrl.setRoot(CoodsPage);
   }
   back2(){
     this.tap='1';

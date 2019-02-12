@@ -87,7 +87,7 @@ export class TruckPage {
 
   back2(){
     this.tapwater.splice(0,1);
-    this.navCtrl.push(CoordstPage);
+    this.navCtrl.setRoot(CoordstPage);
   }
   back3(){
     this.truck='1';
