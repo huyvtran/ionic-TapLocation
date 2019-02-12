@@ -1,5 +1,10 @@
 <ion-header>
   <ion-navbar color="primary" text-center> 
+      <ion-buttons left>
+          <button ion-button icon-only (click)="back()">
+            <ion-icon name="arrow-back"></ion-icon>
+          </button>
+      </ion-buttons>
     <ion-title>Choose truck location</ion-title>
     <ion-buttons end>
         <button ion-button icon-only (click)="nextQ()">

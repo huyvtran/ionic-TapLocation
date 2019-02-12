@@ -1,3 +1,4 @@
+import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -49,6 +50,10 @@ export class CoordstPage {
   nextQ(){
 
     this.navCtrl.setRoot(TruckPage,{slatitude:this.slatitude,slongitude:this.slongitude});
+  }
+
+  back(){
+    this.navCtrl.setRoot(HomePage)
   }
   drawMap(): void {
     this.map = Leaflet.map('map').setView([-0.1836298, -78.4821206], 13);

@@ -1,3 +1,4 @@
+import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -79,6 +80,9 @@ export class CoodsPage {
     }
 
     this.map.on('locationerror', onLocationError);
+  }
+  back(){
+    this.navCtrl.setRoot(HomePage)
   }
 
 }
