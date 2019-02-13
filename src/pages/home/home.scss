@@ -68,11 +68,15 @@ page-home {
        
     &.outline {
            background-color:transparent;
+           display: flex;
+           justify-content: center;
+           align-content: center;
+           align-items: center;
            border-radius:50%;
            height:200px;
+           left:75px;
+           right:75px;
            width:200px;
-           left:50px;
-           right:60px;;
            position: relative;
             z-index: 3;
             color:#53cde2;;
@@ -80,7 +84,7 @@ page-home {
             border-color: #005792;;
             border-style: solid;
             border-width: 2px;
-            padding: 10px 15px;
+            padding: 20px 30px;
             text-transform: uppercase;
             transition: all 0.2s linear;
             a {
@@ -120,6 +124,9 @@ page-home {
         background-color:transparent;
         border-radius:5%;
         height:500px;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
         // width:400px;
     }
 }
@@ -133,5 +140,12 @@ page-home {
        color:#005792;
        
        
+   }
+   .row{
+
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  
    }
 }

@@ -53,7 +53,7 @@ export class HomePage {
           text: 'Log Out',
           handler: () => {
             this.auth.signOut();
-            this.navCtrl.push(SigninPage);
+            this.navCtrl.setRoot(SigninPage);
             console.log('Logged out');
           }
         }
