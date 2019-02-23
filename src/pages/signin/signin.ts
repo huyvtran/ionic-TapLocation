@@ -1,3 +1,4 @@
+import { ListPage } from './../list/list';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthProvider } from './../../providers/auth/auth';
 import { SignupPage } from './../signup/signup';
@@ -66,7 +67,7 @@ signIn(){
     .then(authData=>{
       loading.dismiss();
       this.load.dismiss().then(()=>{
-        this.navCtrl.setRoot(HomePage);
+        this.navCtrl.setRoot(ListPage);
       })
     },error=>{
       this.load.dismiss().then(()=>{

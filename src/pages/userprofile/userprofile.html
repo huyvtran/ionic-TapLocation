@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar text-center>
+  <ion-navbar color="primary" text-center>
     <ion-title>userprofile</ion-title>
     <ion-buttons end>
           <button ion-button icon-only  (click)="signoutConfirm()">
@@ -18,6 +18,16 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="content">
+  <div class="user" align="center">
+    <ion-list no-lines>
+      <ion-item>
+        <h2>{{firstname}} {{lastname}}</h2>
+      </ion-item>
+      <ion-item>
+          <h2>{{email}}</h2>
+      </ion-item>
+    </ion-list>
+  </div>
 
 </ion-content>

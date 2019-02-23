@@ -22,12 +22,14 @@ export class AuthProvider {
   signIn(email:string,password:string):Promise<any>{
     return firebase.auth().signInWithEmailAndPassword(email,password);
   }
- 
   signOut():Promise<any>{
-    const userId:string = firebase.auth().currentUser.uid;
-    firebase.database().ref(`/userProfile/${userId}`).off();
     return firebase.auth().signOut();
   }
+  // signOut():Promise<any>{
+  //   const userId:string = firebase.auth().currentUser.uid;
+  //   firebase.database().ref(`/userProfile/${userId}`).off();
+  //   return firebase.auth().signOut();
+  // }
   passwordreset(email:string) {
     var promise = new Promise((resolve, reject) => {
       firebase.auth().sendPasswordResetEmail(email).then(() => {

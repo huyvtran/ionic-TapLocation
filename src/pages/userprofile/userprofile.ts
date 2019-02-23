@@ -1,6 +1,7 @@
+import { ProfileProvider } from './../../providers/profile/profile';
 import { SigninPage } from './../signin/signin';
 import { AuthProvider } from './../../providers/auth/auth';
-import { Component } from '@angular/core';
+import { Component,NgZone } from '@angular/core';
 import {IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 /**
@@ -16,12 +17,28 @@ import {IonicPage, NavController, NavParams, AlertController } from 'ionic-angul
   templateUrl: 'userprofile.html',
 })
 export class UserprofilePage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl:AlertController,private authPROV:AuthProvider) {
+  avatar:string;
+  firstname:string;
+  lastname:string;
+  email:string;
+  constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl:AlertController,
+    private authPROV:AuthProvider,public zone: NgZone,private djPROV:ProfileProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserprofilePage');
+  }
+
+  loaduserdetails() {
+    this.djPROV.getuserdetails().then((res: any) => {
+      this.firstname = res.firstName;
+      this.email = res.email;
+      this.lastname= res.lastName;
+      console.log('userProfile',res)
+      this.zone.run(() => {
+        this.avatar = res.photoURL;
+      })
+    })
   }
 
   signoutConfirm(){

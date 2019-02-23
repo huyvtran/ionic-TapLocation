@@ -1,3 +1,4 @@
+import { ListPage } from './../pages/list/list';
 import { SigninPage } from './../pages/signin/signin';
 import { TruckPage } from './../pages/truck/truck';
 import { TapPage } from './../pages/tap/tap';
@@ -13,7 +14,7 @@ import { CoodsPage } from '../pages/coods/coods';
 })
 export class MyApp {
 
-  rootPage:any = SigninPage;
+  rootPage:any = ListPage;
   
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

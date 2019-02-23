@@ -6,49 +6,26 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>list</ion-title>
+  <ion-navbar color="primary">
+    <ion-title text-center>WaterService</ion-title>
+    <ion-buttons end>
+    <button ion-button (click)="profile()">
+    <ion-icon name="person"></ion-icon>
+    </button>
+    </ion-buttons>
   </ion-navbar>
-
+ 
 </ion-header>
 
-<ion-content padding>
-    <div padding>
-        <ion-segment [(ngModel)]="water">
-          <ion-segment-button value="taps">
-            Taps
-          </ion-segment-button>
-          <ion-segment-button value="trucks">
-            Trucks
-          </ion-segment-button>
-        </ion-segment>
-      </div>
-      
-      <div [ngSwitch]="water">
-        <ion-list *ngSwitchCase="'taps'" text-center>
-            <ion-item *ngFor="let tap of taps; let i=index">
-              <p>{{tap.time}}</p>
-              
-              <div *ngIf="taps[i].time===activeTaps[i];else not">
-                <button ion-button large color="danger" class="green"></button>
-              </div>
-              <ng-template #not >
-                <button ion-button large color="danger" class="red"></button>
-              </ng-template>
-            </ion-item> 
-        </ion-list>
-      
-        <ion-list *ngSwitchCase="'trucks'" text-center >
-          <ion-item *ngFor="let truck of trucks">
-            <span>{{truck.location}}</span>
-            <p>{{truck.time}}</p>
-            <div *ngIf="truck[i]===activeTaps[i];else not">
-              <button ion-button large color="danger" class="green"></button>
-            </div>
-            <ng-template #not >
-              <button ion-button large color="danger" class="red"></button>
-            </ng-template>
-          </ion-item>
-        </ion-list>
-      </div>
+
+<ion-content padding class="content">
+<ion-fab bottom right slot="fixed">
+<button  ion-fab color="primary" (click)="add()"><ion-icon name="add"></ion-icon></button>
+</ion-fab>
+
+<ion-fab bottom left slot="fixed">
+<button ion-fab color="primary"><ion-icon name="map"></ion-icon></button>
+</ion-fab>
+
+
 </ion-content>

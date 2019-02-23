@@ -1,3 +1,5 @@
+import { ProfilePage } from './../pages/profile/profile';
+import { ListPage } from './../pages/list/list';
 import { UserprofilePage } from './../pages/userprofile/userprofile';
 import { ResetpasswordPage } from './../pages/resetpassword/resetpassword';
 import { SignupPage } from './../pages/signup/signup';
@@ -21,10 +23,10 @@ import { ProfileProvider } from '../providers/profile/profile';
 import { WaterServiceProvider } from '../providers/water-service/water-service';
 import { TapProvider } from '../providers/tap/tap';
 import { TruckProvider } from '../providers/truck/truck';
-import { ListPage } from '../pages/list/list';
 import { LeafletmapPage } from '../pages/leafletmap/leafletmap';
 import { CoodsPage } from '../pages/coods/coods';
 import { CoordstPage } from '../pages/coordst/coordst';
+import { ListProvider } from '../providers/list/list';
 
 var config = {
     apiKey: "AIzaSyCDA2SmyMOpqB49eOYtL566O6_QZOQL9zQ",
@@ -45,6 +47,7 @@ firebase.initializeApp(config);
     MapPage,
     CoordstPage,
     TapPage,
+    ProfilePage,
     TruckPage,
     LeafletmapPage,
     SigninPage,
@@ -65,6 +68,7 @@ firebase.initializeApp(config);
     MapPage,
     CoodsPage,
     CoordstPage,
+    ProfilePage,
     LeafletmapPage,
     TapPage,
     ListPage,
@@ -85,7 +89,8 @@ firebase.initializeApp(config);
     ProfileProvider,
     WaterServiceProvider,
     TapProvider,
-    TruckProvider
+    TruckProvider,
+    ListProvider
   ]
 })
 export class AppModule {}
