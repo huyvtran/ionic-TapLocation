@@ -27,6 +27,9 @@ import { LeafletmapPage } from '../pages/leafletmap/leafletmap';
 import { CoodsPage } from '../pages/coods/coods';
 import { CoordstPage } from '../pages/coordst/coordst';
 import { ListProvider } from '../providers/list/list';
+import { GeocoderProvider } from '../providers/geocoder/geocoder';
+import { ImageProvider } from '../providers/image/image';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 var config = {
     apiKey: "AIzaSyCDA2SmyMOpqB49eOYtL566O6_QZOQL9zQ",
@@ -90,7 +93,10 @@ firebase.initializeApp(config);
     WaterServiceProvider,
     TapProvider,
     TruckProvider,
-    ListProvider
+    ListProvider,
+    GeocoderProvider,
+    ImageProvider,
+    Camera
   ]
 })
 export class AppModule {}
