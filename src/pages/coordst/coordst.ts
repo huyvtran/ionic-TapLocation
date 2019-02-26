@@ -1,10 +1,11 @@
 import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import * as Leaflet from 'leaflet';
 import 'leaflet-draw';
 import { TruckPage } from '../truck/truck';
+import { GeocoderProvider } from '../../providers/geocoder/geocoder';
 /**
  * Generated class for the CoordstPage page.
  *
@@ -18,7 +19,7 @@ import { TruckPage } from '../truck/truck';
   templateUrl: 'coordst.html',
 })
 export class CoordstPage {
-
+  address;
   map: any;
   data: any;
   estado: any;
@@ -26,7 +27,7 @@ export class CoordstPage {
   next='';
   slatitude:string="";
   slongitude:string="";
-  constructor(public navCtrl: NavController,private loadingCtrl:LoadingController, private geolocation:Geolocation, public navParams: NavParams) {
+  constructor(private alertCtrl: AlertController,public navCtrl: NavController,private geoCoder:GeocoderProvider,private loadingCtrl:LoadingController, private geolocation:Geolocation, public navParams: NavParams) {
   }
   ngOnInit():void{
     this.drawMap();
@@ -44,6 +45,7 @@ export class CoordstPage {
       loading.dismiss();
       this.slatitude=resp.coords.latitude+"";     
       this.slongitude=resp.coords.longitude+"";
+      this.confirmAddress(this.slatitude,this.slongitude)
       this.isSaved=true; 
     }).catch((error) => {
        console.log('Error getting location', error);
@@ -51,9 +53,24 @@ export class CoordstPage {
   }
   nextQ(){
 
-    this.navCtrl.setRoot(TruckPage,{slatitude:this.slatitude,slongitude:this.slongitude});
+    this.navCtrl.setRoot(TruckPage,{slatitude:this.slatitude,slongitude:this.slongitude,address:this.address});
   }
-
+  confirmAddress(lat,lng){
+    console.log('confirm')
+    this.geoCoder.reverseGeocode(lat,lng).then((data:any)=>{
+  
+    this.address = data
+    console.log('address',this.address);
+    let alert = this.alertCtrl.create({
+      subTitle: 'Address confirmation',
+      message:this.address,
+      buttons: ['ok'],
+      cssClass: 'alertcss'
+    });
+    
+      alert.present();
+  })
+  }
   back(){
     this.navCtrl.setRoot(HomePage)
   }

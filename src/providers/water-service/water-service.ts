@@ -11,13 +11,27 @@ import 'firebase/database';
 export class WaterServiceProvider {
   userProfile:firebase.database.Reference;
   currentUser:User;
+  firedata=firebase.database().ref('/userProfile');
   constructor() {
-
     firebase.auth().onAuthStateChanged(user=>{
       if(user){
         this.currentUser=user;
-       this.userProfile= firebase.database().ref(`/userProfile/${user.uid}/waterService`);
+        this.userProfile=firebase.database().ref(`/userProfile/${user.uid}`)
       }
     })
+  }
+  getDjProfile():firebase.database.Reference{
+    return this.userProfile;
+  }
+  getuserdetails() {
+    var promise = new Promise((resolve, reject) => {
+    this.firedata.child(firebase.auth().currentUser.uid).once('value', (snapshot) => {
+      let userdata = snapshot.val();
+      resolve(snapshot.val());
+    }).catch((err) => {
+      reject(err);
+      })
+    })
+    return promise;
   }
 }

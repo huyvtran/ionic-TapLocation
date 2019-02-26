@@ -59,7 +59,7 @@ signIn(){
   console.log(this.userForm.valid)
   }else{
     let loading = this.loadingCtrl.create({
-      content: 'Logging in...'
+      content: 'Please wait...'
     });
   
     loading.present();
@@ -73,14 +73,14 @@ signIn(){
       this.load.dismiss().then(()=>{
         loading.dismiss();
         const alert = this.alertCtrl.create({
-          subTitle: 'Please check your user details or signup',
+          subTitle:'<img src="../../assets/imgs/checkmark-gif.gif">',
           buttons: [{
             text:'Ok',
             handler:data=>{
              
               }
             }],
-            cssClass: 'alertcss'
+            cssClass: 'alertCheck'
         });
         alert.present();
 

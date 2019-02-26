@@ -1,10 +1,11 @@
 import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import * as Leaflet from 'leaflet';
 import 'leaflet-draw';
 import { TapPage } from '../tap/tap';
+import { GeocoderProvider } from '../../providers/geocoder/geocoder';
 /**
  * Generated class for the CoodsPage page.
  *
@@ -18,14 +19,14 @@ import { TapPage } from '../tap/tap';
   templateUrl: 'coods.html',
 })
 export class CoodsPage {
-
+  address;
   map: any;
   data: any;
   estado: any;
   isSaved=false;
   slatitude:string="";
   slongitude:string="";
-  constructor(public navCtrl: NavController, private loadingCtrl:LoadingController, private geolocation:Geolocation, public navParams: NavParams) {
+  constructor(private alertCtrl: AlertController,private geoCoder:GeocoderProvider,public navCtrl: NavController, private loadingCtrl:LoadingController, private geolocation:Geolocation, public navParams: NavParams) {
   
   }
   ngOnInit():void{
@@ -51,12 +52,30 @@ export class CoodsPage {
       this.slatitude=resp.coords.latitude+"";     
       this.slongitude=resp.coords.longitude+"";
       this.isSaved=true; 
+      this.confirmAddress(this.slatitude,this.slongitude)
     }).catch((error) => {
        console.log('Error getting location', error);
      });
   }
+  confirmAddress(lat,lng){
+    console.log('confirm')
+    this.geoCoder.reverseGeocode(lat,lng).then((data:any)=>{
+  
+    this.address = data
+    console.log('address',this.address);
+    let alert = this.alertCtrl.create({
+      subTitle: 'Address confirmation',
+      message:this.address,
+      buttons: ['ok'],
+      cssClass: 'alertcss'
+    });
+    
+    alert.present();
+})
+
+  }
   nextQ(){
-    this.navCtrl.setRoot(TapPage,{slatitude:this.slatitude,slongitude:this.slongitude});
+    this.navCtrl.setRoot(TapPage,{slatitude:this.slatitude,slongitude:this.slongitude,address:this.address});
   }
   drawMap(): void {
     this.map = Leaflet.map('map').setView([-0.1836298, -78.4821206], 13);

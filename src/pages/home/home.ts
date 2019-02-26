@@ -9,6 +9,7 @@ import { SigninPage } from '../signin/signin';
 import { ListPage } from '../list/list';
 import { CoodsPage } from '../coods/coods';
 import { CoordstPage } from '../coordst/coordst';
+import { GeocoderProvider } from '../../providers/geocoder/geocoder';
 
 @Component({
   selector: 'page-home',
@@ -16,12 +17,18 @@ import { CoordstPage } from '../coordst/coordst';
 })
 export class HomePage {
  today:number;
-  constructor(public navCtrl: NavController, private auth:AuthProvider,public alertCtrl:AlertController) {
+  constructor(private geoCoder:GeocoderProvider, public navCtrl: NavController, private auth:AuthProvider,public alertCtrl:AlertController) {
 
   }
+  
 
   tap(){
     this.navCtrl.setRoot(CoodsPage);
+  }
+  ionViewDidEnter(){
+this.geoCoder.reverseGeocode(-26.015374,28.2291106).then(results=>{
+  console.log(results);
+})
   }
 
   truck(){
@@ -62,5 +69,9 @@ export class HomePage {
     });
     alert.present();
   }
+
+  
+
+
   
 }
