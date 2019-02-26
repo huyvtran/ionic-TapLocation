@@ -1,0 +1,80 @@
+page-water-truck {
+    .content {
+        background: #000428;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #edf9fc, #edf9fc);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #edf9fc, #edf9fc);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    .item {
+        background: #edf9fc;
+    }
+    ion-card {
+        border-radius: 15px !important;
+        background-color: transparent;
+        background: none !important;
+        width: 100%;
+        margin: 20px;
+        margin-bottom: 25px;
+        position: relative;
+        text-align: center;
+        top: 20px;
+        // color: white;
+        box-shadow: 14px 3px 56px 2px rgba(41, 40, 40, 0.75) !important;
+        -webkit-box-shadow: 14px 3px 56px 2px rgba(41, 40, 40, 0.75)!important;
+        -moz-box-shadow: 14px 3px 56px 2px rgba(41, 40, 40, 0.75)!important;
+    }
+    .container {
+        margin-top: 30px;
+    }
+    .imageContainer {
+        width: 100px;
+    }
+    .card-header {
+        // color: white;
+    }
+    .thumbnail {
+        width: 50px;
+    }
+    .item-divider {
+        background: #03c3f3 !important
+    }
+    img {
+        opacity: 0.9;
+        position: fixed;
+        font-size: 40px;
+        max-width: 40px;
+        max-height: 100px;
+        width: 100%;
+    }
+    ion-header {
+        border: solid;
+        border-color: transparent;
+        border-radius: 50px;
+        background: none;
+        max-height: 50px;
+        .toolbar {
+            position: absolute;
+            .toolbar-background {
+                background: transparent;
+            }
+        }
+    }
+    ion-navbar.toolbar {
+        background: white !important;
+        border: none;
+        border-radius: 20px;
+        height: 10px;
+    }
+    .searchbar {
+        background: none !important;
+    }
+    .searchbar-input {
+        background-color: white !important;
+        border: solid;
+        border-radius: -15px;
+        border-color: transparent;
+        box-shadow: none !important;
+    }
+}

@@ -1,3 +1,8 @@
+import { Camera } from '@ionic-native/camera/ngx';
+import { WaterTruckPage } from './../pages/water-truck/water-truck';
+import { WaterTapPage } from './../pages/water-tap/water-tap';
+import { WaterServiceTabsPage } from './../pages/water-service-tabs/water-service-tabs';
+
 import { ProfilePage } from './../pages/profile/profile';
 import { ListPage } from './../pages/list/list';
 import { UserprofilePage } from './../pages/userprofile/userprofile';
@@ -15,7 +20,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { Geolocation } from '@ionic-native/geolocation';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import {IonicStorageModule } from '@ionic/storage';
+import { IonicStorageModule } from '@ionic/storage';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { AuthProvider } from '../providers/auth/auth';
 import * as firebase from 'firebase';
@@ -28,8 +33,8 @@ import { CoodsPage } from '../pages/coods/coods';
 import { CoordstPage } from '../pages/coordst/coordst';
 import { ListProvider } from '../providers/list/list';
 import { GeocoderProvider } from '../providers/geocoder/geocoder';
+
 import { ImageProvider } from '../providers/image/image';
-import { Camera, CameraOptions } from '@ionic-native/camera';
 
 var config = {
   apiKey: "AIzaSyCDA2SmyMOpqB49eOYtL566O6_QZOQL9zQ",
@@ -45,6 +50,9 @@ firebase.initializeApp(config);
 
 @NgModule({
   declarations: [
+    WaterServiceTabsPage,
+    WaterTapPage,
+    WaterTruckPage,
     MyApp,
     HomePage,
     ListPage,
@@ -69,6 +77,9 @@ firebase.initializeApp(config);
   ],
   bootstrap: [IonicApp],
   entryComponents: [
+    WaterServiceTabsPage,
+    WaterTapPage,
+    WaterTruckPage,
     MyApp,
     HomePage,
     MapPage,
@@ -90,7 +101,7 @@ firebase.initializeApp(config);
 
     NativeGeocoder,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthProvider,
     ProfileProvider,
     WaterServiceProvider,
@@ -103,4 +114,4 @@ firebase.initializeApp(config);
 
   ]
 })
-export class AppModule {}
+export class AppModule { }
