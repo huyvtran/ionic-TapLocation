@@ -144,12 +144,10 @@
 </div>
 </div>
 
-<div class="container" *ngIf="isCaptured">
-    <h4 text-center>The water truck is recorded, thank you for capturing data for us!</h4>
-    <br>
-    <br>
-    <button ion-button block  class="but1"  (click)="no()">OK</button>  
-  </div>
+<div  class="capture" *ngIf="isLoading" text-center>
+  <img class="image" src="../../assets/imgs/d35d94c490e598e3-loading-gif-transparent-loading-gif.gif">
+  <p>Please Wait...</p>
+</div>
 </ion-content>
 <ion-footer>
 

@@ -1,12 +1,13 @@
 
 import { HomePage } from './../home/home';
-import firebase, { User } from 'firebase/app';
+import firebase, { User, database } from 'firebase/app';
 import 'firebase/database';
-import 'firebase/auth';
-import { Component } from '@angular/core';
+import { Component,NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content, AlertController } from 'ionic-angular';
 import { CoordstPage } from '../coordst/coordst';
 import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
+import { Base64 } from '@ionic-native/base64';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 /**
  * Generated class for the TapPage page.
@@ -28,39 +29,62 @@ export class TruckPage {
   isDone=false;
   isSubmit=false;
   hide=false;
+  isLoading=false;
   truck='1';
+  index:number;
   location:string='';
   time:string='';
-  liters:string;
-  liter:string;
+  liters:string='';
   reliable:string='';
   days:string='';
   tapwater=[];
   starttime="";
   endtime="";
+  key:string;
   slatitude:string="";
   slongitude:string="";
+  imgPreview = 'assets/imgs/chatterplace.png';
+  currentUser:User;
+  
+  profileRef: firebase.database.Reference;
+  updateFire:firebase.database.Reference;
+  reftruck=firebase.database().ref('waterService/trucks/answers/');
+  address:string;
+  listTrucks = [];
+  id:string;
   startTime=["06:00","07:00","08:00","09:00","10:00","11:00","12:00"];
   endTime=["13:00","14:00","15:00","16:00","17:00","18:00","19:00"];
-  constructor(public navCtrl: NavController,private alertCtrl: AlertController,public FB:FormBuilder,
+  constructor(public navCtrl: NavController,public zone: NgZone,private camera: Camera,private alertCtrl: AlertController,public FB:FormBuilder,
      public navParams: NavParams) {
-
-    this.user= this.FB.group({
-  
-      liters:['',Validators.compose([Validators.required,
-      Validators.minLength(3),
-      Validators.pattern('[0-9]*')])],
-
-    })
-    
+       
     this.slatitude=this.navParams.get('slatitude');
     this.slongitude=this.navParams.get('slongitude');
+    this.address=this.navParams.get('address');
     this.location=this.slatitude+" - "+this.slongitude;
     this.tapwater.push(this.location);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TapPage');
+  }
+  uploadTrucks(){
+    this.reftruck.on('value', resp => {
+      this.listTrucks = snapshotToArray(resp);
+      for(var i=0;i<this.listTrucks.length;i++){
+         this.index=+i;
+      }
+      this.key=this.listTrucks[this.index].key;
+      this.updateTruck(this.key)
+      console.log('index',this.key);
+    });
+  }
+  updateTruck(key){
+    this.updateFire=firebase.database().ref('waterService/trucks/answers/'+this.key);
+    this.id=key.substr(key.length -5);
+    this.update(this.id);
+  }
+  update(id:string):Promise<any>{
+    return this.updateFire.update({id})
   }
   tapdata(){
     this.location=this.tapwater[0];
@@ -77,12 +101,15 @@ export class TruckPage {
       optime:this.starttime,
       clotime:this.endtime,
       latitude:this.slatitude,
-      longitude:this.slongitude
+      longitude:this.slongitude,
+      address:this.address,
+      picture:this.imgPreview
     });
 
     this.tapwater=[];
     this.isCaptured=true;
     this.hide=false;
+    this.uploadTrucks();
   }
 
   back2(){
@@ -137,7 +164,7 @@ export class TruckPage {
   next3(){
     if(this.liters===''){
       let alert = this.alertCtrl.create({
-        subTitle: 'Please enter the liters offered.',
+        subTitle: 'Please select one.',
         buttons: ['ok'],
         cssClass: 'alertcss'
       });
@@ -177,18 +204,64 @@ export class TruckPage {
       alert.present();
     }
     else{
-    this.tapwater.push(this.days);
-    this.days='';
-    this.tapdata();
-  }
+      this.tapwater.push(this.days);
+      this.days='';
+      this.isCaptured=true;
+      this.isLoading=true;
+      this.takePhoto();
+    }
     console.log('data',this.tapwater)
     
   }
+  takePhoto() {
+    this.tapdata();
+    this.uploadTrucks();
+    this.camera.getPicture({
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.PNG,
+      mediaType:this.camera.MediaType.PICTURE,
+      targetHeight: 500,
+      targetWidth: 500,
+      allowEdit:true,
+      correctOrientation: false,
+    }).then((profilePicture) => {
+      this.profileRef=database().ref('waterService/trucks/answers/'+this.key);
+  
+      firebase.storage().ref('trucks/pictures/'+this.key).putString(profilePicture, 'base64', { contentType: 'image/png' })
+      .then((savedProfilePicture) => {
+        savedProfilePicture.ref.getDownloadURL().then((downloadedUrl)=>{
+          this.imgPreview = downloadedUrl;
+          this.isLoading=false;
+          this.profileRef.child('/picture').set(downloadedUrl);
+          let alert = this.alertCtrl.create({
+            subTitle:'',
+            message:'<img src="../../assets/imgs/checkmark-gif.gif">',
+            buttons: [{
+              text:'Ok',
+              handler:(data)=>{
+                this.navCtrl.setRoot(HomePage)
+              }
+            }]
+          })
+          alert.present();
+        })
+    
+        })
+     
+    }, err => {
+      console.log('érror' + JSON.stringify(err))
+    })
+   }
+}
+export const snapshotToArray = snapshot => {
+  let returnArr = [];
 
-  yes(){
-    this.navCtrl.push(TruckPage);
-  }
-  no(){
-   this.navCtrl.setRoot(HomePage);
- }
+  snapshot.forEach(childSnapshot => {
+      let item = childSnapshot.val();
+      item.key = childSnapshot.key;
+      returnArr.push(item);
+  });
+
+  return returnArr;
 }

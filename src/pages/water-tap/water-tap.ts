@@ -10,7 +10,6 @@ import 'firebase/database';
 
 import { TapProvider } from '../../providers/tap/tap';
 import { Base64 } from '@ionic-native/base64';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 /**
  * Generated class for the WaterTapPage page.
@@ -31,7 +30,7 @@ export class WaterTapPage {
   key: any;
   refTap = firebase.database().ref('waterService/taps/answers/');
 
-  constructor(public navCtrl: NavController, private camera: Camera, public navParams: NavParams, private tapsProvider: TapProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private tapsProvider: TapProvider) {
   }
 
   ionViewDidEnter() {

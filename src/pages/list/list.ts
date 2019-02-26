@@ -8,7 +8,7 @@ import 'firebase/database';
 import { TruckProvider } from '../../providers/truck/truck';
 import { TapProvider } from '../../providers/tap/tap';
 import { Base64 } from '@ionic-native/base64';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 /**
  * Generated class for the ListPage page.
  *
@@ -34,67 +34,6 @@ export class ListPage {
   constructor(public navCtrl: NavController,private camera: Camera, public navParams: NavParams,private truck:TruckProvider,private tap:TapProvider) {
 
   }
-  //please help us with the camera.
-  //the key that the method receives is from the html, which will help to set up a downloadURL
-  takePhotoTruck(key) {
-
-    this.camera.getPicture({
-      quality: 95,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.PNG,
-      saveToPhotoAlbum: true,
-      targetHeight: 800,
-      targetWidth: 500,
-      allowEdit: true,
-      correctOrientation: true,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
-    }).then((profilePicture) => {
-      profilePicture=
-      firebase.storage().ref(`waterService/taps/answers/${key}`).putString(profilePicture, 'base64', { contentType: 'image/png' })
-      .then((savedProfilePicture) => {
-      
-        savedProfilePicture.ref.getDownloadURL().then((downloadedUrl)=>{
-        this.imgPreview = downloadedUrl;
-          this.reftap.child('/picture').set(downloadedUrl)
-       
-        })
-    
-        })
-     
-    }, err => {
-      console.log('érror' + JSON.stringify(err))
-    })
-   }
-   //please help us with the truck camera
-  takePhotoTap(key) {
-
-    this.camera.getPicture({
-      quality: 95,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.PNG,
-      saveToPhotoAlbum: true,
-      targetHeight: 800,
-      targetWidth: 500,
-      allowEdit: true,
-      correctOrientation: true,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
-    }).then((profilePicture) => {
-      profilePicture=
-      firebase.storage().ref(`waterService/taps/answers/${key}`).putString(profilePicture, 'base64', { contentType: 'image/png' })
-      .then((savedProfilePicture) => {
-      
-        savedProfilePicture.ref.getDownloadURL().then((downloadedUrl)=>{
-        this.imgPreview = downloadedUrl;
-          this.reftap.child('/picture').set(downloadedUrl)
-       
-        })
-    
-        })
-     
-    }, err => {
-      console.log('érror' + JSON.stringify(err))
-    })
-   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListPage');
   }
@@ -114,7 +53,7 @@ changeTruck(){
   this.name="Trucks"
 }
   profile(){
-    this.navCtrl.push(UserprofilePage)
+    this.navCtrl.push(ProfilePage)
   }
 
   add(){

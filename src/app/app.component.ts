@@ -1,3 +1,4 @@
+import { Camera } from '@ionic-native/camera';
 import { WaterServiceTabsPage } from './../pages/water-service-tabs/water-service-tabs';
 
 
@@ -12,12 +13,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { LeafletmapPage } from '../pages/leafletmap/leafletmap';
 import { CoodsPage } from '../pages/coods/coods';
+import { CoordstPage } from '../pages/coordst/coordst';
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
 
-  rootPage: any = WaterServiceTabsPage;
+  rootPage: any = SigninPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

@@ -9,7 +9,7 @@ import 'firebase/database';
 
 import { TruckProvider } from '../../providers/truck/truck';
 import { Base64 } from '@ionic-native/base64';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+
 
 /**
  * Generated class for the WatertruckPage page.
@@ -30,7 +30,7 @@ export class WaterTruckPage {
   key: any;
   reftruck = firebase.database().ref('waterService/trucks/answers/');
 
-  constructor(public navCtrl: NavController, private camera: Camera, public navParams: NavParams, private truck: TruckProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private truck: TruckProvider) {
   }
 
   ionViewDidEnter() {
