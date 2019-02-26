@@ -1,3 +1,4 @@
+import { TapInfoPage } from './../tap-info/tap-info';
 import { TruckProvider } from './../../providers/truck/truck';
 
 import { HomePage } from './../home/home';
@@ -32,7 +33,9 @@ export class WaterTapPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private tapsProvider: TapProvider) {
   }
-
+  tapInfo(i:number){
+    this.navCtrl.push(TapInfoPage,{data:this.listTaps[i]})
+  }
   ionViewDidEnter() {
     this.uploadTap();
 

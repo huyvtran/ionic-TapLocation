@@ -36,8 +36,10 @@ export class WaterTruckPage {
   ionViewDidEnter() {
     this.uploadtrucks();
 
-
   }
+
+  
+
   uploadtrucks() {
     this.reftruck.on('value', resp => {
       this.listTrucks = snapshotToArray(resp);

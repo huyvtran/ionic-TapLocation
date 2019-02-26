@@ -1,4 +1,5 @@
-import { Camera } from '@ionic-native/camera/ngx';
+import { TapInfoPage } from './../pages/tap-info/tap-info';
+ import { Camera } from '@ionic-native/camera';
 import { WaterTruckPage } from './../pages/water-truck/water-truck';
 import { WaterTapPage } from './../pages/water-tap/water-tap';
 import { WaterServiceTabsPage } from './../pages/water-service-tabs/water-service-tabs';
@@ -66,7 +67,7 @@ firebase.initializeApp(config);
     SigninPage,
     SignupPage,
     ResetpasswordPage,
-    UserprofilePage
+    UserprofilePage,TapInfoPage
 
   ],
   imports: [
@@ -77,6 +78,7 @@ firebase.initializeApp(config);
   ],
   bootstrap: [IonicApp],
   entryComponents: [
+    TapInfoPage,
     WaterServiceTabsPage,
     WaterTapPage,
     WaterTruckPage,
