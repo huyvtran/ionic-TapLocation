@@ -1,5 +1,3 @@
-import { TruckInfoPage } from './../pages/truck-info/truck-info';
-import { TapInfoPage } from './../pages/tap-info/tap-info';
 import { ProfilePage } from './../pages/profile/profile';
 import { ListPage } from './../pages/list/list';
 import { UserprofilePage } from './../pages/userprofile/userprofile';
@@ -33,16 +31,17 @@ import { GeocoderProvider } from '../providers/geocoder/geocoder';
 import { ImageProvider } from '../providers/image/image';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
-
 var config = {
-    apiKey: "AIzaSyCDA2SmyMOpqB49eOYtL566O6_QZOQL9zQ",
-    authDomain: "waterapp-aa3d2.firebaseapp.com",
-    databaseURL: "https://waterapp-aa3d2.firebaseio.com",
-    projectId: "waterapp-aa3d2",
-    storageBucket: "waterapp-aa3d2.appspot.com",
-    messagingSenderId: "319915755205"
+  apiKey: "AIzaSyCDA2SmyMOpqB49eOYtL566O6_QZOQL9zQ",
+  authDomain: "waterapp-aa3d2.firebaseapp.com",
+  databaseURL: "https://waterapp-aa3d2.firebaseio.com",
+  projectId: "waterapp-aa3d2",
+  storageBucket: "waterapp-aa3d2.appspot.com",
+  messagingSenderId: "319915755205"
 };
 firebase.initializeApp(config);
+
+
 
 @NgModule({
   declarations: [
@@ -59,15 +58,14 @@ firebase.initializeApp(config);
     SigninPage,
     SignupPage,
     ResetpasswordPage,
-    UserprofilePage,
-    TapInfoPage,
-    TruckInfoPage
-  ],
+    UserprofilePage
 
+  ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -84,14 +82,12 @@ firebase.initializeApp(config);
     SigninPage,
     SignupPage,
     ResetpasswordPage,
-    UserprofilePage,
-    TapInfoPage,
-    TruckInfoPage
- 
+    UserprofilePage
   ],
+
   providers: [
     StatusBar,
-    Geolocation,
+
     NativeGeocoder,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
@@ -104,7 +100,7 @@ firebase.initializeApp(config);
     GeocoderProvider,
     ImageProvider,
     Camera
-  
+
   ]
 })
 export class AppModule {}
