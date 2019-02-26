@@ -14,5 +14,28 @@
 
 
 <ion-content padding>
-
+  <div class="profile-image">
+    <img class="image" align="center" src="{{imgPreview}}"  (click)="takePhoto()">
+    <br>
+    <button (click)="takePhoto()">
+        <ion-icon name="camera"></ion-icon>
+    </button>
+</div>
+<br>
+<ion-list text-center>
+  <ion-item text-center> 
+    <div>
+      <h2>{{firstname}} {{lastname}}</h2>
+    </div>
+  </ion-item>
+  <ion-item text-center>
+    <div>
+      <p>{{email}}</p>
+    </div>
+  </ion-item>
+  <ion-item></ion-item>
+</ion-list>
+<div>
+  <button ion-button round outline small (click)="done()">done</button>
+</div>
 </ion-content>

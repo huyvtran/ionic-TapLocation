@@ -45,7 +45,7 @@ page-tap {
             border-radius: 22px;
         }
     
-}
+   }
    .icon{
     font-size:4.5rem;
    }
@@ -84,6 +84,13 @@ page-tap {
         }
   
     }
+    
+    .capture{
+        background:transparent;
+        padding: 20px;
+        border-radius: 5px;
+        margin-top:30%; 
+    }
     .item1{
 
         background-color: transparent;
@@ -91,6 +98,10 @@ page-tap {
         border-radius:5px;
         color: #005792;
         cursor: pointer
+    }
+    img{
+        background: none !important;
+        background-color: transparent !important;
     }
 
     ion-input {
@@ -128,7 +139,10 @@ page-tap {
         //     border-radius: 22px;
         // }
     }
-   
+   .image{
+       height: 40%;
+       width: 40%;
+   }
     .segment{
 
         display: -webkit-box;
@@ -205,10 +219,10 @@ page-tap {
     }
     .but1{
         height:45px;
-        width:315px;
+        width:100px;
         position: relative;
         z-index: 3;
-        background: transparent;
+        background:white;
         color:#005792;
         font-size: 14px;
         border-color: #005792;
@@ -223,16 +237,4 @@ page-tap {
         }
 
     }
-}
-.alertcss{
-
-    button{
-        color:#005792;
-    }
-    .alert-wrapper{
-        background:#edf9fc;
-       color:#005792;
-       
-       
-   }
 }

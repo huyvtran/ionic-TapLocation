@@ -10,7 +10,7 @@ import 'firebase/database';
 import { TruckProvider } from '../../providers/truck/truck';
 import { TapProvider } from '../../providers/tap/tap';
 import { Base64 } from '@ionic-native/base64';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 /**
  * Generated class for the ListPage page.
  *
@@ -122,7 +122,7 @@ changeTruck(){
   this.name="Trucks"
 }
   profile(){
-    this.navCtrl.push(UserprofilePage)
+    this.navCtrl.push(ProfilePage)
   }
 
   add(){

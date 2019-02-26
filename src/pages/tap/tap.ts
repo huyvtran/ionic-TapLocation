@@ -1,10 +1,12 @@
 import { HomePage } from './../home/home';
-import { Component } from '@angular/core';
+import { Component,NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import firebase, { User } from 'firebase/app';
+import firebase, { User, database } from 'firebase/app';
 import 'firebase/database';
 import { TapProvider } from '../../providers/tap/tap';
 import { CoodsPage } from '../coods/coods';
+import { Base64 } from '@ionic-native/base64';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 /**
  * Generated class for the TapPage page.
  *
@@ -24,6 +26,7 @@ export class TapPage {
   isBack=false;
   isCaptured=false;
   isSubmit=false;
+  isLoading=false;
   done:string='no';
   location:string='';
   time:string='';
@@ -42,12 +45,18 @@ export class TapPage {
   reftap = firebase.database().ref('waterService/taps/answers/');
   updateFire:firebase.database.Reference;
   id:string;
-  key:string;
+  key:any;
   listTaps = [];
-  index:number;
-  constructor(public navCtrl: NavController,private alertCtrl: AlertController, public navParams: NavParams, private taps:TapProvider) {
+  index:number=0;
+  imgPreview = 'assets/imgs/chatterplace.png';
+  currentUser:User;
+  profileRef: firebase.database.Reference;
+  len:number;
+  address:string;
+  constructor(public navCtrl: NavController,public zone: NgZone,private camera: Camera,private alertCtrl: AlertController, public navParams: NavParams, private taps:TapProvider) {
     this.slatitude=this.navParams.get('slatitude');
     this.slongitude=this.navParams.get('slongitude');
+    this.address=this.navParams.get('address');
     this.location=this.slatitude+" - "+this.slongitude;
     this.tapwater.push(this.location)
     console.log('TapPage',this.slatitude);
@@ -56,10 +65,7 @@ export class TapPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TapPage');
- 
-  }
-  waterTap(){
-
+    this.uploadTaps();
   }
   tapdata(){
     this.location=this.tapwater[0];
@@ -74,11 +80,11 @@ export class TapPage {
       latitude:this.slatitude,
       optime:this.starttime,
       clotime:this.endtime,
-      longitude:this.slongitude
+      longitude:this.slongitude,
+      address:this.address,
+      picture:this.imgPreview
     });
     this.tapwater=[];
-    this.isCaptured=true;
-    this.hide=false;
     this.uploadTaps();
   }
   uploadTaps(){
@@ -177,7 +183,9 @@ export class TapPage {
     else{
     this.tapwater.push(this.safety);
     this.safety='';
-    this.tapdata()
+    this.isCaptured=true;
+    this.isLoading=true;
+    this.takePhoto();
     }
     console.log('data',this.tapwater)
     
@@ -185,10 +193,46 @@ export class TapPage {
   yes(){
    this.navCtrl.push(TapPage);
   }
-  ok(){
-    this.navCtrl.setRoot(HomePage);
-  }
-
+  takePhoto() {
+    this.tapdata();
+    this.uploadTaps();
+    this.camera.getPicture({
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.PNG,
+      mediaType:this.camera.MediaType.PICTURE,
+      targetHeight: 500,
+      targetWidth: 500,
+      allowEdit:true,
+      correctOrientation: false,
+    }).then((profilePicture) => {
+      this.profileRef=database().ref('waterService/taps/answers/'+this.key);
+  
+      firebase.storage().ref('taps/pictures/'+this.key).putString(profilePicture, 'base64', { contentType: 'image/png' })
+      .then((savedProfilePicture) => {
+        savedProfilePicture.ref.getDownloadURL().then((downloadedUrl)=>{
+          this.imgPreview = downloadedUrl;
+          this.isLoading=false;
+          this.profileRef.child('/picture').set(downloadedUrl);
+          let alert = this.alertCtrl.create({
+            subTitle:'',
+            message:'<img src="../../assets/imgs/checkmark-gif.gif">',
+            buttons: [{
+              text:'Ok',
+              handler:(data)=>{
+                this.navCtrl.setRoot(HomePage)
+              }
+            }]
+          })
+          alert.present();
+        })
+    
+        })
+     
+    }, err => {
+      console.log('érror' + JSON.stringify(err))
+    })
+   }
 }
 export const snapshotToArray = snapshot => {
   let returnArr = [];
