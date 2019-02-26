@@ -1,3 +1,5 @@
+import { TapInfoPage } from './../pages/tap-info/tap-info';
+ import { Camera } from '@ionic-native/camera';
 import { WaterTruckPage } from './../pages/water-truck/water-truck';
 import { WaterTapPage } from './../pages/water-tap/water-tap';
 import { WaterServiceTabsPage } from './../pages/water-service-tabs/water-service-tabs';
@@ -32,9 +34,8 @@ import { CoodsPage } from '../pages/coods/coods';
 import { CoordstPage } from '../pages/coordst/coordst';
 import { ListProvider } from '../providers/list/list';
 import { GeocoderProvider } from '../providers/geocoder/geocoder';
-import { ImageProvider } from '../providers/image/image';
-import { Camera, CameraOptions } from '@ionic-native/camera';
 
+import { ImageProvider } from '../providers/image/image';
 
 var config = {
   apiKey: "AIzaSyCDA2SmyMOpqB49eOYtL566O6_QZOQL9zQ",
@@ -45,6 +46,8 @@ var config = {
   messagingSenderId: "319915755205"
 };
 firebase.initializeApp(config);
+
+
 
 @NgModule({
   declarations: [
@@ -64,16 +67,18 @@ firebase.initializeApp(config);
     SigninPage,
     SignupPage,
     ResetpasswordPage,
-    UserprofilePage
-  ],
+    UserprofilePage,TapInfoPage
 
+  ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
+    TapInfoPage,
     WaterServiceTabsPage,
     WaterTapPage,
     WaterTruckPage,
@@ -91,11 +96,11 @@ firebase.initializeApp(config);
     SignupPage,
     ResetpasswordPage,
     UserprofilePage
-
   ],
+
   providers: [
     StatusBar,
-    Geolocation,
+
     NativeGeocoder,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
@@ -108,7 +113,7 @@ firebase.initializeApp(config);
     GeocoderProvider,
     ImageProvider,
     Camera
-  
+
   ]
 })
 export class AppModule { }
