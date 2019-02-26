@@ -144,6 +144,9 @@
             "platforms": [
                 "android"
             ]
-        }
+        },
+        "platforms": [
+            "android"
+        ]
     }
 }

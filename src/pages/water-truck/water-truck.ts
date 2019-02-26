@@ -47,7 +47,9 @@ export class WaterTruckPage {
     });
   }
 
-
+  add(){
+    this.navCtrl.setRoot(HomePage)
+  }
 
 }
 export const snapshotToArray = snapshot => {

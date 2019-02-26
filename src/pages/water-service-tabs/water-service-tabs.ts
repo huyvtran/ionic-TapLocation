@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { WaterTapPage } from '../water-tap/water-tap';
 import { WaterTruckPage } from '../water-truck/water-truck';
+import { ProfilePage } from '../profile/profile';
 
 /**
  * Generated class for the WaterServiceTabsPage tabs.
@@ -20,7 +21,7 @@ export class WaterServiceTabsPage {
 
   waterTapRoot = WaterTapPage
   waterTruckRoot = WaterTruckPage
-  userProfile = UserprofilePage
+  userProfile = ProfilePage
 
 
   constructor(public navCtrl: NavController) { }

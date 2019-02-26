@@ -46,6 +46,9 @@ export class WaterTapPage {
     this.tapsProvider.getalltaps().then((res: any) => {
     });
   }
+  add(){
+    this.navCtrl.setRoot(HomePage)
+  }
   scroll(event) {
 
 
