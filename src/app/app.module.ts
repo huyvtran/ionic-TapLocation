@@ -1,3 +1,5 @@
+import { TruckInfoPage } from './../pages/truck-info/truck-info';
+import { TapInfoPage } from './../pages/tap-info/tap-info';
 import { ProfilePage } from './../pages/profile/profile';
 import { ListPage } from './../pages/list/list';
 import { UserprofilePage } from './../pages/userprofile/userprofile';
@@ -56,7 +58,9 @@ firebase.initializeApp(config);
     SigninPage,
     SignupPage,
     ResetpasswordPage,
-    UserprofilePage
+    UserprofilePage,
+    TapInfoPage,
+    TruckInfoPage
   ],
 
   imports: [
@@ -79,7 +83,9 @@ firebase.initializeApp(config);
     SigninPage,
     SignupPage,
     ResetpasswordPage,
-    UserprofilePage
+    UserprofilePage,
+    TapInfoPage,
+    TruckInfoPage
  
   ],
   providers: [

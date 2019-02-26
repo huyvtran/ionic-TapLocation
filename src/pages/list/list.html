@@ -10,9 +10,9 @@
 
     <ion-title text-center>WaterService</ion-title>
     <ion-buttons end>
-        <button ion-button outline small  color="secondary" (click)="changeTap()" >Taps</button>
-        <button ion-button outline small  color="danger" (click)="changeTruck()">Trucks</button>
-    <button ion-button (click)="profile()">
+        <!-- <button ion-button outline small  color="secondary" (click)="changeTap()" >Taps</button>
+        <button ion-button outline small  color="danger" (click)="changeTruck()">Trucks</button> -->
+    <button ion-button icon only (click)="profile()">
     <ion-icon name="person"></ion-icon>
     </button>
     </ion-buttons>
@@ -22,31 +22,46 @@
 
 
 <ion-content padding class="content">
-  <h2 text-center>{{name}}</h2>
- <div *ngIf="isTap" text-center>
-    <ion-card *ngFor="let tap of listTaps;let i=index" text-center>
-      <ion-item>
-        <span>{{tap.id}}</span>
-        <span>{{tap.time}}</span>
-        <span>{{tap.reliable}}</span>
-        <span>{{tap.safety}}</span>
-      </ion-item>
-      <button ion-button small outline color="primary" (click)="takePhotoTap(tap.key)"><ion-icon name="add"></ion-icon></button>
-    </ion-card>
+
+<ion-segment [(ngModel)]="water" >
+    <ion-segment-button value="1" checked><ion-label>TAPS</ion-label></ion-segment-button>
+    <ion-segment-button value="2"><ion-label>TRUCKS</ion-label></ion-segment-button>
+</ion-segment>
+
+<div class="container" [ngSwitch]="water">
+  <!-- <h2 text-center>{{name}}</h2> -->
+ <!-- <div *ngIf="isTap" text-center> -->
+   <div *ngSwitchCase="'1'">
+    <ion-card class="cards" *ngFor="let tap of listTaps;let i=index" (click)="tapInfo(i)" >
+      <!-- <ion-item text-center> -->
+        <span class="id">{{tap.id}}</span>
+        <br>
+        <span class="time">{{tap.time}}</span>
+        <!-- <span>{{tap.reliable}}</span>
+        <span>{{tap.safety}}</span> -->
+  <button ion-item color="fire" icon-only >
+  <ion-icon name="arrow-forward" item-right></ion-icon>
+  </button> 
+  <!-- </ion-item> -->
+  </ion-card>
  </div>
- <div *ngIf="isTruck">
-    <ion-card *ngFor="let truck of listTrucks;let i=index" text-center>
-      <ion-item>
-        <span>{{truck.id}}</span>
-        <span>{{truck.time}}</span>
-        <span>{{truck.liters}}</span>
+ <!-- <div *ngIf="isTruck"> -->
+    <div *ngSwitchCase="'2'">
+    <ion-card class="cards" *ngFor="let truck of listTrucks;let i=index"  (click)="truckInfo(i)">
+      <!-- <ion-item text-center>  -->
+        <span class="id">{{truck.id}}</span>
+        <br>
+        <span class="time">{{truck.time}}</span>
+        <!-- <span>{{truck.liters}}</span>
         <span>{{truck.reliable}}</span>
-        <span>{{truck.safety}}</span>
-        <button ion-button small outline color="primary" (click)="takePhotoTruck(truck.key)"><ion-icon name="add"></ion-icon></button>
-      </ion-item>
+        <span>{{truck.safety}}</span> -->
+    <button ion-item  color="fire" >
+      <ion-icon name="arrow-forward" item-right></ion-icon></button> 
+    <!-- </ion-item> -->
     </ion-card>
  </div>
- 
+</div>
+
 <ion-fab bottom right slot="fixed">
 <button  ion-fab color="primary" (click)="add()"><ion-icon name="add"></ion-icon></button>
 </ion-fab>

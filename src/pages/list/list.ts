@@ -1,3 +1,5 @@
+import { TruckInfoPage } from './../truck-info/truck-info';
+import { TapInfoPage } from './../tap-info/tap-info';
 import { HomePage } from './../home/home';
 import { UserprofilePage } from './../userprofile/userprofile';
 import { ProfilePage } from './../profile/profile';
@@ -22,6 +24,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
   templateUrl: 'list.html',
 })
 export class ListPage {
+  water='1';
   isTap=true;
   isTruck=false;
   listTaps = [];
@@ -31,9 +34,14 @@ export class ListPage {
    key:any;
    reftap = firebase.database().ref('waterService/taps/answers/');
    reftruck=firebase.database().ref('waterService/trucks/answers/');
-  constructor(public navCtrl: NavController,private camera: Camera, public navParams: NavParams,private truck:TruckProvider,private tap:TapProvider) {
+  constructor(public navCtrl: NavController,private camera: Camera,
+     public navParams: NavParams,private truck:TruckProvider,
+     private tap:TapProvider) {
 
   }
+
+
+ 
   //please help us with the camera.
   //the key that the method receives is from the html, which will help to set up a downloadURL
   takePhotoTruck(key) {
@@ -135,6 +143,16 @@ changeTruck(){
     this.truck.getalltrucks().then((res: any) => {
     });
   } 
+  
+  tapInfo(i:number){
+    this.navCtrl.push(TapInfoPage,{data:this.listTaps[i]})
+  }
+
+
+  truckInfo(i:number){
+    this.navCtrl.push(TruckInfoPage,{data:this.listTrucks[i]})
+  }
+
 }
 export const snapshotToArray = snapshot => {
   let returnArr = [];
