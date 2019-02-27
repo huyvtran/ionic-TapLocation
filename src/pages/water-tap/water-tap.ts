@@ -1,6 +1,4 @@
 import { TapInfoPage } from './../tap-info/tap-info';
-import { TruckProvider } from './../../providers/truck/truck';
-
 import { HomePage } from './../home/home';
 import { UserprofilePage } from './../userprofile/userprofile';
 import { ProfilePage } from './../profile/profile';
@@ -31,7 +29,8 @@ export class WaterTapPage {
   key: any;
   refTap = firebase.database().ref('waterService/taps/answers/');
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private tapsProvider: TapProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+   private tapsProvider: TapProvider) {
   }
   tapInfo(i:number){
     this.navCtrl.push(TapInfoPage,{data:this.listTaps[i]})
@@ -49,30 +48,30 @@ export class WaterTapPage {
     this.tapsProvider.getalltaps().then((res: any) => {
     });
   }
-  scroll(event) {
+  // scroll(event) {
 
 
 
-    var searchTxt = document.getElementsByClassName("searchBar") as HTMLCollectionOf<HTMLElement>;
+  //   var searchTxt = document.getElementsByClassName("searchBar") as HTMLCollectionOf<HTMLElement>;
 
 
 
-    if (event.directionY == "down") {
+  //   if (event.directionY == "down") {
 
-      if (event.scrollTop >= 15) {
-
-
-        searchTxt[0].style.top = "5px";
+  //     if (event.scrollTop >= 15) {
 
 
+  //       searchTxt[0].style.top = "5px";
 
-      }
-    }
-    else {
-      searchTxt[0].style.top = "18px";
-    }
 
-  }
+
+  //     }
+  //   }
+  //   else {
+  //     searchTxt[0].style.top = "18px";
+  //   }
+
+  // }
 
 
 }

@@ -18,6 +18,19 @@ page-truck-info {
     //     overflow: hidden !important;
     // }
     ion-card{
+
+        border-radius: 15px !important;
+        background-color: transparent;
+        background: none !important;
+        width: 100%;
+        margin-bottom: 25px;
+        position: relative;
+        text-align: center;
+        top: 20px;
+        // color: white;
+        box-shadow: 14px 3px 56px 2px rgba(41, 40, 40, 0.75) !important;
+        -webkit-box-shadow: 14px 3px 56px 2px rgba(41, 40, 40, 0.75)!important;
+        -moz-box-shadow: 14px 3px 56px 2px rgba(41, 40, 40, 0.75)!important;
        .container{
      
         display: flex;

@@ -12,7 +12,7 @@
 </ion-header>
 <ion-content class="content">
     <div class="container">
-        <ion-card *ngFor="let truck of listTrucks;let i=index"  text-center >
+        <ion-card *ngFor="let truck of listTrucks;let i=index"  (click)="truckInfo(i)" text-center >
 
             <ion-item>
                 <ion-avatar left>

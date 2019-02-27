@@ -9,6 +9,7 @@ import 'firebase/database';
 
 import { TruckProvider } from '../../providers/truck/truck';
 import { Base64 } from '@ionic-native/base64';
+import { TruckInfoPage } from '../truck-info/truck-info';
 
 
 /**
@@ -23,19 +24,24 @@ import { Base64 } from '@ionic-native/base64';
   templateUrl: 'water-truck.html',
 })
 export class WaterTruckPage {
-  listtrucks = [];
+  // listtrucks = [];
   listTrucks = [];
   imgPreview = null;
   name: string = 'trucks';
   key: any;
   reftruck = firebase.database().ref('waterService/trucks/answers/');
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private truck: TruckProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+  private truck: TruckProvider) {
   }
 
   ionViewDidEnter() {
     this.uploadtrucks();
 
+  }
+
+  truckInfo(i:number){
+    this.navCtrl.push(TruckInfoPage,{data:this.listTrucks[i]})
   }
 
   

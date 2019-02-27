@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar color="primary">
+  <ion-navbar color="blue">
     <ion-title>TapInfo</ion-title>
   </ion-navbar>
 
@@ -19,12 +19,14 @@
 <ion-card class="cards" >
 
   <!-- <ion-card-header> -->
+      <ion-avatar >
   <img class="circle-pic" src="../assets/imgs/tap.jpg"/>
+    </ion-avatar>
   <!-- </ion-card-header> -->
 
 
-<button ion-item color="fire" (click)="edit(key)">
-<ion-icon name="create" color="primary" item-right ></ion-icon>
+<button ion-item color="cut" (click)="edit(key)">
+<ion-icon name="create" color="blue" item-right ></ion-icon>
 </button>
     <p>ID:{{listTaps.id}}</p>
     <p>TIME:{{listTaps.time}}</p>
@@ -32,7 +34,7 @@
     <p>SAFE:{{listTaps.safety}}</p>
 
 
-  <button ion-button round (click)="ok()">
+  <button ion-button round color="blue" (click)="ok()">
   OK
   </button>
 
@@ -44,7 +46,7 @@
                                                   
     <ion-card class="cards">
   
-    <button color="primary" ion-item (click)="click()">
+    <button color="blue" ion-item (click)="click()">
     <ion-icon name="close" color="light" item-right></ion-icon>
     </button> 
 
@@ -104,7 +106,7 @@
   </ion-list>
               
   <br>    
-  <button ion-button full color="primary" (click)="updateTap()">SAVE</button> 
+  <button ion-button full color="blue" (click)="updateTap()">SAVE</button> 
   <br>
 </ion-card>              
   </div>

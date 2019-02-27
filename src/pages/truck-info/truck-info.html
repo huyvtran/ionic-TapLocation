@@ -21,16 +21,16 @@
   <img class="circle-pic" src="../assets/imgs/tap.jpg"/>
   <!-- </ion-card-header> -->
 
-    <button ion-item color="fire" (click)="edit(key)">
-    <ion-icon name="create" color="primary" item-right ></ion-icon>
+    <button ion-item color="cut" (click)="edit(key)">
+    <ion-icon name="create" color="blue" item-right ></ion-icon>
     </button>
-      <p>ID: {{listTrucks.id}}</p>
-      <p>TIME: {{listTrucks.time}}</p>
-      <p>LITERS: {{listTrucks.liters}}</p>
-      <p>SERVICE: {{listTrucks.reliable}}</p>
-      <p>NUMBER OF DAYS: {{listTrucks.days}}</p>
+      <p><strong>ID</strong>: {{listTrucks.id}}</p>
+      <p><strong>TIME</strong>: {{listTrucks.time}}</p>
+      <p><strong>LITERS</strong>: {{listTrucks.liters}}</p>
+      <p><strong>SERVICE</strong>: {{listTrucks.reliable}}</p>
+      <p><strong>NUMBER OF DAYS</strong>: {{listTrucks.days}}</p>
 
-      <button ion-button round (click)="ok()">
+      <button ion-button round color="blue" (click)="ok()">
       OK
       </button>
 

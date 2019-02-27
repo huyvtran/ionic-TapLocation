@@ -1,3 +1,4 @@
+import { TruckInfoPage } from './../pages/truck-info/truck-info';
 import { TapInfoPage } from './../pages/tap-info/tap-info';
  import { Camera } from '@ionic-native/camera';
 import { WaterTruckPage } from './../pages/water-truck/water-truck';
@@ -67,7 +68,9 @@ firebase.initializeApp(config);
     SigninPage,
     SignupPage,
     ResetpasswordPage,
-    UserprofilePage,TapInfoPage
+    UserprofilePage,
+    TapInfoPage,
+    TruckInfoPage
 
   ],
   imports: [
@@ -79,6 +82,7 @@ firebase.initializeApp(config);
   bootstrap: [IonicApp],
   entryComponents: [
     TapInfoPage,
+    TruckInfoPage,
     WaterServiceTabsPage,
     WaterTapPage,
     WaterTruckPage,
