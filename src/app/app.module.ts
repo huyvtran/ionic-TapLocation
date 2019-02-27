@@ -1,5 +1,6 @@
+import { TruckInfoPage } from './../pages/truck-info/truck-info';
 import { TapInfoPage } from './../pages/tap-info/tap-info';
- import { Camera } from '@ionic-native/camera';
+import { Camera } from '@ionic-native/camera';
 import { WaterTruckPage } from './../pages/water-truck/water-truck';
 import { WaterTapPage } from './../pages/water-tap/water-tap';
 import { WaterServiceTabsPage } from './../pages/water-service-tabs/water-service-tabs';
@@ -52,6 +53,7 @@ firebase.initializeApp(config);
 @NgModule({
   declarations: [
     WaterServiceTabsPage,
+    TruckInfoPage,
     WaterTapPage,
     WaterTruckPage,
     MyApp,
@@ -67,7 +69,7 @@ firebase.initializeApp(config);
     SigninPage,
     SignupPage,
     ResetpasswordPage,
-    UserprofilePage,TapInfoPage
+    UserprofilePage, TapInfoPage
 
   ],
   imports: [
@@ -79,6 +81,7 @@ firebase.initializeApp(config);
   bootstrap: [IonicApp],
   entryComponents: [
     TapInfoPage,
+    TruckInfoPage,
     WaterServiceTabsPage,
     WaterTapPage,
     WaterTruckPage,
@@ -111,6 +114,7 @@ firebase.initializeApp(config);
     TruckProvider,
     ListProvider,
     GeocoderProvider,
+    Geolocation,
     ImageProvider,
     Camera
 

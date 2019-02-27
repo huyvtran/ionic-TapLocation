@@ -1,3 +1,5 @@
+import { TruckInfoPage } from './../truck-info/truck-info';
+import { TapInfoPage } from './../tap-info/tap-info';
 
 import { HomePage } from './../home/home';
 import { UserprofilePage } from './../userprofile/userprofile';
@@ -38,7 +40,7 @@ export class WaterTruckPage {
 
   }
 
-  
+
 
   uploadtrucks() {
     this.reftruck.on('value', resp => {
@@ -48,8 +50,11 @@ export class WaterTruckPage {
     this.truck.getalltrucks().then((res: any) => {
     });
   }
+  truckInfo(i: number) {
+    this.navCtrl.push(TruckInfoPage, { data: this.listTrucks[i] })
+  }
 
-  add(){
+  add() {
     this.navCtrl.setRoot(HomePage)
   }
 
