@@ -45,7 +45,8 @@ export class ProfilePage {
   }
   updatePassword() {
     const alert: Alert = this.alertCtrl.create({
-
+      subTitle:'<img src="../../assets/imgs/password.gif">',
+      message:'Update passord',
       inputs: [{
         name: 'oldPassword',
         placeholder: 'Enter old password',

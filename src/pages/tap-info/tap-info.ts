@@ -5,6 +5,7 @@ import { IonicPage, NavController, NavParams,ModalController,AlertController } f
 import 'firebase/database';
 import firebase, { User } from 'firebase/app';
 import { TapProvider } from '../../providers/tap/tap';
+import { Platform } from 'ionic-angular';
 /**
  * Generated class for the TapInfoPage page.
  *
@@ -28,7 +29,7 @@ export class TapInfoPage {
   isUpdate=false;
   starttime='';
   endtime='';
-  listTaps={};
+  listTaps;
   location:string;
   reliable:string='';
   time:string='';
@@ -42,7 +43,7 @@ export class TapInfoPage {
   // reftap = firebase.database().ref('waterService/taps/answers/');
   constructor(public navCtrl: NavController,private tap:TapProvider,
   public modalCtrl:ModalController, private alertCTR: AlertController,
-  public navParams: NavParams) {
+  public navParams: NavParams,public platform: Platform) {
    this.listTaps=this.navParams.get('data');
    console.log('io',  this.listTaps)
 
@@ -61,7 +62,17 @@ export class TapInfoPage {
       });
 
   }
-
+  viewGoogleMap(){
+  
+    let destination = this.listTaps.latitude + ',' + this.listTaps.longitude;
+   
+      if(this.platform.is('md')){
+        window.open('maps://?q=' + destination, '_system');
+      } else {
+        let label = encodeURI('My Label');
+        window.open('geo:0,0?q=' + destination + '(' + label + ')', '_system');
+  }
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad UpdatePage');
     this.uploadTaps();
@@ -116,46 +127,7 @@ uploadTaps(){
  ok(){
    this.navCtrl.setRoot(ListPage)
  }
-
-//  edit(key){
-//   let addModal = this.modalCtrl.create({key:key});
-//   addModal.onDidDismiss(() => {
-
-//   });
-//   addModal.present();
-
-// }
-
-
-
-
-  // changeTap(){
-  //   this.isTap=true;
-  //   this.name="Taps"
-  // }
-
 }
-//   uploadTaps(){
-//     this.reftap.on('value', resp => {
-//       this.listTaps = snapshotToArray(resp);
-//     });
-//     this.tap.getalltaps().then((res: any) => {
-//     });
-//   }
-
-// }
-// export const snapshotToArray = snapshot => {
-//   let returnArr = [];
-
-//   snapshot.forEach(childSnapshot => {
-//       let item = childSnapshot.val();
-//       item.key = childSnapshot.key;
-//       returnArr.push(item);
-//   });
-
-//   return returnArr;
-// }
-
 export const snapshotToArray = snapshot => {
   let returnArr = [];
 

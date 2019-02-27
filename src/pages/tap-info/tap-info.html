@@ -26,18 +26,26 @@
             <ng-template #other_content>
                 <img class="circle-pic" src="https://img.mobiscroll.com/demos/angrybirds.png" />
             </ng-template>
-
-            <button ion-item color="fire" (click)="edit(key)">
-<ion-icon name="create" color="primary" item-right ></ion-icon>
-</button>
-            <p>ID:{{listTaps.id}}</p>
-            <p>TIME:{{listTaps.time}}</p>
-            <p>RELIABLE:{{listTaps.reliable}}</p>
-            <p>SAFE:{{listTaps.safety}}</p>
-
-
-
-
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-2> 
+                        <button ion-item color="fire" (click)="edit(key)">
+                            <ion-icon name="create" color="primary" item-right ></ion-icon>
+                        </button>
+                    </ion-col>
+                    <ion-col col-8>
+                        <p>ID:{{listTaps.id}}</p>
+                        <p>TIME:{{listTaps.time}}</p>
+                        <p>RELIABLE:{{listTaps.reliable}}</p>
+                        <p>SAFE:{{listTaps.safety}}</p>
+                    </ion-col>
+                    <ion-col col-2> 
+                        <button ion-item color="fire" (click)="viewGoogleMap()">
+                            <ion-icon name="navigate" color="primary" item-right  (click)="viewGoogleMap()"></ion-icon>
+                        </button> 
+                    </ion-col>
+                </ion-row>
+            </ion-grid>  
         </ion-card>
     </div>
 

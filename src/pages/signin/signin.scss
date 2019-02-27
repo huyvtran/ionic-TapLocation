@@ -221,9 +221,9 @@ page-signin {
 
 }
 .alert-wrapper{
-    background: #2980B9;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #edf9fc, #edf9fc  , #edf9fc);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #A9D2D5, #A9D2D5, #edf9fc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #edf9fc;  /* fallback for old browsers */
+    // background: -webkit-linear-gradient(to right, #edf9fc, #edf9fc  , #edf9fc);  /* Chrome 10-25, Safari 5.1-6 */
+    // background: linear-gradient(to right, #A9D2D5, #A9D2D5, #edf9fc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     
     button{
         color:#005792;

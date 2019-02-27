@@ -1,5 +1,3 @@
-import { UserprofilePage } from './../userprofile/userprofile';
-import { ListPage } from './../list/list';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { WaterTapPage } from '../water-tap/water-tap';

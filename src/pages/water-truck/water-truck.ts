@@ -5,12 +5,13 @@ import { HomePage } from './../home/home';
 import { UserprofilePage } from './../userprofile/userprofile';
 import { ProfilePage } from './../profile/profile';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import firebase, { User } from 'firebase/app';
 import 'firebase/database';
 
 import { TruckProvider } from '../../providers/truck/truck';
 import { Base64 } from '@ionic-native/base64';
+import { CoordstPage } from '../coordst/coordst';
 
 
 /**
@@ -32,7 +33,7 @@ export class WaterTruckPage {
   key: any;
   reftruck = firebase.database().ref('waterService/trucks/answers/');
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private truck: TruckProvider) {
+  constructor(public navCtrl: NavController,  private loadingCtrl: LoadingController, public navParams: NavParams, private truck: TruckProvider) {
   }
 
   ionViewDidEnter() {
@@ -43,9 +44,13 @@ export class WaterTruckPage {
 
 
   uploadtrucks() {
+    let loading = this.loadingCtrl.create({
+      content: 'Loading content...'
+    });
+    loading.present();
     this.reftruck.on('value', resp => {
       this.listTrucks = snapshotToArray(resp);
-
+      loading.dismiss();
     });
     this.truck.getalltrucks().then((res: any) => {
     });
@@ -55,7 +60,7 @@ export class WaterTruckPage {
   }
 
   add() {
-    this.navCtrl.setRoot(HomePage)
+    this.navCtrl.setRoot(CoordstPage)
   }
 
 }

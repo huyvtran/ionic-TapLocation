@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
 import 'firebase/database';
 import firebase, { User } from 'firebase/app';
-
+import { Platform } from 'ionic-angular';
 
 /**
  * Generated class for the TruckInfoPage page.
@@ -29,7 +29,7 @@ export class TruckInfoPage {
   isUpdate = false;
   starttime = '';
   endtime = '';
-  listTrucks = {};
+  listTrucks;
   location: string;
   liters: string = '';
   reliable: string = '';
@@ -45,7 +45,7 @@ export class TruckInfoPage {
   // reftruck=firebase.database().ref('waterService/trucks/answers/');
   constructor(public navCtrl: NavController, private truck: TruckProvider,
     public modalCtrl: ModalController, private alertCTR: AlertController,
-    public navParams: NavParams) {
+    public navParams: NavParams,public platform: Platform) {
     this.listTrucks = this.navParams.get('data');
     console.log('io', this.listTrucks)
 
@@ -82,6 +82,17 @@ export class TruckInfoPage {
     this.starttime = this.trucks[0].optime;
     this.endtime = this.trucks[0].clotime;
 
+  }
+  viewGoogleMap(){
+  
+    let destination = this.listTrucks.latitude + ',' + this.listTrucks.longitude;
+   
+      if(this.platform.is('md')){
+        window.open('maps://?q=' + destination, '_system');
+      } else {
+        let label = encodeURI('My Label');
+        window.open('geo:0,0?q=' + destination + '(' + label + ')', '_system');
+      }
   }
 
   ionViewDidEnter() {

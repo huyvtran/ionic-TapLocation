@@ -1,10 +1,5 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Mapa</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-<ion-content [attr.noScroll]="shouldScroll">
-    <div id="map"></div>
-</ion-content>
+<ion-tabs>
+  <ion-tab [root]="waterTapRoot" tabTitle="Water tap" tabIcon="water"></ion-tab>
+  <ion-tab [root]="waterTruckRoot" tabTitle="Water truck" tabIcon="car"></ion-tab>
+  <ion-tab [root]="userProfile" tabTitle="Profile" tabIcon="person"></ion-tab>
+</ion-tabs>

@@ -8,6 +8,7 @@ import { CoordstPage } from '../coordst/coordst';
 import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { Base64 } from '@ionic-native/base64';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { WaterTapPage } from '../water-tap/water-tap';
 
 /**
  * Generated class for the TapPage page.
@@ -207,8 +208,17 @@ export class TruckPage {
       this.tapwater.push(this.days);
       this.days='';
       this.isCaptured=true;
-      this.isLoading=true;
-      this.takePhoto();
+      let alert = this.alertCtrl.create({
+        message:'<img src="../../assets/imgs/giphy.gif">',
+        subTitle:'Confirm by taking a picture of the tap',
+        buttons: [{
+          text:'Ok',
+          handler:(data)=>{
+            this.takePhoto();
+          }
+        }]
+      })
+      alert.present();
     }
     console.log('data',this.tapwater)
     
@@ -216,13 +226,14 @@ export class TruckPage {
   takePhoto() {
     this.tapdata();
     this.uploadTrucks();
+    this.isLoading=true;
     this.camera.getPicture({
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.PNG,
       mediaType:this.camera.MediaType.PICTURE,
-      targetHeight: 500,
-      targetWidth: 500,
+      // targetHeight: 500,
+      // targetWidth: 500,
       allowEdit:true,
       correctOrientation: false,
     }).then((profilePicture) => {
@@ -240,7 +251,7 @@ export class TruckPage {
             buttons: [{
               text:'Ok',
               handler:(data)=>{
-                this.navCtrl.setRoot(HomePage)
+                this.navCtrl.setRoot(WaterTapPage)
               }
             }]
           })

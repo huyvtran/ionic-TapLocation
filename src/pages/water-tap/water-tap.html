@@ -7,11 +7,11 @@
 
 <ion-header>
     <ion-navbar>
-        <ion-searchbar (ionScroll)="scroll($event)"></ion-searchbar>
+       <ion-searchbar [(ngModel)]="searchstring" (input)="searchTaps($event)" palceholder="Search" showCancelButton="true" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
     </ion-navbar>
 </ion-header>
 <ion-content class="content">
-    <div class="container">
+    <div *ngIf="!isSearchbarOpened" class="container">
         <ion-card *ngFor="let tap of listTaps;let i=index" (click)="tapInfo(i)" text-center>
 
             <ion-item *ngIf="tap.picture;else other_content">
@@ -52,6 +52,47 @@
             </ion-item-divider>
         </ion-card>
     </div>
+    <div *ngIf="isSearchbarOpened" text-center class="container">
+            <ion-card *ngFor="let tap of listTaps;let i=index" (click)="tapInfo(i)" text-center>
+    
+                <ion-item *ngIf="tap.picture;else other_content">
+                    <ion-avatar left>
+                        <img src="{{tap.picture}}">
+                    </ion-avatar>
+    
+                </ion-item>
+                <ng-template #other_content>
+                    <ion-item>
+                        <ion-avatar class="background border-bottom" left>
+                            <img src="https://img.mobiscroll.com/demos/angrybirds.png">
+                        </ion-avatar>
+    
+                    </ion-item>
+                </ng-template>
+    
+    
+    
+                <ion-card-header>
+    
+                    <h2> Tap address:
+                        <h3><span text-wrap> {{tap.address}}</span></h3>
+                    </h2>
+                </ion-card-header>
+                <ion-card-content>
+    
+                    <h3> Tap time duration: {{tap.time}}</h3>
+    
+                    <h3>Safety:<strong>{{tap.safety}}</strong> </h3>
+                    <h3>Reliability: {{tap.reliable}}</h3>
+    
+    
+                </ion-card-content>
+                <ion-item-divider class="pull-right">
+                    <h2> Tap ID: {{tap.id}}
+                    </h2>
+                </ion-item-divider>
+            </ion-card>
+        </div>
     <ion-fab bottom right slot="fixed">
         <button ion-fab color="primary" (click)="add()"><ion-icon name="add"></ion-icon></button>
     </ion-fab>
