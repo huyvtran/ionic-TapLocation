@@ -18,7 +18,6 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { Geolocation } from '@ionic-native/geolocation';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { IonicStorageModule } from '@ionic/storage';
@@ -34,7 +33,7 @@ import { CoodsPage } from '../pages/coods/coods';
 import { CoordstPage } from '../pages/coordst/coordst';
 import { ListProvider } from '../providers/list/list';
 import { GeocoderProvider } from '../providers/geocoder/geocoder';
-
+import { Geolocation } from '@ionic-native/geolocation';
 import { ImageProvider } from '../providers/image/image';
 
 var config = {
@@ -100,7 +99,7 @@ firebase.initializeApp(config);
 
   providers: [
     StatusBar,
-
+    Geolocation,
     NativeGeocoder,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
