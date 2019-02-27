@@ -7,8 +7,13 @@ page-water-tap {
         background: linear-gradient(to right, #edf9fc, #edf9fc);
         /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
+    .background {
+        background-size: 100% auto;
+        background-position: center;
+    }
     .container {
         margin-top: 30px;
+        height: 229px;
     }
     ion-header {
         border: solid;
@@ -31,6 +36,7 @@ page-water-tap {
     }
     .item {
         background: #edf9fc;
+        height: 0;
     }
     ion-card {
         border-radius: 15px !important;
