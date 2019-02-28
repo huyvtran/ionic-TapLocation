@@ -16,7 +16,9 @@
 <ion-content padding>
   <div *ngIf="isTruck" text-center> 
     <ion-card class="cards">
-
+    <button ion-item color="cut" (click)="options()">
+    <ion-icon name="more" color="blue" item-right ></ion-icon>
+    </button>
   <!-- <ion-card-header> -->
   <img class="circle-pic" src="../assets/imgs/tap.jpg"/>
   <!-- </ion-card-header> -->
@@ -31,7 +33,7 @@
       <p><strong>NUMBER OF DAYS</strong>: {{listTrucks.days}}</p>
 
       <button ion-button round color="blue" (click)="ok()">
-      OK
+      OK 
       </button>
 
       </ion-card>

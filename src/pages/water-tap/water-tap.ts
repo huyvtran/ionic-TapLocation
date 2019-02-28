@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import firebase, { User } from 'firebase/app';
 import 'firebase/database';
-
 import { TapProvider } from '../../providers/tap/tap';
 import { Base64 } from '@ionic-native/base64';
 
@@ -23,66 +22,59 @@ import { Base64 } from '@ionic-native/base64';
 })
 export class WaterTapPage {
   listTaps = [];
-
   imgPreview = null;
   name: string = 'trucks';
   key: any;
   refTap = firebase.database().ref('waterService/taps/answers/');
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-   private tapsProvider: TapProvider) {
+   private tapsProvider:TapProvider) {
   }
   tapInfo(i:number){
     this.navCtrl.push(TapInfoPage,{data:this.listTaps[i]})
   }
   ionViewDidEnter() {
-    this.uploadTap();
+  this.uploadTap();
 
 
   }
   uploadTap() {
-    this.refTap.on('value', resp => {
-      this.listTaps = snapshotToArray(resp);
+  this.refTap.on('value', resp => {
+  this.listTaps = snapshotToArray(resp);
+  
 
     });
-    this.tapsProvider.getalltaps().then((res: any) => {
+  this.tapsProvider.getalltaps().then((res: any) => {
     });
   }
+  add(){
+  this.navCtrl.setRoot(HomePage)
+  }
+
+
+
   // scroll(event) {
-
-
-
   //   var searchTxt = document.getElementsByClassName("searchBar") as HTMLCollectionOf<HTMLElement>;
-
-
-
   //   if (event.directionY == "down") {
-
-  //     if (event.scrollTop >= 15) {
-
-
-  //       searchTxt[0].style.top = "5px";
-
-
-
-  //     }
+  //    if (event.scrollTop >= 15) {
+  //     searchTxt[0].style.top = "5px";
+  //   }
   //   }
   //   else {
-  //     searchTxt[0].style.top = "18px";
+  //   searchTxt[0].style.top = "18px";
   //   }
-
-  // }
+  //   }
 
 
 }
 export const snapshotToArray = snapshot => {
-  let returnArr = [];
+let returnArr =[];
 
-  snapshot.forEach(childSnapshot => {
-    let item = childSnapshot.val();
-    item.key = childSnapshot.key;
-    returnArr.push(item);
-  });
+snapshot.forEach(childSnapshot => {
+let item = childSnapshot.val();
+item.key = childSnapshot.key;
+returnArr.push(item);
+});
 
-  return returnArr;
+return returnArr;
 }

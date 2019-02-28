@@ -124,7 +124,7 @@ uploadtrucks(){
 }
 
 ok(){
-  this.navCtrl.setRoot(ListPage)
+this.navCtrl.setRoot(ListPage)
 }
 
   // changeTruck(){

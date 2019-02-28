@@ -23,9 +23,9 @@
 
 
             <ion-card-header>
-                <h2 text-wrap> Tap Address <span><h4>{{tap.address}}</h4></span></h2>
-
+            <h2 text-wrap> Tap Address <span><h4>{{tap.address}}</h4></span></h2>
             </ion-card-header>
+            
             <ion-card-content>
 
                  <!-- <h3> Truck arrives at: {{truck.time}}</h3>
@@ -38,4 +38,7 @@
             <ion-item-divider></ion-item-divider>
         </ion-card>
     </div>
+    <ion-fab bottom right slot="fixed">
+        <button  ion-fab color="primary" (click)="add()"><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
 </ion-content>

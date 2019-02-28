@@ -78,7 +78,7 @@ export class SigninPage {
               buttons: [{
                 text: 'Ok',
                 handler: data => {
-
+                  this.navCtrl.setRoot(WaterServiceTabsPage);
                 }
               }],
               cssClass: 'alertCheck'
