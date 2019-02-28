@@ -21,7 +21,7 @@ import { WaterTapPage } from '../pages/water-tap/water-tap';
 })
 export class MyApp {
 
-  rootPage = LeafletmapPage;
+  rootPage = WaterServiceTabsPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

@@ -26,66 +26,43 @@ import { CoodsPage } from '../coods/coods';
 })
 export class WaterTapPage {
   listTaps = [];
-  isSearchbarOpened=false;
   imgPreview = null;
   name: string = 'trucks';
   key: any;
   temparr=[];
+  isSearch=false;
   reftap = firebase.database().ref('waterService/taps/answers/');
   filteredtaps=[];
 
   constructor(public app:App,public navCtrl: NavController,  private loadingCtrl: LoadingController, public navParams: NavParams, private tapsProvider: TapProvider) {
     this.reftap.on('value', resp => {
       this.filteredtaps = snapshotToArray(resp);
+      this.temparr =  snapshotToArray(resp);
     })
   }
-  tapInfo(i:number){
-    
-    this.navCtrl.push(TapInfoPage,{data:this.listTaps[i]})
-    // alert(JSON.stringify(this.listTaps[i]))
-  }
-  ionViewWillEnter() {
-    let tabs = document.querySelectorAll('.tabbar');
-    if ( tabs !== null ) {
-      Object.keys(tabs).map((key) => {
-        tabs[ key ].style.transform = 'translateY(56px)';
-      });
-    } // end if
+ ionViewDidLoad(){
+  this.uploadTap()
+ }
+ tapInfo(i){
+   this.navCtrl.setRoot(TapInfoPage,{data:this.filteredtaps[i]});
+ }
+ searchuser(searchbar) {
+  this.filteredtaps= this.temparr;
+  var q = searchbar.target.value;
+  if (q.trim() == '') {
+    return;
   }
 
-  ionViewDidLeave() {
-    let tabs = document.querySelectorAll('.tabbar');
-    if ( tabs !== null ) {
-      Object.keys(tabs).map((key) => {
-        tabs[ key ].style.transform = 'translateY(0)';
-      });
-    } // end if
-  }
-  ionViewDidEnter() {
-    this.uploadTap();
-
-
-  }
-  searchTaps(searchbar) {
-    this.reftap.on('value', resp => {
-      this.filteredtaps = snapshotToArray(resp);
-      console.log('ta[[]]',this.filteredtaps);
-    })
-  
-    var q = searchbar.target.value;
-    if (q.trim() == '') {
-      return;
+  this.filteredtaps = this.filteredtaps.filter((v) => {
+   
+    if (v.id.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+      return true;
     }
- 
-    this.filteredtaps = this.filteredtaps.filter((v) => {
-      if ((v.id.toLowerCase().indexOf(q.toLowerCase()) > -1)) {
-        console.log('ta[[]]',this.filteredtaps);
-        return true;
-      }
+    else{
       return false;
-    })
- 
-  }
+    }
+  })
+}
   uploadTap() {
     let loading = this.loadingCtrl.create({
       content: 'Loading content...'
@@ -99,33 +76,8 @@ export class WaterTapPage {
     });
   }
   add(){
-    this.navCtrl.push(CoodsPage)
+    this.navCtrl.setRoot(CoodsPage)
   }
-  scroll(event) {
-
-
-
-    var searchTxt = document.getElementsByClassName("searchBar") as HTMLCollectionOf<HTMLElement>;
-
-
-
-    if (event.directionY == "down") {
-
-      if (event.scrollTop >= 15) {
-
-
-        searchTxt[0].style.top = "5px";
-
-
-
-      }
-    }
-    else {
-      searchTxt[0].style.top = "18px";
-    }
-
-  }
-
 
 }
 export const snapshotToArray = snapshot => {

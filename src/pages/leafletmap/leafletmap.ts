@@ -26,8 +26,6 @@ data: any;
 estado: any;
 
   constructor(public navCtrl: NavController) {}
-    waterTapRoot = WaterTapPage;
-    waterTruckRoot = WaterTruckPage;
-    userProfile = ProfilePage;
-    
+  
+
 }

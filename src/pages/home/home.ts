@@ -10,12 +10,14 @@ import { ListPage } from '../list/list';
 import { CoodsPage } from '../coods/coods';
 import { CoordstPage } from '../coordst/coordst';
 import { GeocoderProvider } from '../../providers/geocoder/geocoder';
+import { WaterServiceTabsPage } from '../water-service-tabs/water-service-tabs';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+ water =new WaterServiceTabsPage()
  today:number;
   constructor(private geoCoder:GeocoderProvider, public navCtrl: NavController, private auth:AuthProvider,public alertCtrl:AlertController) {
 
@@ -26,6 +28,12 @@ export class HomePage {
     this.navCtrl.setRoot(CoodsPage);
   }
   ionViewDidEnter(){
+   let element = document.querySelectorAll(".tabbar");
+   if(element !=null){
+     Object.keys(element).map((key)=>{
+       element[key].style.display="none"
+     })
+   }
 this.geoCoder.reverseGeocode(-26.015374,28.2291106).then(results=>{
   console.log(results);
 })

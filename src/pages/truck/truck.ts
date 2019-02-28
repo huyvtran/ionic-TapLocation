@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl } from
 import { Base64 } from '@ionic-native/base64';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { WaterTapPage } from '../water-tap/water-tap';
+import { WaterServiceTabsPage } from '../water-service-tabs/water-service-tabs';
 
 /**
  * Generated class for the TapPage page.
@@ -225,7 +226,6 @@ export class TruckPage {
   }
   takePhoto() {
     this.tapdata();
-    this.uploadTrucks();
     this.isLoading=true;
     this.camera.getPicture({
       quality: 100,
@@ -251,7 +251,7 @@ export class TruckPage {
             buttons: [{
               text:'Ok',
               handler:(data)=>{
-                this.navCtrl.setRoot(WaterTapPage)
+                this.navCtrl.setRoot(WaterServiceTabsPage)
               }
             }]
           })

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ViewController } from 'ionic-angular';
 import { WaterTapPage } from '../water-tap/water-tap';
 import { WaterTruckPage } from '../water-truck/water-truck';
 import { ProfilePage } from '../profile/profile';
@@ -15,6 +15,7 @@ import { ProfilePage } from '../profile/profile';
   selector: 'page-water-service-tabs',
   templateUrl: 'water-service-tabs.html'
 })
+// export const isTaps:boolean=false;
 export class WaterServiceTabsPage {
 
   waterTapRoot = WaterTapPage
@@ -22,6 +23,7 @@ export class WaterServiceTabsPage {
   userProfile = ProfilePage
 
 
-  constructor(public navCtrl: NavController) { }
+  constructor(public navCtrl?: NavController,public viewCtrl?: ViewController) { }
 
+ 
 }

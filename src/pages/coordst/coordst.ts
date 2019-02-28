@@ -6,6 +6,7 @@ import * as Leaflet from 'leaflet';
 import 'leaflet-draw';
 import { TruckPage } from '../truck/truck';
 import { GeocoderProvider } from '../../providers/geocoder/geocoder';
+import { WaterServiceTabsPage } from '../water-service-tabs/water-service-tabs';
 /**
  * Generated class for the CoordstPage page.
  *
@@ -31,6 +32,14 @@ export class CoordstPage {
   }
   ngOnInit():void{
     this.drawMap();
+  }
+  ionViewDidEnter(){
+    let element = document.querySelectorAll(".tabbar");
+    if(element !=null){
+      Object.keys(element).map((key)=>{
+        element[key].style.display="none"
+      })
+    }
   }
   ionViewDidLoad() {
     this.locate();
@@ -72,7 +81,7 @@ export class CoordstPage {
   })
   }
   back(){
-    this.navCtrl.popTo(TruckPage)
+    this.navCtrl.setRoot(WaterServiceTabsPage)
   }
   drawMap(): void {
     this.map = Leaflet.map('map').setView([-0.1836298, -78.4821206], 13);

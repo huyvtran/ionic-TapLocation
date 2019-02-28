@@ -33,6 +33,14 @@ export class CoodsPage {
   ngOnInit():void{
     this.drawMap();
   }
+  ionViewDidEnter(){
+    let element = document.querySelectorAll(".tabbar");
+    if(element !=null){
+      Object.keys(element).map((key)=>{
+        element[key].style.display="none"
+      })
+    }
+  }
   ionViewDidLoad() {
     this.locate();
     console.log('ionViewDidLoad CoodsPage');

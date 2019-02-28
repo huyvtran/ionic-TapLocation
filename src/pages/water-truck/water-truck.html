@@ -6,12 +6,12 @@
 
 <ion-header>
     <ion-navbar>
-        <ion-searchbar (ionScroll)="scroll($event)"></ion-searchbar>
+            <ion-searchbar color="fire" [(ngModel)]="searchstring" (input)="searchuser($event)" placeholder="Search"></ion-searchbar>
     </ion-navbar>
 </ion-header>
 <ion-content class="content">
     <div class="container">
-        <ion-card *ngFor="let truck of listTrucks;let i=index" text-center (click)="truckInfo(i)">
+        <ion-card *ngFor="let truck of filteredtaps;let i=index" text-center (click)="truckInfo(i)">
 
             <ion-item>
                 <ion-avatar left>
@@ -31,10 +31,6 @@
             <ion-card-content>
 
                 <h3> Truck arrives at: {{truck.time}}</h3>
-
-                <h3>The amount of water delivered:<strong>{{truck.liters}}</strong> </h3>
-                <h3>Reliability: {{truck.reliable}}</h3>
-
 
             </ion-card-content>
             <ion-item-divider class="pull-right">

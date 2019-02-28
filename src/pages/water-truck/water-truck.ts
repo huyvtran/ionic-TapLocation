@@ -29,20 +29,40 @@ export class WaterTruckPage {
   listtrucks = [];
   listTrucks = [];
   imgPreview = null;
+  temparr=[];
   name: string = 'trucks';
   key: any;
+  filteredtaps=[];
   reftruck = firebase.database().ref('waterService/trucks/answers/');
 
   constructor(public navCtrl: NavController,  private loadingCtrl: LoadingController, public navParams: NavParams, private truck: TruckProvider) {
+    this.reftruck.on('value', resp => {
+      this.filteredtaps = snapshotToArray(resp);
+      this.temparr =  snapshotToArray(resp);
+    })
   }
 
   ionViewDidEnter() {
     this.uploadtrucks();
 
   }
-
-
-
+  searchuser(searchbar) {
+    this.filteredtaps= this.temparr;
+    var q = searchbar.target.value;
+    if (q.trim() == '') {
+      return;
+    }
+  
+    this.filteredtaps = this.filteredtaps.filter((v) => {
+     
+      if (v.id.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+        return true;
+      }
+      else{
+        return false;
+      }
+    })
+  }
   uploadtrucks() {
     let loading = this.loadingCtrl.create({
       content: 'Loading content...'
