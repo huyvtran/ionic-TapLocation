@@ -7,6 +7,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Alert,Loading, LoadingController, AlertController, ToastController } from 'ionic-angular';
 import firebase, { User} from 'firebase/app';
 import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
+import { WaterServiceTabsPage } from '../water-service-tabs/water-service-tabs';
 
 @IonicPage()
 @Component({
@@ -82,11 +83,10 @@ export class SignupPage {
        
        const alert = this.alertCTR.create({
         subTitle:'<img src="../../assets/imgs/checkmark-gif.gif">',
-        message:"You have successfully registered your account",
         buttons: [{
           text:'Ok',
           handler:data=>{
-            this.navCtrl.setRoot(HomePage)
+            this.navCtrl.setRoot(WaterServiceTabsPage)
             }
           }],
           cssClass: 'alertcss'

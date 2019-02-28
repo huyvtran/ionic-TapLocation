@@ -6,40 +6,37 @@
 -->
 
 <ion-header>
-    <ion-navbar>
-        <ion-searchbar color="fire" [(ngModel)]="searchstring" (input)="searchuser($event)" placeholder="Search by address"></ion-searchbar>
+    <ion-navbar color="primary">
+        <ion-searchbar [(ngModel)]="searchstring" (input)="searchuser($event)" placeholder="Search by address"></ion-searchbar>
     </ion-navbar>
 </ion-header>
+
 <ion-content class="content">
     <div class="container">
         <ion-card *ngFor="let tap of filteredtaps;let i=index" (click)="tapInfo(i)" text-center>
+        <ion-item *ngIf="tap.picture;else other_content">
+        <ion-avatar left>
+        <img src="{{tap.picture}}">
+        </ion-avatar>
+        </ion-item>
 
-            <ion-item *ngIf="tap.picture;else other_content">
-                <ion-avatar left>
-                    <img src="{{tap.picture}}">
-                </ion-avatar>
-
-            </ion-item>
             <ng-template #other_content>
                 <ion-item>
                     <ion-avatar class="background border-bottom" left>
-                        <img src="https://img.mobiscroll.com/demos/angrybirds.png">
+                        <img src="../../assets/imgs/t1.png">
                     </ion-avatar>
-
                 </ion-item>
             </ng-template>
 
-
-
             <ion-card-header>
-
                 <h2> Tap address:
                     <h3><span text-wrap> {{tap.address}}</span></h3>
                 </h2>
             </ion-card-header>
             <ion-card-content>
-                <h3> Tap time duration: {{tap.time}}</h3>
+                <h3> Tap duration: {{tap.time}}</h3>
             </ion-card-content>
+
             <ion-item-divider class="pull-right">
                 <h2> Tap ID: {{tap.id}}
                 </h2>

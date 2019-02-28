@@ -1,6 +1,4 @@
 import { TapInfoPage } from './../tap-info/tap-info';
-import { TruckProvider } from './../../providers/truck/truck';
-
 import { HomePage } from './../home/home';
 import { UserprofilePage } from './../userprofile/userprofile';
 import { ProfilePage } from './../profile/profile';
@@ -8,7 +6,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, App } from 'ionic-angular';
 import firebase, { User } from 'firebase/app';
 import 'firebase/database';
-
 import { TapProvider } from '../../providers/tap/tap';
 import { Base64 } from '@ionic-native/base64';
 import { CoodsPage } from '../coods/coods';
@@ -55,7 +52,7 @@ export class WaterTapPage {
 
   this.filteredtaps = this.filteredtaps.filter((v) => {
    
-    if (v.id.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+    if (v.address.toLowerCase().indexOf(q.toLowerCase()) > -1) {
       return true;
     }
     else{
@@ -69,10 +66,11 @@ export class WaterTapPage {
     });
     loading.present();
     this.reftap.on('value', resp => {
-      this.listTaps = snapshotToArray(resp);
+      this.filteredtaps = snapshotToArray(resp);
+      this.temparr =  snapshotToArray(resp);
       loading.dismiss();
     });
-    this.tapsProvider.getalltaps().then((res: any) => {
+  this.tapsProvider.getalltaps().then((res: any) => {
     });
   }
   add(){
@@ -88,5 +86,5 @@ export const snapshotToArray = snapshot => {
     returnArr.push(item);
   });
 
-  return returnArr;
+return returnArr;
 }

@@ -6,6 +6,9 @@ import 'firebase/database';
 import firebase, { User } from 'firebase/app';
 import { TapProvider } from '../../providers/tap/tap';
 import { Platform } from 'ionic-angular';
+import { WaterServiceTabsPage } from '../water-service-tabs/water-service-tabs';
+import { WaterTapPage } from '../water-tap/water-tap';
+import { GeocoderProvider } from '../../providers/geocoder/geocoder';
 /**
  * Generated class for the TapInfoPage page.
  *
@@ -19,7 +22,10 @@ import { Platform } from 'ionic-angular';
   templateUrl: 'tap-info.html',
 })
 export class TapInfoPage {
+  hideMe=true;
+  isInfo=true;
   isTap=true;
+
   // key='';
   data=[];
   taps=[];
@@ -40,27 +46,18 @@ export class TapInfoPage {
    updateFire:firebase.database.Reference;
   startTime=["06:00","07:00","08:00","09:00","10:00","11:00","12:00"];
   endTime=["13:00","14:00","15:00","16:00","17:00","18:00","19:00"];
-  // reftap = firebase.database().ref('waterService/taps/answers/');
+  address;
   constructor(public navCtrl: NavController,private tap:TapProvider,
   public modalCtrl:ModalController, private alertCTR: AlertController,
   public navParams: NavParams,public platform: Platform) {
+
    this.listTaps=this.navParams.get('data');
-   console.log('io',  this.listTaps)
-
-      this.reftap = firebase.database().ref('waterService/taps/answers/');
-      this.lat=this.navParams.get('lat');
-      this.lng=this.navParams.get('lng');
-      this.location=this.lat+" - "+this.lng;
-      console.log('location',this.location);
-      console.log('checked',this.isChecked);
+   this.key=this.listTaps.key;
   
-      this.reftap.on('value', resp => {
-        this.taps = snapshotToArray(resp);
-      });
-      this.tap.getalltaps().then((res: any) => {
-        console.log()
-      });
-
+ 
+  }
+  back(){
+    this.navCtrl.setRoot(WaterTapPage);
   }
   viewGoogleMap(){
   
@@ -72,33 +69,32 @@ export class TapInfoPage {
         let label = encodeURI('My Label');
         window.open('geo:0,0?q=' + destination + '(' + label + ')', '_system');
   }
+  
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad UpdatePage');
     this.uploadTaps();
+
   }
   ionViewDidEnter() {
     // this.uploadTaps();
  }
 
- edit(key){
+ edit(){
   this.isUpdate=true;
-  this.isChecked=false;
-  this.key=key;
-  this.reliable=this.taps[0].reliable;
-  this.time=this.taps[0].time;
-  this.safety=this.taps[0].safety
-  this.starttime=this.taps[0].optime;
-  this.endtime=this.taps[0].clotime;
+  this.reliable=this.listTaps.reliable;
+  this.time=this.listTaps.time;
+  this.safety=this.listTaps.safety
+  this.starttime=this.listTaps.optime;
+  this.endtime=this.listTaps.clotime;
   
 }
 
 updateTap(){
-  console.log('data',this.key);
     this.updateFire=firebase.database().ref('waterService/taps/answers/'+this.key);
     this.time=this.starttime+' - '+this.endtime;
     this.update(this.reliable,this.safety,this.time,this.starttime,this.endtime);
-    this.navCtrl.pop();
+    this.isUpdate=false;
 }
 
 update(reliable:string,safety:string,time:string,optime:string,clotime:string):Promise<any>{
@@ -106,7 +102,7 @@ update(reliable:string,safety:string,time:string,optime:string,clotime:string):P
 }
 
 click(){
-  this.navCtrl.pop();
+  this.isUpdate=false
 }
 
 uploadTaps(){

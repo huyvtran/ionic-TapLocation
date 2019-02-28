@@ -68,8 +68,9 @@ firebase.initializeApp(config);
     SigninPage,
     SignupPage,
     ResetpasswordPage,
-    UserprofilePage, 
-    TapInfoPage
+    UserprofilePage,
+    TapInfoPage,
+    TruckInfoPage
 
   ],
   imports: [

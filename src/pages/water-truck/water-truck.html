@@ -5,33 +5,34 @@
 -->
 
 <ion-header>
-    <ion-navbar>
-            <ion-searchbar color="fire" [(ngModel)]="searchstring" (input)="searchuser($event)" placeholder="Search"></ion-searchbar>
+    <ion-navbar color="primary">
+            <ion-searchbar [(ngModel)]="searchstring" (input)="searchuser($event)" placeholder="Search by address"></ion-searchbar>
     </ion-navbar>
 </ion-header>
 <ion-content class="content">
     <div class="container">
         <ion-card *ngFor="let truck of filteredtaps;let i=index" text-center (click)="truckInfo(i)">
 
-            <ion-item>
-                <ion-avatar left>
-                    <img src="https://img.mobiscroll.com/demos/angrybirds.png">
-                </ion-avatar>
-
-            </ion-item>
-
-
+                <ion-item *ngIf="truck.picture;else other_content">
+                    <ion-avatar left>
+                    <img src="{{truck.picture}}">
+                    </ion-avatar>
+                    </ion-item>
+            
+                <ng-template #other_content>
+                    <ion-item>
+                        <ion-avatar class="background border-bottom" left>
+                            <img src="../../assets/imgs/t6.png">
+                        </ion-avatar>
+                    </ion-item>
+                </ng-template>
             <ion-card-header>
-
                 <h2> Truck Station:
                     <h3><span text-wrap> {{truck.address}}</span></h3>
                 </h2>
-
             </ion-card-header>
             <ion-card-content>
-
-                <h3> Truck arrives at: {{truck.time}}</h3>
-
+                <h3> Truck time: {{truck.time}}</h3>
             </ion-card-content>
             <ion-item-divider class="pull-right">
                 <h2> Truck ID: {{truck.id}}

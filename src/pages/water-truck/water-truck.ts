@@ -1,6 +1,5 @@
 import { TruckInfoPage } from './../truck-info/truck-info';
 import { TapInfoPage } from './../tap-info/tap-info';
-
 import { HomePage } from './../home/home';
 import { UserprofilePage } from './../userprofile/userprofile';
 import { ProfilePage } from './../profile/profile';
@@ -8,7 +7,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import firebase, { User } from 'firebase/app';
 import 'firebase/database';
-
 import { TruckProvider } from '../../providers/truck/truck';
 import { Base64 } from '@ionic-native/base64';
 import { CoordstPage } from '../coordst/coordst';
@@ -26,7 +24,7 @@ import { CoordstPage } from '../coordst/coordst';
   templateUrl: 'water-truck.html',
 })
 export class WaterTruckPage {
-  listtrucks = [];
+  // listtrucks = [];
   listTrucks = [];
   imgPreview = null;
   temparr=[];
@@ -42,7 +40,7 @@ export class WaterTruckPage {
     })
   }
 
-  ionViewDidEnter() {
+  ionViewDidLoad() {
     this.uploadtrucks();
 
   }
@@ -52,10 +50,8 @@ export class WaterTruckPage {
     if (q.trim() == '') {
       return;
     }
-  
     this.filteredtaps = this.filteredtaps.filter((v) => {
-     
-      if (v.id.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+      if (v.address.toLowerCase().indexOf(q.toLowerCase()) > -1) {
         return true;
       }
       else{
@@ -69,14 +65,15 @@ export class WaterTruckPage {
     });
     loading.present();
     this.reftruck.on('value', resp => {
-      this.listTrucks = snapshotToArray(resp);
+      this.filteredtaps = snapshotToArray(resp);
+      this.temparr =  snapshotToArray(resp);
       loading.dismiss();
     });
     this.truck.getalltrucks().then((res: any) => {
     });
   }
   truckInfo(i: number) {
-    this.navCtrl.push(TruckInfoPage, { data: this.listTrucks[i] })
+    this.navCtrl.push(TruckInfoPage, { data: this.filteredtaps[i] })
   }
 
   add() {

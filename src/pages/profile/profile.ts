@@ -21,7 +21,7 @@ import { ListPage } from '../list/list';
   templateUrl: 'profile.html',
 })
 export class ProfilePage {
-  imgPreview = 'assets/imgs/chatterplace.png';
+  imgPreview = '../../assets/imgs/chatterplace.png';
   currentUser: User;
   profileRef: firebase.database.Reference;
   username: string;
@@ -45,8 +45,7 @@ export class ProfilePage {
   }
   updatePassword() {
     const alert: Alert = this.alertCtrl.create({
-      subTitle:'<img src="../../assets/imgs/password.gif">',
-      message:'Update passord',
+      title:'Update password',
       inputs: [{
         name: 'oldPassword',
         placeholder: 'Enter old password',
@@ -76,11 +75,32 @@ export class ProfilePage {
     alert.present()
   }
   logout() {
-    this.userProv.signOut().then(() => {
-      this.navCtrl.setRoot(SigninPage);
-    })
+      const alert = this.alertCtrl.create({
+        title: 'Loggin out?',
+        buttons: [{
+          text:'No',
+          role:'cancel'
+        },{
+          text: 'Yes',
+          handler: data => { 
+            let loading = this.loadingCtrl.create({
+            content: 'Logging out...'
+          });
+          loading.present();
+            this.userProv.signOut().then(() => {
+              loading.dismiss();
+              if(loading.dismiss()){
+                this.navCtrl.setRoot(SigninPage);
+              }
+              
+            })
+          }
+        }],
+        cssClass: 'alertCheck'
+      });
+    alert.present();
   }
-
+  
   loaduserdetails() {
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'

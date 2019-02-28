@@ -15,7 +15,7 @@
 
 <ion-content padding>
 
-    <div *ngIf="isTruck" text-center>
+    <div *ngIf="!isUpdate" text-center>
         <ion-card class="cards">
 
             <!-- <ion-card-header> -->
@@ -24,26 +24,29 @@
                 <!-- </ion-card-header> -->
             </div>
             <ng-template #other_content>
-                <img class="circle-pic" src="https://img.mobiscroll.com/demos/angrybirds.png" />
+                <img class="circle-pic" src="../../assets/imgs/t6.png" />
             </ng-template>
             <ion-grid>
                 <ion-row>
                     <ion-col col-2> 
-                        <button ion-item color="fire" (click)="edit(key)">
-                            <ion-icon name="create" color="primary" item-right ></ion-icon>
+                        <button ion-item color="fire" (click)="edit()">
+                            <ion-icon name="create" color="secondary" item-right ></ion-icon>
                         </button>
+                        <p style="font-size:smaller;color:#009218">update</p>
                     </ion-col>
                     <ion-col col-8>
+                        <h2 style="color:#005792">Address: {{listTrucks.address}}</h2>
                         <p>ID: {{listTrucks.id}}</p>
-                        <p>TIME: {{listTrucks.time}}</p>
-                        <p>LITERS: {{listTrucks.liters}}</p>
-                        <p>SERVICE: {{listTrucks.reliable}}</p>
-                        <p>NUMBER OF DAYS: {{listTrucks.days}}</p>
+                        <p>Time: {{listTrucks.time}}</p>
+                        <p>liters: {{listTrucks.liters}}</p>
+                        <p>Service: {{listTrucks.reliable}}</p>
+                        <p>Days: {{listTrucks.days}}</p>
                     </ion-col>
                     <ion-col col-2> 
                         <button ion-item color="fire" (click)="viewGoogleMap()">
-                            <ion-icon name="navigate" color="primary" item-right  (click)="viewGoogleMap()"></ion-icon>
+                            <ion-icon name="navigate" color="danger" item-right  (click)="viewGoogleMap()"></ion-icon>
                         </button> 
+                        <p style="font-size:smaller;color:#920031">map</p>
                     </ion-col>
                 </ion-row>
             </ion-grid> 
@@ -52,16 +55,15 @@
 
 
     <div *ngIf="isUpdate">
-        <ion-card class="cards">
+        <ion-list>
 
             <button color="primary" ion-item (click)="click()">
-                <ion-icon name="close" color="light" item-right></ion-icon>
-                </button>
-
-
+            <ion-icon name="close" color="light" item-right></ion-icon>
+            </button>
+            <h2 style="font-size:larger;color:#005792">Address: {{listTrucks.address}}</h2>
             <ion-list class="outline">
-                <ion-item no-lines class="op"></ion-item>
-                <h2 text-center>Accessible Time</h2>
+
+            <h2 text-center>Accessible Time</h2>
 
                 <ion-item class="op">
                     <ion-label color="primary" text-wrap>arrival Time</ion-label>
@@ -79,16 +81,24 @@
             </ion-list>
             <br>
 
-            <h2 text-center>Liters</h2>
-            <ion-item class="op">
-                <ion-label color="primary" placeholder="E.g 375 liters of water each week "></ion-label>
-                <ion-input type="text" [(ngModel)]="liters" class="outline"></ion-input>
-            </ion-item>
+            <h2 text-center>Enough liters</h2>
+            <ion-list radio-group [(ngModel)]="liters">
+                <ion-item class="op1">
+                    <ion-label>Yes</ion-label>
+                    <ion-radio value="Yes"></ion-radio>
+                    </ion-item>
+                    <br>
+                    <ion-item class="op1">
+                    <ion-label>No</ion-label>
+                    <ion-radio value="No"></ion-radio>
+                </ion-item>
+            </ion-list>
+                    
 
 
 
             <ion-list radio-group [(ngModel)]="reliable" class="outline">
-                <ion-item no-lines class="op"></ion-item>
+    
                 <h2 text-center>Service</h2>
 
                 <ion-item class="op">
@@ -119,8 +129,8 @@
 
 
             <button ion-button full block color="primary" (click)="updateTruck()">save</button>
-
-        </ion-card>
+ 
+        </ion-list>
     </div>
 
 

@@ -144,14 +144,14 @@ changeTruck(){
     });
   } 
   
-  tapInfo(i:number){
-    this.navCtrl.push(TapInfoPage,{data:this.listTaps[i]})
-  }
+  // tapInfo(i:number){
+  //   this.navCtrl.push(TapInfoPage,{data:this.listTaps[i]})
+  // }
 
 
-  truckInfo(i:number){
-    this.navCtrl.push(TruckInfoPage,{data:this.listTrucks[i]})
-  }
+  // truckInfo(i:number){
+  //   this.navCtrl.push(TruckInfoPage,{data:this.listTrucks[i]})
+  // }
 
 }
 export const snapshotToArray = snapshot => {

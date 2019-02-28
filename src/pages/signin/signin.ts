@@ -47,7 +47,14 @@ export class SigninPage {
 
 
   }
-
+  ionViewDidEnter(){
+    let element = document.querySelectorAll(".tabbar");
+    if(element !=null){
+      Object.keys(element).map((key)=>{
+        element[key].style.display="none"
+      })
+    }
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad  SiginPage');
   }
@@ -74,11 +81,11 @@ export class SigninPage {
           this.load.dismiss().then(() => {
             loading.dismiss();
             const alert = this.alertCtrl.create({
-              subTitle: '<img src="../../assets/imgs/checkmark-gif.gif">',
+              subTitle: 'Please cheeck your user details',
               buttons: [{
                 text: 'Ok',
                 handler: data => {
-
+                  this.navCtrl.setRoot(WaterServiceTabsPage);
                 }
               }],
               cssClass: 'alertCheck'

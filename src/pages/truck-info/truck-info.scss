@@ -14,6 +14,35 @@ page-truck-info {
     // .scroll-content {
     //     overflow: hidden !important;
     // }
+    ion-card{
+
+        border-radius: 15px !important;
+        background-color: transparent;
+        background: none !important;
+        width: 100%;
+        margin-bottom: 25px;
+        position: relative;
+        text-align: center;
+        top: 20px;
+        // color: white;
+        box-shadow: 14px 3px 56px 2px rgba(41, 40, 40, 0.75) !important;
+        -webkit-box-shadow: 14px 3px 56px 2px rgba(41, 40, 40, 0.75)!important;
+        -moz-box-shadow: 14px 3px 56px 2px rgba(41, 40, 40, 0.75)!important;
+       .container{
+     
+        display: flex;
+        justify-content:center;
+        align-content:center;
+        align-items:center;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        flex-direction: column;
+        right: 0;
+        position: absolute;
+        padding: 10px 15px;
+   
+    }
     ion-card {
         .container {
             display: flex;
@@ -133,8 +162,9 @@ page-truck-info {
         font-size: 3.5rem;
     }
     .circle-pic {
-        width: 100%;
-        height: 220px;
-        padding: 0;
+        width: 400px;
+        height:320px;
+        padding:0;
     }
+}
 }

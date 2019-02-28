@@ -21,9 +21,11 @@ export class WaterServiceTabsPage {
   waterTapRoot = WaterTapPage
   waterTruckRoot = WaterTruckPage
   userProfile = ProfilePage
+  
 
-
-  constructor(public navCtrl?: NavController,public viewCtrl?: ViewController) { }
+  constructor(public navCtrl?: NavController,public viewCtrl?: ViewController) {
+    
+   }
 
  
 }

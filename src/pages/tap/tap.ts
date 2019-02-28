@@ -187,7 +187,7 @@ export class TapPage {
     this.isCaptured=true;
     let alert = this.alertCtrl.create({
       message:'<img src="../../assets/imgs/giphy.gif">',
-      subTitle:'Confirm by taking a picture of the tap',
+      subTitle:'Please take the tap a picture',
       buttons: [{
         text:'Ok',
         handler:(data)=>{
