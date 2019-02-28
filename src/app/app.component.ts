@@ -11,6 +11,7 @@ import { HomePage } from '../pages/home/home';
 import { LeafletmapPage } from '../pages/leafletmap/leafletmap';
 import { CoodsPage } from '../pages/coods/coods';
 import { CoordstPage } from '../pages/coordst/coordst';
+import { WaterTapPage } from '../pages/water-tap/water-tap';
 
 @Component({
   templateUrl: 'app.html'

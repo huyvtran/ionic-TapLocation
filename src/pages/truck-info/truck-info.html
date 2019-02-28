@@ -1,115 +1,127 @@
 <!--
-  Generated template for the TruckInfoPage page.
+  Generated template for the TapInfoPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>TruckInfo</ion-title>
-  </ion-navbar>
+    <ion-navbar color="primary">
+        <ion-title>Truck Info</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <div *ngIf="isTruck" text-center> 
-    <ion-card class="cards">
-    <button ion-item color="cut" (click)="options()">
-    <ion-icon name="more" color="blue" item-right ></ion-icon>
-    </button>
-  <!-- <ion-card-header> -->
-  <img class="circle-pic" src="../assets/imgs/tap.jpg"/>
-  <!-- </ion-card-header> -->
 
-    <button ion-item color="cut" (click)="edit(key)">
-    <ion-icon name="create" color="blue" item-right ></ion-icon>
-    </button>
-      <p><strong>ID</strong>: {{listTrucks.id}}</p>
-      <p><strong>TIME</strong>: {{listTrucks.time}}</p>
-      <p><strong>LITERS</strong>: {{listTrucks.liters}}</p>
-      <p><strong>SERVICE</strong>: {{listTrucks.reliable}}</p>
-      <p><strong>NUMBER OF DAYS</strong>: {{listTrucks.days}}</p>
+    <div *ngIf="isTruck" text-center>
+        <ion-card class="cards">
 
-      <button ion-button round color="blue" (click)="ok()">
-      OK 
-      </button>
+            <!-- <ion-card-header> -->
+            <div *ngIf="listTrucks.picture;else other_content">
+                <img class="circle-pic" src="{{listTrucks?.picture}}" />
+                <!-- </ion-card-header> -->
+            </div>
+            <ng-template #other_content>
+                <img class="circle-pic" src="https://img.mobiscroll.com/demos/angrybirds.png" />
+            </ng-template>
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-2> 
+                        <button ion-item color="fire" (click)="edit(key)">
+                            <ion-icon name="create" color="primary" item-right ></ion-icon>
+                        </button>
+                    </ion-col>
+                    <ion-col col-8>
+                        <p>ID: {{listTrucks.id}}</p>
+                        <p>TIME: {{listTrucks.time}}</p>
+                        <p>LITERS: {{listTrucks.liters}}</p>
+                        <p>SERVICE: {{listTrucks.reliable}}</p>
+                        <p>NUMBER OF DAYS: {{listTrucks.days}}</p>
+                    </ion-col>
+                    <ion-col col-2> 
+                        <button ion-item color="fire" (click)="viewGoogleMap()">
+                            <ion-icon name="navigate" color="primary" item-right  (click)="viewGoogleMap()"></ion-icon>
+                        </button> 
+                    </ion-col>
+                </ion-row>
+            </ion-grid> 
+        </ion-card>
+    </div>
 
-      </ion-card>
-      </div>
+
+    <div *ngIf="isUpdate">
+        <ion-card class="cards">
+
+            <button color="primary" ion-item (click)="click()">
+                <ion-icon name="close" color="light" item-right></ion-icon>
+                </button>
 
 
-<div *ngIf="isUpdate">
-  <ion-card class="cards">
+            <ion-list class="outline">
+                <ion-item no-lines class="op"></ion-item>
+                <h2 text-center>Accessible Time</h2>
 
-    <button color="primary" ion-item (click)="click()">
-    <ion-icon name="close" color="light" item-right></ion-icon>
-    </button>
+                <ion-item class="op">
+                    <ion-label color="primary" text-wrap>arrival Time</ion-label>
+                    <ion-select [(ngModel)]="starttime">
+                        <ion-option text-wrap *ngFor="let start of startTime">{{start}}</ion-option>
+                    </ion-select>
+                </ion-item>
+                <br>
+                <ion-item class="op">
+                    <ion-label color="primary" text-wrap>departure time</ion-label>
+                    <ion-select [(ngModel)]="endtime">
+                        <ion-option text-wrap *ngFor="let start of endTime">{{start}}</ion-option>
+                    </ion-select>
+                </ion-item>
+            </ion-list>
+            <br>
 
-      
-          <ion-list class="outline">
-          <ion-item no-lines class="op"></ion-item>
-          <h2 text-center>Accessible Time</h2>
-
-          <ion-item class="op">
-          <ion-label color="primary"  text-wrap>arrival Time</ion-label>  
-          <ion-select [(ngModel)]="starttime">
-          <ion-option text-wrap *ngFor="let start of startTime">{{start}}</ion-option>
-          </ion-select>
-          </ion-item>
-<br>
-          <ion-item class="op">
-          <ion-label color="primary" text-wrap>departure time</ion-label>
-          <ion-select [(ngModel)]="endtime">
-          <ion-option text-wrap *ngFor="let start of endTime">{{start}}</ion-option>
-          </ion-select>
-          </ion-item>
-        </ion-list>
-<br>
-     
-          <h2 text-center >Liters</h2>
-          <ion-item class="op">
-            <ion-label color="primary" placeholder="E.g 375 liters of water each week "></ion-label>
-          <ion-input  type="text" [(ngModel)]="liters"  class="outline"></ion-input>
-        </ion-item>
-    
-
-   
-          <ion-list radio-group [(ngModel)]="reliable" class="outline">
-          <ion-item no-lines class="op" ></ion-item>
-          <h2 text-center>Service</h2>
-
+            <h2 text-center>Liters</h2>
             <ion-item class="op">
-            <ion-label color="primary">Good</ion-label>
-            <ion-radio value="good"></ion-radio>
+                <ion-label color="primary" placeholder="E.g 375 liters of water each week "></ion-label>
+                <ion-input type="text" [(ngModel)]="liters" class="outline"></ion-input>
             </ion-item>
-<br>
 
-          <ion-item class="op">
-          <ion-label color="primary">Poor</ion-label>
-          <ion-radio value="poor"></ion-radio>
-          </ion-item>
 
-          </ion-list>
 
-   <br>       
-      
-     
-          <h2 text-center> Number of days</h2>
-          <ion-item class="op">
-            <ion-label color="primary" text-wrap >day(s)</ion-label>
-            <ion-select [(ngModel)]="days">
-            <ion-option *ngFor="let start of arrdays">{{start}}</ion-option>
-            </ion-select>
-          </ion-item>
+            <ion-list radio-group [(ngModel)]="reliable" class="outline">
+                <ion-item no-lines class="op"></ion-item>
+                <h2 text-center>Service</h2>
 
-      <br> 
-  
+                <ion-item class="op">
+                    <ion-label color="primary">Good</ion-label>
+                    <ion-radio value="good"></ion-radio>
+                </ion-item>
+                <br>
 
-<button ion-button full block color="primary" (click)="updateTruck()">save</button>
-  
-</ion-card>
+                <ion-item class="op">
+                    <ion-label color="primary">Poor</ion-label>
+                    <ion-radio value="poor"></ion-radio>
+                </ion-item>
 
-  </div>
+            </ion-list>
+
+            <br>
+
+
+            <h2 text-center> Number of days</h2>
+            <ion-item class="op">
+                <ion-label color="primary" text-wrap>day(s)</ion-label>
+                <ion-select [(ngModel)]="days">
+                    <ion-option *ngFor="let start of arrdays">{{start}}</ion-option>
+                </ion-select>
+            </ion-item>
+
+            <br>
+
+
+            <button ion-button full block color="primary" (click)="updateTruck()">save</button>
+
+        </ion-card>
+    </div>
+
+
 </ion-content>

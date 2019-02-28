@@ -50,9 +50,29 @@ h2{
  }
      &.outline {
         background-color: #edf9fc;
+    }
+    // .scroll-content {
+    //     overflow: hidden !important;
+    // }
+    ion-card {
+        .container {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            flex-direction: column;
+            right: 0;
+            position: absolute;
+            padding: 10px 15px;
+        }
+        &.outline {
+            background-color: #edf9fc;
             // background-color:transparent;
-            height:40px;
-            width:125px;
+            height: 40px;
+            width: 125px;
             position: relative;
              z-index: 3;
              color:#005792;
@@ -173,4 +193,6 @@ button {
 .icon{
  font-size:3.5rem;
 }
+}
+
 }

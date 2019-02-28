@@ -81,7 +81,7 @@ export class SignupPage {
        })
        
        const alert = this.alertCTR.create({
-        subTitle:'<img src="../../assets/imgs/animated-check.gif">',
+        subTitle:'<img src="../../assets/imgs/checkmark-gif.gif">',
         message:"You have successfully registered your account",
         buttons: [{
           text:'Ok',

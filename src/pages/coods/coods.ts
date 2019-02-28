@@ -6,6 +6,7 @@ import * as Leaflet from 'leaflet';
 import 'leaflet-draw';
 import { TapPage } from '../tap/tap';
 import { GeocoderProvider } from '../../providers/geocoder/geocoder';
+import { WaterServiceTabsPage } from '../water-service-tabs/water-service-tabs';
 /**
  * Generated class for the CoodsPage page.
  *
@@ -105,7 +106,7 @@ export class CoodsPage {
     this.map.on('locationerror', onLocationError);
   }
   back(){
-    this.navCtrl.setRoot(HomePage)
+    this.navCtrl.setRoot(WaterServiceTabsPage)
   }
 
 }

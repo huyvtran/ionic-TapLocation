@@ -1,6 +1,6 @@
 import { TruckInfoPage } from './../pages/truck-info/truck-info';
 import { TapInfoPage } from './../pages/tap-info/tap-info';
- import { Camera } from '@ionic-native/camera';
+import { Camera } from '@ionic-native/camera';
 import { WaterTruckPage } from './../pages/water-truck/water-truck';
 import { WaterTapPage } from './../pages/water-tap/water-tap';
 import { WaterServiceTabsPage } from './../pages/water-service-tabs/water-service-tabs';
@@ -19,7 +19,6 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { Geolocation } from '@ionic-native/geolocation';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { IonicStorageModule } from '@ionic/storage';
@@ -35,7 +34,7 @@ import { CoodsPage } from '../pages/coods/coods';
 import { CoordstPage } from '../pages/coordst/coordst';
 import { ListProvider } from '../providers/list/list';
 import { GeocoderProvider } from '../providers/geocoder/geocoder';
-
+import { Geolocation } from '@ionic-native/geolocation';
 import { ImageProvider } from '../providers/image/image';
 
 var config = {
@@ -53,6 +52,7 @@ firebase.initializeApp(config);
 @NgModule({
   declarations: [
     WaterServiceTabsPage,
+    TruckInfoPage,
     WaterTapPage,
     WaterTruckPage,
     MyApp,
@@ -104,7 +104,7 @@ firebase.initializeApp(config);
 
   providers: [
     StatusBar,
-
+    Geolocation,
     NativeGeocoder,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
@@ -115,6 +115,7 @@ firebase.initializeApp(config);
     TruckProvider,
     ListProvider,
     GeocoderProvider,
+    Geolocation,
     ImageProvider,
     Camera
 

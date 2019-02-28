@@ -72,7 +72,7 @@ export class CoordstPage {
   })
   }
   back(){
-    this.navCtrl.setRoot(HomePage)
+    this.navCtrl.popTo(TruckPage)
   }
   drawMap(): void {
     this.map = Leaflet.map('map').setView([-0.1836298, -78.4821206], 13);
