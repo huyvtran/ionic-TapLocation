@@ -19,7 +19,7 @@ import { Platform } from 'ionic-angular';
   templateUrl: 'truck-info.html',
 })
 export class TruckInfoPage {
-  // name:string='Trucks';
+  hideMe=true;
   data = [];
   trucks = [];
   keys = [];
@@ -100,10 +100,10 @@ export class TruckInfoPage {
   }
 
   updateTruck() {
-    this.updateFire = firebase.database().ref('waterService/trucks/answers/' + this.key);
-    this.time = this.starttime + ' - ' + this.endtime;
-    this.update(this.reliable, this.liters, this.time, this.days, this.starttime, this.endtime);
-    this.navCtrl.pop();
+    this.updateFire = firebase.database().ref('waterService/trucks/answers/'+this.key);
+    this.time = this.starttime +' - '+this.endtime;
+    this.update(this.reliable,this.liters,this.time,this.days,this.starttime,this.endtime);
+    this.isUpdate=false;
   }
 
   update(reliable: string, time: string, days: string, liters: string, optime: string, clotime: string): Promise<any> {
@@ -111,7 +111,7 @@ export class TruckInfoPage {
   }
 
   click() {
-    this.navCtrl.pop();
+    this.isUpdate=false
   }
 
 

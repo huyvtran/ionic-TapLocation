@@ -9,7 +9,6 @@ import firebase, { User } from 'firebase/app';
 import 'firebase/database';
 import { TruckProvider } from '../../providers/truck/truck';
 import { Base64 } from '@ionic-native/base64';
-import { TruckInfoPage } from '../truck-info/truck-info';
 import { CoordstPage } from '../coordst/coordst';
 
 

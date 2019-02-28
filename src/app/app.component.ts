@@ -17,7 +17,7 @@ import { WaterTapPage } from '../pages/water-tap/water-tap';
   templateUrl: 'app.html'
 })
  export class MyApp {
-  rootPage: any=SigninPage;
+  rootPage: any=WaterServiceTabsPage;
   constructor(platform:Platform,statusBar: StatusBar,splashScreen:SplashScreen) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

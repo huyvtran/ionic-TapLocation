@@ -15,7 +15,7 @@
 
 <ion-content padding>
 
-    <div *ngIf="isTruck" text-center>
+    <div *ngIf="!isUpdate" text-center>
         <ion-card class="cards">
 
             <!-- <ion-card-header> -->
@@ -55,13 +55,12 @@
         <ion-card class="cards">
 
             <button color="primary" ion-item (click)="click()">
-                <ion-icon name="close" color="light" item-right></ion-icon>
-                </button>
-
+            <ion-icon name="close" color="light" item-right></ion-icon>
+            </button>
 
             <ion-list class="outline">
-                <ion-item no-lines class="op"></ion-item>
-                <h2 text-center>Accessible Time</h2>
+            <ion-item no-lines class="op"></ion-item>
+            <h2 text-center>Accessible Time</h2>
 
                 <ion-item class="op">
                     <ion-label color="primary" text-wrap>arrival Time</ion-label>
@@ -119,7 +118,7 @@
 
 
             <button ion-button full block color="primary" (click)="updateTruck()">save</button>
-
+ 
         </ion-card>
     </div>
 

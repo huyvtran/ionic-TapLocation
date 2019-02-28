@@ -19,7 +19,10 @@ import { Platform } from 'ionic-angular';
   templateUrl: 'tap-info.html',
 })
 export class TapInfoPage {
+  hideMe=true;
+  isInfo=true;
   isTap=true;
+
   // key='';
   data=[];
   taps=[];
@@ -98,7 +101,7 @@ updateTap(){
     this.updateFire=firebase.database().ref('waterService/taps/answers/'+this.key);
     this.time=this.starttime+' - '+this.endtime;
     this.update(this.reliable,this.safety,this.time,this.starttime,this.endtime);
-    this.navCtrl.pop();
+    this.isUpdate=false;
 }
 
 update(reliable:string,safety:string,time:string,optime:string,clotime:string):Promise<any>{
@@ -106,7 +109,7 @@ update(reliable:string,safety:string,time:string,optime:string,clotime:string):P
 }
 
 click(){
-  this.navCtrl.pop();
+  this.isUpdate=false
 }
 
 uploadTaps(){
